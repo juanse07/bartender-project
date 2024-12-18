@@ -1,5 +1,3 @@
-# See https://help.github.com/articles/ignoring-files/ for more about ignoring files.
-
 # dependencies
 /node_modules
 /.pnp
@@ -40,5 +38,14 @@ yarn-error.log*
 *.tsbuildinfo
 next-env.d.ts
 
-# node
+# node binaries
 *.node
+
+# SWC and Sharp caches
+**/node_modules/@next/swc-*
+**/node_modules/@img/sharp-*
+**/node_modules/sharp/
+/Users/*/Library/Caches/next-swc
+
+# build tools cache
+/.cache
