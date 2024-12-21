@@ -1,13 +1,14 @@
-import "@/styles/globals.css";
+import 'bootstrap/dist/css/bootstrap.min.css';
+
+import "@/styles/globals.scss";
+
+
 import type { AppProps } from "next/app";
-import { Lato, Playfair_Display } from "next/font/google";
+import { Lato } from "next/font/google";
 import Head from "next/head";
 
 // Correct initialization
-const playfairFont = Playfair_Display({
-  subsets: ["latin"], // Correct subsets syntax
-  weight: ["400", "700"], // Optional: Specify the font weights you need
-});
+
 
 const latoFont = Lato({
   subsets: ["latin"],
@@ -24,7 +25,7 @@ export default function App({ Component, pageProps }: AppProps) {
         <link rel="icon" href="/favicon.ico" />
       </Head>
     
-      <div className={`${playfairFont.className} ${latoFont.className}`}>
+      <div className={` ${latoFont.className}`}>
 
         <main >
            <Component {...pageProps} />

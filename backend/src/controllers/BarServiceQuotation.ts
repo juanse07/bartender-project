@@ -15,6 +15,8 @@ try {
 interface BarServiceQuotationBody {
     clientName: string;
     companyName?: string;
+    email: string;
+    phone?: string;
     address: string;
     eventDate: Date;
     startTime: string;
@@ -26,12 +28,14 @@ interface BarServiceQuotationBody {
 
 export const createBarServiceQuotation: RequestHandler<unknown, unknown, BarServiceQuotationBody, unknown> = async (req, res,next) => {
    
-    const { clientName, companyName, address, eventDate, startTime, endTime, numberOfGuests, servicesRequested, notes } = req.body;
+    const { clientName, companyName,email,phone, address, eventDate, startTime, endTime, numberOfGuests, servicesRequested, notes } = req.body;
    
     try {
    const newBarServiceQuotation = await BarServiceQuotationModel.create({
         clientName,
         companyName,
+        email,
+        phone,
         address,
         eventDate,
         startTime,
