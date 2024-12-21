@@ -10,6 +10,15 @@ const BarServiceQuotationSchema = new Schema({
         type: String,
         trim: true
     },
+    email: { // Email of the client
+        type: String,
+        required: true,
+        trim: true
+    },
+    phone: { // Phone number of the client
+        type: String,
+        trim: true
+    },
     address: { // Event location
         type: String,
         required: true,
@@ -17,7 +26,7 @@ const BarServiceQuotationSchema = new Schema({
     },
     eventDate: { // Date of the event
         type: Date,
-        required: true
+        
     },
     startTime: { // Start time of the service
         type: String,

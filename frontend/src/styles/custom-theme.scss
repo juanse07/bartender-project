@@ -1,0 +1,39 @@
+// Luxury Theme with Black and Gold Tones
+
+$surface-bg: #1b1b1b; // Deep black for surfaces
+$primary: #ffd700; // Classic metallic gold
+$secondary: #b8860b; // Darker gold (bronze tone)
+$danger: #ff6347; // Coral red for alerts, keeping a contrast
+$body-color: #e0c097 !default; // Light gold for text
+$body-bg: #121212 !default; // Near-black background
+$text-muted: #a39171; // Muted gold tone for subtle text
+$card-bg: #2a2a2a; // Dark gray for card backgrounds
+$modal-content-bg: #1f1f1f; // Slightly lighter black for modals
+$dropdown-bg: #1f1f1f; // Dropdown background matching modal
+$dropdown-link-color: #e0c097; // Gold for dropdown links
+$dropdown-link-hover-bg: #2a2a2a; // Subtle hover effect with gray
+$dropdown-link-hover-color: #ffd700; // Highlight hover with gold
+$dropdown-link-active-bg: #2a2a2a; // Dark gray active background
+$dropdown-link-active-color: #ffd700; // Active link in metallic gold
+$input-bg: transparent; // Transparent inputs for a sleek look
+$form-file-button-bg: #2a2a2a; // File input buttons in dark gray
+$navbar-dark-color: #e0c097; // Navbar text in light gold
+$navbar-dark-hover-color: #ffd700; // Hover effect in gold
+$navbar-dark-active-color: #ffd700; // Active navbar items in gold
+$tooltip-bg: #2a2a2a; // Tooltips in dark gray
+$tooltip-color: #e0c097; // Tooltip text in gold
+$pagination-bg: #1f1f1f; // Pagination buttons in black
+$pagination-hover-bg: #2a2a2a; // Slight hover highlight in gray
+$pagination-focus-bg: #2a2a2a; // Focused pagination in gray
+$pagination-border-color: transparent; // No borders for a clean look
+$pagination-hover-border-color: transparent; // No hover borders
+$pagination-active-bg: #ffd700; // Active pagination in gold
+$pagination-active-color: #121212; // Active text in deep black
+$pagination-color: #e0c097; // Regular pagination text in gold
+$pagination-hover-color: #ffd700; // Hover text in metallic gold
+$pagination-focus-color: #ffd700; // Focus text in metallic gold
+$input-placeholder-color: rgba(#e0c097, 0.65); // Muted gold for placeholders
+
+$enable-negative-margins: true;
+
+@import "~bootstrap/scss/bootstrap";
