@@ -1,4 +1,3 @@
-import React from "react";
 
 
 
@@ -7,7 +6,8 @@ export default function Home() {
     
      
       <div>
-        Hello, Front Page
+    "Aquí va el contenido de la página principal"
+
         
       </div>
         

@@ -201,16 +201,7 @@ export default function CreateQuotationPage() {
                     <div className="mb-3">
                         <ServiceSelector
                             name="servicesRequested"
-                            options={["Full Bar Bartending", "Beer & Wine Bartending",
-                                 "Craft Cocktail Bartending", "Wedding Bartending",
-                                  "Corporate Event Bartending", "Private Party Bartending",
-                                   "Flair Bartending", "Mobile Bar Bartending", 
-                                   "VIP Event Bartending", "Festival Bartending",
-                                    "Holiday Event Bartending", "Nightclub Bartending", 
-                                    "Beachside Bartending", "Yacht & Boat Bartending", 
-                                    "Celebrity Event Bartending", "Mixology Class Bartending", 
-                                    "Graduation Party Bartending", "Birthday Party Bartending", 
-                                    "Anniversary Party Bartending", "Poolside Bartending"]}
+                            options={["Bartender", "Barback", "Cocktail Waitress", "Luxury Personal Mixologist Service"]}
                             multiple={true}
                             label="Services Requested"
                         />
