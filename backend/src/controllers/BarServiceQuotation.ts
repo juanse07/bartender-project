@@ -7,7 +7,7 @@ try {
 
     res.status(200).json(allBarServiceQuotations);
 } catch (error) {
-    res.status(500).json({error});
+   // res.status(500).json({error});
     next(error);
 }
 
@@ -48,8 +48,9 @@ export const createBarServiceQuotation: RequestHandler<unknown, unknown, BarServ
     res.status(201).json(newBarServiceQuotation);
     
    }    catch (error) {
+    console.error("Error creating quotation:", error);
         res.status(500).json({error});
-        next(error);
+        next();
         alert("Error: Please try again" + error);
         
     }
