@@ -1,6 +1,7 @@
 
 import { Button, ButtonProps, Spinner } from 'react-bootstrap';
 import style from './LoadingButton.module.scss';
+import React from 'react';
 
 interface LoadingButtonProps 
 {

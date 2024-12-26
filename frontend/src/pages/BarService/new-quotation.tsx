@@ -9,6 +9,7 @@ import { yupResolver } from "@hookform/resolvers/yup";
 import { Wine } from 'lucide-react';
 import Head from "next/head";
 import { useRouter } from "next/router";
+import React from "react";
 import { useState } from "react";
 import { Col, Form, Row } from "react-bootstrap";
 import { FormProvider, useForm } from "react-hook-form";

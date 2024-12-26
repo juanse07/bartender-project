@@ -1,3 +1,4 @@
+import React from "react";
 import { ComponentProps } from "react";
 import { Form, FormControlProps, InputGroup } from "react-bootstrap";
 import { FieldError, UseFormRegisterReturn } from "react-hook-form";
@@ -6,7 +7,7 @@ interface FormInputFieldProps {
     register: UseFormRegisterReturn;
     label?: string;
     error?: FieldError;
-    inputGroupElement?: JSX.Element;
+    inputGroupElement?: React.ReactNode
 }
 export default function FormInputField({register, label, error, inputGroupElement, ...props}: FormInputFieldProps & FormControlProps & ComponentProps<"input">){
     return(
@@ -19,7 +20,13 @@ export default function FormInputField({register, label, error, inputGroupElemen
             {...props}
             isInvalid={!!error}
             placeholder={"Enter "+label} 
-            aria-describedby={inputGroupElement?.props.id}
+            aria-describedby={
+              inputGroupElement && React.isValidElement<{ id: string }>(inputGroupElement)
+                ? inputGroupElement.props.id
+                : undefined
+            }
+            
+
             /> 
             {inputGroupElement}
             <Form.Control.Feedback type="invalid">
