@@ -6,7 +6,9 @@ import "@/styles/globals.scss";
 import type { AppProps } from "next/app";
 import { Lato } from "next/font/google";
 import Head from "next/head";
+import NextNProgress from "nextjs-progressbar";
 import React from 'react';
+import NavBar from '@/components/NavBar';
 
 // Correct initialization
 
@@ -25,8 +27,16 @@ export default function App({ Component, pageProps }: AppProps) {
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
+      <NextNProgress
+          color="#29D"
+          startPosition={0.3}
+          stopDelayMs={200}
+          height={3}
+          showOnShallow={true}    
+         />
     
       <div className={` ${latoFont.className}`}>
+        <NavBar />
 
         <main >
            <Component {...pageProps} />
