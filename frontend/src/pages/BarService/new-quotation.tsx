@@ -9,7 +9,6 @@ import { yupResolver } from "@hookform/resolvers/yup";
 import { Wine } from 'lucide-react';
 import Head from "next/head";
 import { useRouter } from "next/router";
-import React from "react";
 import { useState } from "react";
 import { Col, Form, Row } from "react-bootstrap";
 import { FormProvider, useForm } from "react-hook-form";
@@ -77,16 +76,16 @@ export default function CreateQuotationPage() {
                 notes,  
             });
 
-                await router.push("/BarService/quotations");
+               // await router.push("/BarService/quotations");
 
 
             setIsLoading(true);
             // console.log("Submitted Data:", data);
             alert("Quotation successfully created!");
-            await router.push("/quotations");
+           // await router.push("/quotations");
         } catch (error) {
             console.error(error);
-            alert("Error creating quotation. Please try again.");
+            alert("Error creating quotation. Please try again."+ error);
         } finally {
             setIsLoading(false);
         }
@@ -111,10 +110,10 @@ export default function CreateQuotationPage() {
     return (
         <div className="container">
             <Head>
-                <title>Bar Service Quotation</title>
+                <title>Get in touch with us</title>
             </Head>
             <div className={styles.brand}>
-                <span className={styles.brandText}>Bar Service Quotation</span>
+                <span className={styles.brandText}>Get in touch with us</span>
             </div>
             <FormProvider {...methods}>
                 <Form onSubmit={handleSubmit(onSubmit)}>

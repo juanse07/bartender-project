@@ -50,6 +50,7 @@ export const createBarServiceQuotation: RequestHandler<unknown, unknown, BarServ
    }    catch (error) {
         res.status(500).json({error});
         next(error);
+        alert("Error: Please try again" + error);
         
     }
 };

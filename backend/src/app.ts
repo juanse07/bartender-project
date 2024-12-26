@@ -11,7 +11,8 @@ app.use(express.json());
 
 app.use(cors({
     origin: env.WEBSITE_URL,
-    credentials: true
+    credentials: true,
+    methods: ["GET", "POST", "PUT", "DELETE"],
 }));
 
 app.use("/bar-service-quotations", BarServicequotationRoutes);
