@@ -6,6 +6,7 @@ import "@/styles/globals.scss";
 import type { AppProps } from "next/app";
 import { Lato } from "next/font/google";
 import Head from "next/head";
+import React from 'react';
 
 // Correct initialization
 
