@@ -152,6 +152,7 @@
       min-width: 120px; /* Smaller minimum size for mobile */
       min-height: 40px;
       font-size: 0.9rem; /* Slightly smaller font size */
+      padding: 0.8rem 1rem; /* Adjust padding */
     }
   
     .serviceImage {

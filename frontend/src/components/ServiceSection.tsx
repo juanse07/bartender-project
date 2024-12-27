@@ -1,10 +1,12 @@
 
+import styles from '@/styles/ServiceSection.module.css';
+import { on } from 'events';
 import Image from 'next/image';
+import { useRouter } from 'next/router';
 import React from 'react';
 import { Button, Col, Container, Row } from 'react-bootstrap';
 import { FaComments } from 'react-icons/fa';
 import { FiMail } from 'react-icons/fi';
-import styles from '@/styles/ServiceSection.module.css';
 
 interface ServiceSectionProps {
   category: string;
@@ -27,6 +29,9 @@ interface ServiceSectionProps {
   highLightBody2?: string;
   highLightBody3?: string;
   highLightBody4?: string;
+  buttonText?: string;
+  onClick?: () => void;
+  onClickNavPath?: string;
 
 }
 
@@ -51,9 +56,19 @@ const ServiceSection: React.FC<ServiceSectionProps> = ({
   highLightBody2 = 'body',
   highLightBody3 = 'body',
   highLightBody4 = 'body',
+  buttonText = 'Book Now',
+  onClick= () => {alert('Book Now!')},
+  onClickNavPath= '/BarService/new-quotation',
   
 }) => {
-  
+  const router = useRouter(); // Access the router
+
+  const handleClick = () => {
+    // Programmatic navigation to /BarService/new-quotation
+    router.push(onClickNavPath);
+  };
+
+ 
 
   return (
     <div className={styles.parentContainer}>   
@@ -80,9 +95,8 @@ const ServiceSection: React.FC<ServiceSectionProps> = ({
               <p className={styles.ServiceDescription} >{description}</p>
               <div className={styles.serviceActions} >
                 <Button className={`${styles.serviceButton} btn btn-${buttonStyle}`}
-                 title={`Book ${category.toLowerCase()} from: $${price}`}>
-                  {/* //Book {category.toLowerCase()} from: ${price} */}
-                  Book from  ${price}
+                 title={buttonText}onClick={handleClick}>
+                  {buttonText} 
                 </Button>
                 <a href="#" className={styles.serviceIcon}>
                   <FaComments size={24} />
