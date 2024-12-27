@@ -201,7 +201,7 @@ export default function CreateQuotationPage() {
                     <div className="mb-3">
                         <ServiceSelector
                             name="servicesRequested"
-                            options={["Bartender", "Barback", "Cocktail Waitress", "Luxury Personal Mixologist Service"]}
+                            options={["Bartender", "Barback", "Cocktail Waitress/Waiter", "Luxury Personal Mixologist Service"]}
                             multiple={true}
                             label="Services Requested"
                         />
