@@ -1,6 +1,5 @@
 
 import ServiceSection from '@/components/ServiceSection';
-import VideoContainer from '@/components/VideoContainer';
 interface Service {
   category: string;
   title: string;
@@ -112,16 +111,63 @@ highLightBody3: "Mirror-finished luxury bar that adds glamour and sophistication
   ];
   return (
     <div className="relative h-screen w-full flex justify-center items-center"> {/* Centers VideoContainer */}
-      <VideoContainer
-        videoSrc="/bartender720.mp4"
-        overlay={true}
-        overlayOpacity={0.5}
+   <div style={{ position: 'relative', height: '100vh', overflow: 'hidden' }}>
+      {/* Video Background */}
+      <video
+        autoPlay
+        loop
+        muted
+        playsInline
+        style={{
+          position: 'absolute',
+          width: '100%',
+          height: '100%',
+          objectFit: 'cover',
+        }}
       >
-        <div className="relative z-10 text-center"> {/* Ensures content is centered on top of video */}
-          <h1>Your Content Here</h1>
-          <p>This will now span the full width of the container</p>
-        </div>
-      </VideoContainer>
+        <source src="/videos/background.mp4" type="video/mp4" />
+      </video>
+
+      {/* Content Overlay */}
+      <div
+        style={{
+          position: 'relative',
+          zIndex: 1,
+          color: 'white',
+          textAlign: 'center',
+          top: '50%',
+          transform: 'translateY(-50%)',
+        }}
+      >
+        <h1>Luxury Bartender</h1>
+        <p>Crafting unforgettable cocktail experiences</p>
+
+        {/* Transparent Button */}
+        <button
+          style={{
+            backgroundColor: 'rgba(255, 255, 255, 0.2)', // Semi-transparent white
+            border: '1px solid white',
+            borderRadius: '5px',
+            padding: '10px 20px',
+            color: 'white',
+            fontSize: '16px',
+            cursor: 'pointer',
+            transition: 'all 0.3s ease',
+          }}
+          onMouseOver={(e) => {
+            (e.target as HTMLButtonElement).style.backgroundColor = 'rgba(255, 255, 255, 0.5)';
+            (e.target as HTMLButtonElement).style.color = 'black';
+          }}
+          onMouseOut={(e) => {
+            (e.target as HTMLButtonElement).style.backgroundColor = 'rgba(255, 255, 255, 0.2)';
+            (e.target as HTMLButtonElement).style.color = 'white';
+          }}
+          onClick={() => alert('Book Now!')}
+        >
+          Book Now
+        </button>
+      </div>
+    </div>
       
       {services.map((service, index) => (
         <ServiceSection

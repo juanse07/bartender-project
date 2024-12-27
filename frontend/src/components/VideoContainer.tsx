@@ -14,35 +14,36 @@ const VideoContainer: React.FC<VideoContainerProps> = ({
   overlayOpacity = 0.4
 }) => {
   return (
-    <div className="absolute top-0 left-0 w-full h-full"> {/* Ensure full size */}
-      <video 
-        className="w-full h-full object-cover" 
-        autoPlay 
-        loop 
-        muted 
-        playsInline
-      >
-        <source src={videoSrc} type="video/mp4" />
-        Your browser does not support the video tag.
-      </video>
-      
-      {overlay && (
-        <div 
-          className="absolute inset-0"
-          style={{ 
-            background: `rgba(0, 0, 0, ${overlayOpacity})`
-          }}
-        />
-      )}
-      
-      {children && (
-        <div className="absolute inset-0 z-10 flex items-center justify-center px-4">
-          <div className="w-full max-w-7xl mx-auto">
-            {children}
-          </div>
-        </div>
-      )}
+    <div style={{ position: 'relative', height: '100vh', overflow: 'hidden' }}>
+    <video
+      autoPlay
+      loop
+      muted
+      playsInline
+      style={{
+        position: 'absolute',
+        width: '100%',
+        height: '100%',
+        objectFit: 'cover',
+      }}
+    >
+      <source src="/barfilmnoir.mp4" type="video/mp4" />
+    </video>
+    <div
+      style={{
+        position: 'relative',
+        zIndex: 1,
+        color: 'white',
+        textAlign: 'center',
+        top: '50%',
+        transform: 'translateY(-50%)',
+      }}
+    >
+      <h1>Luxury Bartender</h1>
+      <p>Crafting unforgettable cocktail experiences</p>
     </div>
+  </div>
+  
   );
 };
 
