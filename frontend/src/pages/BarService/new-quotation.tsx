@@ -219,8 +219,8 @@ export default function CreateQuotationPage() {
                     />
 
                     <LoadingButton className={styles.submitButton} type="submit" isloading={isLoading}>
-                        Create Quotation
-                        <Wine size={24} />
+                        Request an stimate
+                        <Wine size={24}  />
                     </LoadingButton>
                 </Form>
             </FormProvider>
