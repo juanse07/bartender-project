@@ -1,6 +1,6 @@
 
 import ServiceSection from '@/components/ServiceSection';
-
+import VideoContainer from '@/components/VideoContainer';
 interface Service {
   category: string;
   title: string;
@@ -110,9 +110,19 @@ highLightBody3: "Mirror-finished luxury bar that adds glamour and sophistication
     },
     // ... other services
   ];
-
   return (
-    <div >
+    <div className="relative h-screen w-full flex justify-center items-center"> {/* Centers VideoContainer */}
+      <VideoContainer
+        videoSrc="/bartender720.mp4"
+        overlay={true}
+        overlayOpacity={0.5}
+      >
+        <div className="relative z-10 text-center"> {/* Ensures content is centered on top of video */}
+          <h1>Your Content Here</h1>
+          <p>This will now span the full width of the container</p>
+        </div>
+      </VideoContainer>
+      
       {services.map((service, index) => (
         <ServiceSection
           key={index}
@@ -136,9 +146,11 @@ highLightBody3: "Mirror-finished luxury bar that adds glamour and sophistication
           highLightTitle2={service.highLightTitle2}
           highLightTitle3={service.highLightTitle3}
           highLightTitle4={service.highLightTitle4}
-
         />
       ))}
     </div>
   );
+  
+  
+  
 }

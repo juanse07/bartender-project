@@ -234,3 +234,42 @@
     color: #B88A2f; /* Accent color */
     /* text-transform: uppercase; Optional for all caps style */
   }
+
+  /* Add this new class for the video container */
+.videoContainer {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+}
+
+/* Style for the video itself */
+.videoBackground {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  min-width: 100%;
+  min-height: 100%;
+  width: auto;
+  height: auto;
+  transform: translate(-50%, -50%);
+  object-fit: cover;
+  z-index: 0;
+}
+
+/* Optional overlay to ensure text visibility */
+.overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.4); /* Adjust opacity as needed */
+  z-index: 1;
+}
+
+/* Ensure content stays above video */
+.content {
+  position: relative;
+  z-index: 2;
+}
