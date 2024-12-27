@@ -153,6 +153,7 @@
       min-height: 40px;
       font-size: 0.9rem; /* Slightly smaller font size */
       padding: 0.8rem 1rem; /* Adjust padding */
+      margin-bottom: 2px; /* Add space between buttons */
     }
   
     .serviceImage {
