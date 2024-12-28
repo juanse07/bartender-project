@@ -4,25 +4,25 @@ import { Server } from "socket.io";
 import app from "./app";
 import env from "./env";
 
-const port = process.env.PORT || 3001;
+const port = process.env.PORT || 4000;
 
 // Create an HTTP server
 const server = http.createServer(app);
 
-// Initialize Socket.IO
+// Initialize Socket.IO - make sure this runs BEFORE starting the server
 const io = new Server(server, {
     cors: {
-        origin: env.WEBSITE_URL, // Frontend URL
+        origin: env.WEBSITE_URL,
         methods: ["GET", "POST"],
-
+        credentials: true  // Add this if using withCredentials
     },
-    path: "/ws", // WebSocket path
+    path: "/ws/socket.io",  // Changed this path
 });
 
 // WebSocket connection event
 io.on("connection", (socket) => {
     console.log("New client connected:", socket.id);
-
+    
     // Handle disconnection
     socket.on("disconnect", () => {
         console.log("Client disconnected:", socket.id);
@@ -36,11 +36,12 @@ mongoose
         console.log("Connected to MongoDB");
         server.listen(port, () => {
             console.log(`Server is running on port ${port}`);
+            console.log(`Socket.IO is listening on path: ${io.path()}`);  // Add this log
         });
     })
     .catch(console.error);
 
-export { io }; // Export the `io` instance for use in controllers
+export { io };
 
 
 
