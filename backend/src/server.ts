@@ -1,7 +1,6 @@
 import fs from 'fs';
 import http from "http";
 import mongoose from "mongoose";
-import path from 'path';
 import { Server } from "socket.io";
 import app from "./app";
 import env from "./env";
@@ -10,8 +9,7 @@ const port = process.env.PORT || 4000;
 const server = http.createServer(app);
 
 // Add file logging
-const logFile = path.join(__dirname, 'socket-logs.txt');
-
+const logFile = '/home/juanse/apps/bartender-project/backend/socket-logs.txt';
 const logToFile = (message: string) => {
     const timestamp = new Date().toISOString();
     const logMessage = `${timestamp}: ${message}\n`;
