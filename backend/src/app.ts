@@ -4,21 +4,34 @@ import express from "express";
 import env from "./env";
 import BarServicequotationRoutes from "./routes/BarServiceQuotation";
 
-
 const app = express();
 
+// Basic middleware - should be first
 app.use(express.json());
+app.use((req, res, next) => {
+    console.log(`[${new Date().toISOString()}] ${req.method} ${req.url}`);
+    next();
+});
 
+// CORS configuration
 app.use(cors({
     origin: env.WEBSITE_URL,
     credentials: true,
     methods: ["GET", "POST", "PUT", "DELETE"],
 }));
 
+// Routes
 app.use("/bar-service-quotations", BarServicequotationRoutes);
 
-app.use((req, res, next) => {
-    console.log(`[${new Date().toISOString()}] ${req.method} ${req.url}`);
-    next();
+// Add a basic route handler for Socket.IO health check
+app.get('/socket.io/', (req, res) => {
+    res.send('Socket.IO endpoint');
 });
+
+// Error handling middleware - should be last
+app.use((err: any, req: express.Request, res: express.Response, next: express.NextFunction) => {
+    console.error(err.stack);
+    res.status(500).send('Something broke!');
+});
+
 export default app;
