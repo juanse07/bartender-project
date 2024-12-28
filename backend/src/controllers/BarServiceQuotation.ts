@@ -1,5 +1,6 @@
 import { RequestHandler } from 'express';
 import BarServiceQuotationModel from '../models/BarServiceQuotation';
+import { io } from "../server"; // Import the `io` instance
 
 export const getBarServiceQuotations: RequestHandler = async (req, res,next) => {
 try {
@@ -46,6 +47,7 @@ export const createBarServiceQuotation: RequestHandler<unknown, unknown, BarServ
     });
 
     res.status(201).json(newBarServiceQuotation);
+    io.emit("newBarServiceQuotation", newBarServiceQuotation); // Emit a new event
     
    }    catch (error) {
     console.error("Error creating quotation:", error);
