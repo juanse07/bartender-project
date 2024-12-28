@@ -5,38 +5,39 @@ import app from "./app";
 import env from "./env";
 
 const port = process.env.PORT || 4000;
-
-// Create an HTTP server
 const server = http.createServer(app);
 
-// Initialize Socket.IO - make sure this runs BEFORE starting the server
+// Add debug logging
+console.log("Initializing Socket.IO server...");
+
 const io = new Server(server, {
     cors: {
         origin: env.WEBSITE_URL,
         methods: ["GET", "POST"],
-        credentials: true  // Add this if using withCredentials
+        credentials: true
     },
-    path: "/ws/socket.io",  // Changed this path
+    path: "/socket.io"  // Changed this - Socket.IO's default path
 });
 
-// WebSocket connection event
 io.on("connection", (socket) => {
     console.log("New client connected:", socket.id);
-    
-    // Handle disconnection
     socket.on("disconnect", () => {
         console.log("Client disconnected:", socket.id);
     });
 });
 
-// Connect to MongoDB and start the server
+// Add more debug logging
+io.engine.on("connection_error", (err) => {
+    console.log("Connection error:", err);
+});
+
 mongoose
     .connect(env.MONGO_CONNECTION_STRING)
     .then(() => {
         console.log("Connected to MongoDB");
         server.listen(port, () => {
             console.log(`Server is running on port ${port}`);
-            console.log(`Socket.IO is listening on path: ${io.path()}`);  // Add this log
+            console.log(`Socket.IO path: ${io.path()}`);
         });
     })
     .catch(console.error);
