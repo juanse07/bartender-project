@@ -25,7 +25,7 @@ const io = new Server(server, {
         methods: ["GET", "POST"],
         credentials: true
     },
-    path: "/socket.io",
+    path: "/socket.io/",
     pingInterval: 30000, // Increase ping interval (30 seconds)
     pingTimeout: 60000, // Increase timeout (60 seconds)
 });
