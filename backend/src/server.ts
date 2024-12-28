@@ -1,6 +1,6 @@
 import http from "http";
-import { Server } from "socket.io";
 import mongoose from "mongoose";
+import { Server } from "socket.io";
 import app from "./app";
 import env from "./env";
 
@@ -14,7 +14,9 @@ const io = new Server(server, {
     cors: {
         origin: env.WEBSITE_URL, // Frontend URL
         methods: ["GET", "POST"],
+
     },
+    path: "/ws", // WebSocket path
 });
 
 // WebSocket connection event
