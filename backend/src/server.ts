@@ -46,6 +46,11 @@ io.on("connection", (socket) => {
         console.log("Client disconnected:", socket.id);
         logToFile(`Client disconnected: ${socket.id}, Reason: ${reason}`);
     });
+    socket.on('test', (data) => {
+        console.log('Received:', data);
+        // Send response back
+        socket.emit('test_response', { received: true, message: 'Hello client!' });
+    });
 });
 
 // Add more debug logging
