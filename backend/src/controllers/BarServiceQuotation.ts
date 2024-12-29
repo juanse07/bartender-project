@@ -47,7 +47,9 @@ export const createBarServiceQuotation: RequestHandler<unknown, unknown, BarServ
     });
 
     res.status(201).json(newBarServiceQuotation);
-    io.emit("newBarServiceQuotation", newBarServiceQuotation); // Emit a new event
+    console.log('About to emit socket event for quotation:', newBarServiceQuotation._id);
+    io.emit("newBarServiceQuotation", newBarServiceQuotation);
+    console.log('Socket event emitted successfully');
     
    }    catch (error) {
     console.error("Error creating quotation:", error);
