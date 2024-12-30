@@ -16,7 +16,7 @@ export default function NavBar() {
         <Navbar expand="md" collapseOnSelect variant="dark" bg="body" sticky="top" >
             <Navbar.Brand as={Link} href='/' className='d-flex align-items-center gap-4'>
             
-            <Image src={logo} alt="technician (3)" width={130} height={130} /> 
+            <Image src={logo} alt="technician (3)" width={90} height={90} /> 
             
             <span className={styles.brandText}>
             DenverBartenders
