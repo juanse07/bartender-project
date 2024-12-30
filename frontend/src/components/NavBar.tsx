@@ -14,10 +14,10 @@ export default function NavBar() {
     const router = useRouter();
     return (
         <Navbar expand="md" collapseOnSelect variant="dark" bg="body" sticky="top" >
-            <Navbar.Brand as={Link} href='/' className='d-flex align-items-center gap-1'>
-            <div className={styles.logoContainer}>
-            <Image src={logo} alt="technician (3)" width={120} height={130} /> 
-            </div>
+            <Navbar.Brand as={Link} href='/' className='d-flex align-items-center gap-4'>
+            
+            <Image src={logo} alt="technician (3)" width={130} height={130} /> 
+            
             <span className={styles.brandText}>
             DenverBartenders
             </span>
