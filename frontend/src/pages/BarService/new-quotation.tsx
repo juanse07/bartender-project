@@ -219,7 +219,7 @@ export default function CreateQuotationPage() {
                     />
 
                     <LoadingButton className={styles.submitButton} type="submit" isloading={isLoading}>
-                        Request an stimate
+                        Request an Estimate
                         <Wine size={24}  />
                     </LoadingButton>
                 </Form>

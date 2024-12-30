@@ -117,7 +117,7 @@ onClickNavPath: '/',
       highLightBody1:"We'll load and unload your belongings with care and precision.",
       highLightBody2:"We'll pack your belongings safely and securely for your move.",
       highLightBody3:"  We'll disassemble your furniture so it's ready for moving day.",
-      onClickNavPath: '/barService/new-quotation',
+      onClickNavPath: '/BarService/new-quotation',
     },
     // ... other services
   ];
