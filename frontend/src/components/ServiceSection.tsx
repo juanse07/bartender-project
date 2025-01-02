@@ -6,7 +6,6 @@ import React from 'react';
 import { Button, Col, Container, Row } from 'react-bootstrap';
 import { FaComments } from 'react-icons/fa';
 import { FiMail } from 'react-icons/fi';
-import copasimagen from '../assets/images/copasimagen.png';
 
 interface ServiceSectionProps {
   category: string;
