@@ -13,7 +13,7 @@ import logo from "../assets/images/bartenderlogo.png";
 export default function NavBar() {
     const router = useRouter();
     return (
-        <Navbar expand="md" collapseOnSelect variant="dark" bg="body" sticky="top" >
+        <Navbar expand="md" collapseOnSelect variant="dark" bg="body" sticky="top"  >
             <Navbar.Brand as={Link} href='/' className='d-flex align-items-center gap-4'>
             
             <Image src={logo} alt="technician (3)" width={60} height={60} /> 
