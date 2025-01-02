@@ -1,9 +1,9 @@
 .lastSection {
     position: relative;
-    background-size: cover;
-    background-position: bottom-center;
-    background-repeat: no-repeat;
-    height: 70vh; /* Adjust height as needed */
+    background-size: contain;
+    background-position: center;
+    background-repeat: repeat-x;
+    height: 20vh; /* Adjust height as needed */
     min-height: 400px; /* Full screen height */
     max-height: 800px; /* Limit height for larger screens */
     display: flex;
