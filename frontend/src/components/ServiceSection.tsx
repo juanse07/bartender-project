@@ -1,12 +1,12 @@
 
 import styles from '@/styles/ServiceSection.module.css';
-import { on } from 'events';
 import Image from 'next/image';
 import { useRouter } from 'next/router';
 import React from 'react';
 import { Button, Col, Container, Row } from 'react-bootstrap';
 import { FaComments } from 'react-icons/fa';
 import { FiMail } from 'react-icons/fi';
+import copasimagen from '../assets/images/copasimagen.png';
 
 interface ServiceSectionProps {
   category: string;
@@ -151,6 +151,16 @@ const ServiceSection: React.FC<ServiceSectionProps> = ({
               >{highLightBody3}</p>
             </Col>
           </Row>
+          {/* <div className={styles.overlapImage}>
+
+          <Image 
+          src={copasimagen}
+           alt={title}
+              width={1080}
+              height={1080}
+              
+              />
+          </div> */}
       </Container>
     </section>
     </div>
