@@ -1,5 +1,7 @@
 
+import LastSection from '@/components/LastSection';
 import ServiceSection from '@/components/ServiceSection';
+
 interface Service {
   category: string;
   title: string;
@@ -208,6 +210,17 @@ onClickNavPath: '/',
           onClickNavPath={service.onClickNavPath}
         />
       ))}
+      <div>
+
+
+      </div>
+    
+      <LastSection
+      title="Thank you for choosing DenverBartenders!"
+      description="We look forward to serving you soon."
+      backgroundImage="/bar2560.jpeg"
+      />
+    
     </div>
   );
   

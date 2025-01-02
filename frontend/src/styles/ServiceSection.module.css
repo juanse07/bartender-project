@@ -16,6 +16,7 @@
 
 /* Inner content container - restricts width and centers content */
 .container {
+  position: relative; /* Ensure relative positioning */
   width: 90%; /* Use a percentage-based width for flexibility */
   max-width: 1600px; /* Optional: cap the maximum width */
   margin: 0 auto; /* Center the container */
@@ -23,6 +24,7 @@
 }
 
 .serviceSection {
+  position: relative; /* Ensure relative positioning */
   margin: 0; /* Ensure no outer spacing */
   padding: 4rem; /* Default padding */
   border-radius: 8px; /* Rounded corners */
@@ -53,7 +55,7 @@
   cursor: pointer; /* Add pointer cursor */
   transition: background-color 0.3s ease, transform 0.2s ease; /* Add hover effects */
   white-space: nowrap; /* Prevent text wrapping */
-  overflow: hidden; /* Hide overflowing text */
+  overflow: hidden;/* Hide overflowing text */
   text-overflow: ellipsis; /* Add ellipsis for long text */
 }
 
@@ -274,4 +276,21 @@
 .content {
   position: relative;
   z-index: 2;
+}
+.overlapImage {
+  position: absolute;
+  bottom: -100px;
+  z-index: 2;
+  transform: rotate(30 deg)!important;
+  -webkit-transform: rotate(30 deg)!important;
+  -moz-transform: rotate(30 deg)!important;
+  -ms-transform: rotate(30 deg)!important;
+  -o-transform: rotate(30 deg)!important; 
+  transform-origin: center;
+  -webkit-transform-origin: center;
+  -moz-transform-origin: center;
+  -ms-transform-origin: center;
+  -o-transform-origin: center;
+ 
+
 }
