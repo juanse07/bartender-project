@@ -1,5 +1,4 @@
 import styles from '@/styles/LastSection.module.css';
-import Image from 'next/image';
 interface LastSectionProps {
     title: string; // Title text
     description: string; // Description text
@@ -26,11 +25,13 @@ const LastSection: React.FC<LastSectionProps> = ({ title, description, backgroun
         <h1>{title}</h1>
         <p>{description}</p>
       </div> */}
+      <div className={styles.content}>
       <div className={styles.footertext}>
         <p>© 2025 DenverBartenders. All rights reserved.</p>
         <p>Privacy Policy | Terms of Service</p>
         <p>Designed by DenverBartenders</p>
         <p>Email: booking@denvebartenders.online</p>
+      </div>
       </div>
     </section>
   );
