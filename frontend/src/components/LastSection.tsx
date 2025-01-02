@@ -22,9 +22,15 @@ const LastSection: React.FC<LastSectionProps> = ({ title, description, backgroun
         layout="fill"
         objectFit='cover'
         priority={true}/>  */}
-      <div className={styles.content}>
+      {/* <div className={styles.content}>
         <h1>{title}</h1>
         <p>{description}</p>
+      </div> */}
+      <div className={styles.footertext}>
+        <p>© 2025 DenverBartenders. All rights reserved.</p>
+        <p>Privacy Policy | Terms of Service</p>
+        <p>Designed by DenverBartenders</p>
+        <p>Email: booking@denvebartenders.online</p>
       </div>
     </section>
   );

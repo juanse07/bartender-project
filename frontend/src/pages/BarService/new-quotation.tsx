@@ -60,7 +60,7 @@ export default function CreateQuotationPage() {
     const [isLoading, setIsLoading] = useState(false);
 
     async function onSubmit({clientName, companyName, email, phone, address, eventDate, startTime, endTime, numberOfGuests, servicesRequested, notes}: BarServiceQuotationFormData) {
-        alert (JSON.stringify({ clientName, companyName, email, phone, address, eventDate, startTime, endTime, numberOfGuests, servicesRequested, notes}));
+    //  alert (JSON.stringify({ clientName, companyName, email, phone, address, eventDate, startTime, endTime, numberOfGuests, servicesRequested, notes}));
         try {
             await BarServiceApi.createBarService({
                 clientName,
@@ -76,13 +76,13 @@ export default function CreateQuotationPage() {
                 notes,  
             });
 
-               // await router.push("/BarService/quotations");
+                // await router.push("/BarService/thankyou");
 
 
             setIsLoading(true);
             // console.log("Submitted Data:", data);
             alert("Quotation successfully created!");
-           // await router.push("/quotations");
+           await router.push("/BarService/thankyou");
         } catch (error) {
             console.error(error);
             alert("Error creating quotation. Please try again."+ error);
