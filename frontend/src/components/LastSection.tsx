@@ -15,13 +15,13 @@ const LastSection: React.FC<LastSectionProps> = ({ title, description, backgroun
       style={{
         backgroundImage: `url(${backgroundImage})`,
       }}
-    >
-        {/* <Image
+     >
+         {/* <Image
         src={backgroundImage}
         alt="Background"
         layout="fill"
         objectFit='cover'
-        priority={true}/> */}
+        priority={true}/>  */}
       <div className={styles.content}>
         <h1>{title}</h1>
         <p>{description}</p>

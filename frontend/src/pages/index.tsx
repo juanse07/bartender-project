@@ -216,11 +216,11 @@ onClickNavPath: '/',
       </div>
     
       <LastSection
-      // title="Thank you for choosing DenverBartenders!"
-      // description="We look forward to serving you soon."
-      title=''
-      description=''
-      backgroundImage="/copasimagen2.jpeg"
+      title="Thank you for choosing DenverBartenders!"
+      description="We look forward to serving you soon."
+      // title=''
+      // description=''
+      backgroundImage="/hand2.jpeg"
       />
     
     </div>
