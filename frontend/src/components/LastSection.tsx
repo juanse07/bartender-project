@@ -1,4 +1,5 @@
 import styles from '@/styles/LastSection.module.css';
+import Image from 'next/image';
 interface LastSectionProps {
     title: string; // Title text
     description: string; // Description text
@@ -11,10 +12,16 @@ const LastSection: React.FC<LastSectionProps> = ({ title, description, backgroun
   return (
     <section
       className={styles.lastSection}
-      style={{
-        backgroundImage: `url(${backgroundImage})`,
-      }}
+    //   style={{
+    //     backgroundImage: `url(${backgroundImage})`,
+    //   }}
     >
+        <Image
+        src={backgroundImage}
+        alt="Background"
+        layout="fill"
+        objectFit='cover'
+        priority={true}/>
       <div className={styles.content}>
         <h1>{title}</h1>
         <p>{description}</p>
