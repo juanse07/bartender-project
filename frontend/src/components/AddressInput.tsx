@@ -1,10 +1,9 @@
+
 import styles from '@/styles/numberInput.module.css';
 import { Autocomplete, useLoadScript } from "@react-google-maps/api";
 import React, { useRef, useState } from "react";
 
 const libraries: ("places")[] = ["places"];
-
-
 
 const AddressInput: React.FC = () => {
   const [address, setAddress] = useState<string>(""); // React's state for the input value
@@ -36,11 +35,6 @@ const AddressInput: React.FC = () => {
   };
 
   return (
-<div>
-    <label className={styles.label}>
-        Address
-    </label>
-
     <div className={styles.numberInputWrapper}>
       <Autocomplete
         onLoad={(autocomplete) => (autocompleteRef.current = autocomplete)}
@@ -49,28 +43,43 @@ const AddressInput: React.FC = () => {
           componentRestrictions: { country: "us" },
         }}
       >
-        <div >
         <input
           type="text"
           placeholder="Enter address"
-          defaultValue={address} // Use defaultValue instead of value
-          onChange={(e) => setAddress(e.target.value)}
-          className={styles.addressInput}
-        //   style={{
-        //       width: "100%",
-        //       padding: "18px",
-        //       fontSize: "20px",
-        //      border: "1px solid #f9f9f9",
-        //      borderRadius: "4px",
-        //       backgroundColor: "#121212",
-        //         color: "#e0c097",
-              
-        //     }}
-            />
-            </div>
+          onChange={(e) => setAddress(e.target.value)} // Updates state when user types
+          className={styles.addressInput} // Added className for external styling
+          style={{
+            width: "100%",
+            padding: "18px",
+            fontSize: "20px",
+            border: "1px solid #f9f9f9",
+            borderRadius: "4px",
+            backgroundColor: "#121212",
+            color: "#e0c097",
+          }}
+        />
       </Autocomplete>
-      <p>Selected Address: {address}</p>
-    </div>
+      <p>
+        Selected Address:{" "}
+        <span className={styles.addressLink}
+        //   style={{
+        //     color: "#007BFF",
+        //     textDecoration: "underline",
+        //     cursor: "pointer",
+        //   }}
+          onClick={() =>
+            address &&
+            window.open(
+              `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(
+                address
+              )}`,
+              "_blank"
+            )
+          }
+        >
+          {address || "No address selected"}
+        </span>
+      </p>
     </div>
   );
 };
