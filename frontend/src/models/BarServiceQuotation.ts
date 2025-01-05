@@ -11,7 +11,7 @@ export interface BarServiceQuotation {
     numberOfGuests: number;
     servicesRequested?: string[] ;
     notes?: string;
-    state: string;
+   // state?: string;
     createdAt: Date;
     updatedAt: Date;
     
