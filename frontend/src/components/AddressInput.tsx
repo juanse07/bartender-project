@@ -1,8 +1,10 @@
-
+import styles from '@/styles/numberInput.module.css';
 import { Autocomplete, useLoadScript } from "@react-google-maps/api";
 import React, { useRef, useState } from "react";
 
 const libraries: ("places")[] = ["places"];
+
+
 
 const AddressInput: React.FC = () => {
   const [address, setAddress] = useState<string>(""); // React's state for the input value
@@ -34,7 +36,12 @@ const AddressInput: React.FC = () => {
   };
 
   return (
-    <div>
+<div>
+    <label className={styles.label}>
+        Address
+    </label>
+
+    <div className={styles.numberInputWrapper}>
       <Autocomplete
         onLoad={(autocomplete) => (autocompleteRef.current = autocomplete)}
         onPlaceChanged={handlePlaceChanged}
@@ -42,21 +49,28 @@ const AddressInput: React.FC = () => {
           componentRestrictions: { country: "us" },
         }}
       >
+        <div >
         <input
           type="text"
           placeholder="Enter address"
           defaultValue={address} // Use defaultValue instead of value
           onChange={(e) => setAddress(e.target.value)}
-          style={{
-            width: "100%",
-            padding: "10px",
-            fontSize: "16px",
-            border: "1px solid #ccc",
-            borderRadius: "4px",
-          }}
-        />
+          className={styles.addressInput}
+        //   style={{
+        //       width: "100%",
+        //       padding: "18px",
+        //       fontSize: "20px",
+        //      border: "1px solid #f9f9f9",
+        //      borderRadius: "4px",
+        //       backgroundColor: "#121212",
+        //         color: "#e0c097",
+              
+        //     }}
+            />
+            </div>
       </Autocomplete>
       <p>Selected Address: {address}</p>
+    </div>
     </div>
   );
 };

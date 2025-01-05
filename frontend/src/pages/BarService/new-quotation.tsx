@@ -164,16 +164,7 @@ export default function CreateQuotationPage() {
                         </Col>
                     </Row>
 
-                    <div className="mb-4">
-                        <FormInputField
-                            register={methods.register("address")}
-                            label="Address"
-                            placeholder="e.g., 123 Main Street"
-                            error={errors.address}
-                            className="py-3 text-lg"
-                        />
-                    </div>
-
+                  
                     <AddressInput />
 
                     {/* Mobile-friendly date picker */}
