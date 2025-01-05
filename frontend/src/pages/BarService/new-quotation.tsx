@@ -14,6 +14,7 @@ import CustomNumberInput from "@/components/numberInputComponent";
 import ServiceSelector from "@/components/ServicesCheckBoxes";
 import * as BarServiceApi from "@/network/api/BarService";
 import styles from "@/styles/formStyle.module.css";
+import AddressInput from "@/components/AddressInput";
 
 const validationSchema = yup.object({
     clientName: yup.string().required("Client name is required"),
@@ -172,6 +173,8 @@ export default function CreateQuotationPage() {
                             className="py-3 text-lg"
                         />
                     </div>
+
+                    <AddressInput />
 
                     {/* Mobile-friendly date picker */}
                     <div className="mb-4">

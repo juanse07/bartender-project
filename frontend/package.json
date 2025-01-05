@@ -11,6 +11,7 @@
   "dependencies": {
     "@headlessui/react": "^2.2.0",
     "@hookform/resolvers": "^3.9.1",
+    "@react-google-maps/api": "^2.20.5",
     "@types/nprogress": "^0.2.3",
     "axios": "^1.7.9",
     "bootstrap": "^5.3.3",
@@ -36,6 +37,7 @@
     "yup": "^1.6.1"
   },
   "devDependencies": {
+    "@types/google.maps": "^3.58.1",
     "@types/next": "^8.0.7",
     "@types/node": "^22.10.2",
     "@types/react": "^18.3.18",
