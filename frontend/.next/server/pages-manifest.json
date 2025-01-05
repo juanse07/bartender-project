@@ -2,6 +2,7 @@
   "/_app": "pages/_app.js",
   "/_error": "pages/_error.js",
   "/_document": "pages/_document.js",
-  "/BarService/thankyou": "pages/BarService/thankyou.js",
-  "/": "pages/index.js"
+  "/": "pages/index.js",
+  "/BarService/new-quotation": "pages/BarService/new-quotation.js",
+  "/BarService/thankyou": "pages/BarService/thankyou.js"
 }

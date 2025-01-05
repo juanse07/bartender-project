@@ -8,6 +8,7 @@ interface CustomNumberInputProps {
   min?: number;
   max?: number;
   label?: string;
+  className?: string;
 }
 
 const CustomNumberInput: React.FC<CustomNumberInputProps> = ({
