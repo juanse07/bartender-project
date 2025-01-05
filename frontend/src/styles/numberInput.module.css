@@ -98,3 +98,13 @@
     outline: none; /* Removes default focus outline */
     box-shadow: 0 0 5px #ffcc00;
   }
+
+  .addressLink {
+    color: #e0ef13;
+    text-decoration: underline;
+    cursor: pointer;
+  }
+  
+  .addressLink:hover {
+    color: #a5c81b; /* Darker blue on hover */
+  }
