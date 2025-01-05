@@ -21,7 +21,6 @@ const BarServiceQuotationSchema = new Schema({
     },
     address: { // Event location
         type: String,
-        required: true,
         trim: true
     },
     eventDate: { // Date of the event
@@ -48,6 +47,11 @@ const BarServiceQuotationSchema = new Schema({
         type: String,
         trim: true
     },
+    state: { // State of the quotation, e.g., pending, accepted, rejected
+        type: String,
+        enum: ['pending', 'accepted', 'rejected'],
+        default: 'pending'
+    }
   
 },{timestamps: true});
 

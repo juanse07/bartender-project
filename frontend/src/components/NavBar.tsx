@@ -26,7 +26,7 @@ export default function NavBar() {
             <Navbar.Collapse id='main-navbar'>
                 <Nav>
                     <Nav.Link as={Link}href='/' active={router.pathname==="/"}>Home</Nav.Link>
-                    <Nav.Link as={Link} href='/blog' active={router.pathname==="/blog"}>About</Nav.Link>
+                    {/* <Nav.Link as={Link} href='/blog' active={router.pathname==="/blog"}>About</Nav.Link> */}
                     
                     <Nav.Link as={Link} href='/BarService/new-quotation' active={router.pathname==="/BarService/new-quotation"}>
                                 Contact with us</Nav.Link>
