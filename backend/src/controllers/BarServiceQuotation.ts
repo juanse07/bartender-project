@@ -25,11 +25,12 @@ interface BarServiceQuotationBody {
     numberOfGuests: number;
     servicesRequested?: string[];
     notes?: string;
+    state: string;
 } 
 
 export const createBarServiceQuotation: RequestHandler<unknown, unknown, BarServiceQuotationBody, unknown> = async (req, res,next) => {
    
-    const { clientName, companyName,email,phone, address, eventDate, startTime, endTime, numberOfGuests, servicesRequested, notes } = req.body;
+    const { clientName, companyName,email,phone, address, eventDate, startTime, endTime, numberOfGuests, servicesRequested,notes,state } = req.body;
    
     try {
    const newBarServiceQuotation = await BarServiceQuotationModel.create({
@@ -43,8 +44,8 @@ export const createBarServiceQuotation: RequestHandler<unknown, unknown, BarServ
         endTime,
         numberOfGuests,
         servicesRequested,
-        state: "pending",
-        notes
+        notes,
+        state
     });
 
     res.status(201).json(newBarServiceQuotation);
