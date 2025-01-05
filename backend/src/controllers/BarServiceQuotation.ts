@@ -43,6 +43,7 @@ export const createBarServiceQuotation: RequestHandler<unknown, unknown, BarServ
         endTime,
         numberOfGuests,
         servicesRequested,
+        state: "pending",
         notes
     });
 
