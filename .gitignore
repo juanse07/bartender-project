@@ -1,4 +1,4 @@
-# dependencies
+# Dependencies
 /node_modules
 /.pnp
 .pnp.*
@@ -8,44 +8,96 @@
 !.yarn/releases
 !.yarn/versions
 
-# testing
+# Testing
 /coverage
 
-# next.js
+# Next.js
 /.next/
 /out/
 
-# production
+# Production
 /build
+/dist
 
-# misc
+# Misc
 .DS_Store
 *.pem
 
-# debug
+# Debug
 npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
 .pnpm-debug.log*
 
-# env files (can opt-in for committing if needed)
-.env*
+# Environment Variables (can opt-in for committing if needed)
+/.env*
+!.env.example  # Keep .env.example for shared configurations
 
-# vercel
+# Vercel
 .vercel
 
-# typescript
+# TypeScript
 *.tsbuildinfo
 next-env.d.ts
 
-# node binaries
+# Node Binaries
 *.node
 
-# SWC and Sharp caches
+# SWC and Sharp Caches
+**/node_modules/@next/swc-darwin*
+**/node_modules/@next/swc-darwin-arm64*
 **/node_modules/@next/swc-*
-**/node_modules/@img/sharp-*
 **/node_modules/sharp/
 /Users/*/Library/Caches/next-swc
 
-# build tools cache
+# Darwin (Apple Silicon and Intel binaries)
+/*.dSYM
+*.o
+*.so
+*.dylib
+**/node_modules/@next/swc-darwin*
+**/node_modules/@next/swc-darwin-amd64*
+**/node_modules/@next/swc-darwin-arm64*
+**/node_modules/@vercel/swc-darwin*
+**/node_modules/@vercel/swc-darwin-arm64*
+
+# Build Tools Cache
 /.cache
+
+# Temporary or Large Files
+*.tmp
+*.temp
+*.bak
+*.swp
+*.swo
+
+# IDE and Editor Settings
+.vscode/
+.idea/
+*.iml
+
+# Large Assets and Test Data
+/assets/large_files/
+*.psd
+*.ai
+*.tiff
+*.wav
+*.flac
+*.aac
+*.avi
+*.3gp
+*.webm
+*.mkv
+*.iso
+*.dmg
+*.pkg
+*.exe
+
+# Logs and Backups
+*.log
+*.gz
+*.zip
+*.tar
+*.tar.gz
+*.rar
+*.7z

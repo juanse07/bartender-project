@@ -12,7 +12,7 @@ interface CreateBarServiceValues{
     startTime: string;
     endTime: string;
     numberOfGuests: number;
-    servicesRequested: string[] | undefined;
+    servicesRequested: string[] ;
     notes?: string;
     
     
