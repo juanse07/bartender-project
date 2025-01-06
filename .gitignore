@@ -101,3 +101,7 @@ next-env.d.ts
 *.tar.gz
 *.rar
 *.7z
+
+.env
+.env.local
+
