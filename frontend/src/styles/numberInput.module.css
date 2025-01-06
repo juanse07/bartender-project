@@ -80,12 +80,15 @@
 
   .addressInput {
     width: 100%;
-    padding: 18px;
-    font-size: 20px;
+    padding: 10px;
+    font-size: 16px;
     border: 1px solid #f9f9f9;
     border-radius: 4px;
     background-color: #121212;
+    font-family: 'Poppins', sans-serif;
     color: #e0c097; /* Font color */
+    appearance: none;
+    -moz-appearance: textfield;
   }
   
   .addressInput::placeholder {
