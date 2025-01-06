@@ -53,7 +53,7 @@ const CustomNumberInput: React.FC<CustomNumberInputProps> = ({
           max={max}
           className={styles.numberInput}
         />
-        <button
+        {/* <button
           type="button"
           className={`${styles.spinButton} ${styles.spinUp}`}
           onClick={handleIncrement}
@@ -68,7 +68,7 @@ const CustomNumberInput: React.FC<CustomNumberInputProps> = ({
           aria-label="Decrease number"
         >
           <ChevronDown className={styles.icon} />
-        </button>
+        </button> */}
       </div>
     </div>
   );
