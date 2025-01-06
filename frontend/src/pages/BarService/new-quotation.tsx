@@ -164,7 +164,9 @@ export default function CreateQuotationPage() {
                         </Col>
                     </Row>
 
-                    <AddressInput />
+                    <AddressInput
+          onAddressChange={(address) => methods.setValue("address", address, { shouldValidate: true })}
+        />
 
                     <div className="mb-4">
                         <label className="form-label">Event Date</label>
