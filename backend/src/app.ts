@@ -12,7 +12,7 @@ app.use((req, res, next) => {
     console.log(`[${new Date().toISOString()}] ${req.method} ${req.url}`);
     next();
 });
-const allowedOrigins = env.WEBSITE_URL2;
+const allowedOrigins = env.WEBSITE_URL;
 // CORS configuration
 app.use(cors({
     origin: allowedOrigins,
