@@ -1,12 +1,12 @@
-
 import styles from '@/styles/numberInput.module.css';
 import { Autocomplete, useLoadScript } from "@react-google-maps/api";
 import React, { useRef, useState } from "react";
 
 const libraries: ("places")[] = ["places"];
 
-const AddressInput: React.FC = () => {
+const AddressInput: React.FC<{ onAddressChange: (address: string) => void }> = ({ onAddressChange }) => {
   const [address, setAddress] = useState<string>(""); // React's state for the input value
+  const [error, setError] = useState<string | null>(null); // For error handling
   const autocompleteRef = useRef<google.maps.places.Autocomplete | null>(null);
 
   const { isLoaded, loadError } = useLoadScript({
@@ -19,19 +19,37 @@ const AddressInput: React.FC = () => {
 
   const handlePlaceChanged = () => {
     const place = autocompleteRef.current?.getPlace();
+    console.log("Google Place Object:", place); // Debugging
+
     if (place) {
+      const formattedAddress = place.formatted_address || "";
       const addressComponents = place.address_components || [];
       const state = addressComponents.find((component) =>
         component.types.includes("administrative_area_level_1")
       )?.short_name;
 
+      // Ensure the address is in Colorado (example validation)
       if (state === "CO") {
-        setAddress(place.formatted_address || "");
+        setAddress(formattedAddress);
+        onAddressChange(formattedAddress); // Pass the address to parent
+        setError(null);
       } else {
-        alert("Please select an address in Colorado.");
         setAddress("");
+        onAddressChange("");
+        setError("Please select an address in Colorado.");
       }
+    } else {
+      setAddress("");
+      onAddressChange("");
+      setError("Unable to retrieve address. Please try again.");
     }
+  };
+
+  const handleManualInput = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const inputValue = e.target.value;
+    setAddress(inputValue);
+    onAddressChange(inputValue);
+    setError(null); // Clear errors when user types manually
   };
 
   return (
@@ -46,40 +64,33 @@ const AddressInput: React.FC = () => {
         <input
           type="text"
           placeholder="Enter address"
-          onChange={(e) => setAddress(e.target.value)} // Updates state when user types
-          className={styles.addressInput} // Added className for external styling
+          value={address} // Bind to the current state
+          onChange={handleManualInput} // Handle manual input
+          className={styles.addressInput}
           style={{
             width: "100%",
             padding: "18px",
             fontSize: "20px",
-            border: "1px solid #f9f9f9",
+            border: error ? "1px solid red" : "1px solid #f9f9f9",
             borderRadius: "4px",
             backgroundColor: "#121212",
             color: "#e0c097",
           }}
         />
       </Autocomplete>
-      <p>
-        Selected Address:{" "}
-        <span className={styles.addressLink}
-        //   style={{
-        //     color: "#007BFF",
-        //     textDecoration: "underline",
-        //     cursor: "pointer",
-        //   }}
-          onClick={() =>
-            address &&
-            window.open(
-              `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(
-                address
-              )}`,
-              "_blank"
-            )
-          }
-        >
-          {address || "No address selected"}
-        </span>
+      <p style={{ color: error ? "red" : "#e0c097", fontSize: "14px" }}>
+        {error || (address ? `Selected Address: ${address}` : "No address selected")}
       </p>
+      {address && (
+        <a
+          href={`https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(address)}`}
+          target="_blank"
+          rel="noopener noreferrer"
+          style={{ color: "#007BFF", textDecoration: "underline", cursor: "pointer" }}
+        >
+          View on Google Maps
+        </a>
+      )}
     </div>
   );
 };
