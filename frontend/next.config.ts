@@ -10,7 +10,7 @@ const nextConfig = {
   sassOptions: {
     includePaths: [path.join(__dirname, 'src/styles')], // Ensure absolute path resolution
     quietDeps: true, // Suppress deprecation warnings from dependencies
-    additionalData: `@import "variables.scss";`, // Automatically import shared variables/mixins
+    additionalData: `@import "custom-theme.scss";`, // Automatically import shared variables/mixins
   },
 };
 
