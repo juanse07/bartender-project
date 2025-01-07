@@ -49,7 +49,7 @@ const BarServiceQuotationSchema = new Schema({
     },
     state: { // State of the quotation, e.g., pending, accepted, rejected
         type: String,
-        enum: ['pending', 'accepted', 'rejected'],
+        enum: ['pending', 'answered', 'approved'],
         default: 'pending',
         required: true
       
