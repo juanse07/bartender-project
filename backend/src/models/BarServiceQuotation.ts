@@ -51,6 +51,7 @@ const BarServiceQuotationSchema = new Schema({
         type: String,
         enum: ['pending', 'accepted', 'rejected'],
         default: 'pending',
+        required: true
       
     }
   
