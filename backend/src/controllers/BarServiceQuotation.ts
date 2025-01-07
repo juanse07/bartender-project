@@ -1,100 +1,67 @@
 import { RequestHandler } from 'express';
 import BarServiceQuotationModel from '../models/BarServiceQuotation';
-import { io } from "../server"; // Import the `io` instance
+import { io } from "../server";
 
 export const getBarServiceQuotations: RequestHandler = async (req, res, next) => {
-    try {
-        const allBarServiceQuotations = await BarServiceQuotationModel.find().exec();
-        res.status(200).json(allBarServiceQuotations);
-    } catch (error) {
-        // res.status(500).json({error});
-        next(error);
-    }
+  try {
+    const allBarServiceQuotations = await BarServiceQuotationModel.find().exec();
+    res.status(200).json(allBarServiceQuotations);
+  } catch (error) {
+    next(error);
+  }
 };
 
-interface BarServiceQuotationBody {
-    clientName: string;
-    companyName?: string;
-    email: string;
-    phone?: string;
-    address: string;
-    eventDate: Date;
-    startTime: string;
-    endTime: string;
-    numberOfGuests: number;
-    servicesRequested?: string[];
-    notes?: string;
-    state?: string;
-}
-
-
-
-export const createBarServiceQuotation: RequestHandler<unknown, unknown, BarServiceQuotationBody, unknown> = async (req, res, next) => {
+export const createBarServiceQuotation: RequestHandler = async (req, res, next) => {
+  try {
+    const quotationData = req.body;
+    console.log("Quotation data before creation:", quotationData);
     
+    const newBarServiceQuotation = await BarServiceQuotationModel.create(quotationData);
+    console.log("Created quotation:", newBarServiceQuotation);
     
-    
-    try {
-        const quotationData = req.body;
-
-        console.log("Quotation data before creation:", quotationData); // Add this line
-        const newBarServiceQuotation = await BarServiceQuotationModel.create(quotationData);
-        console.log("Created quotation:", newBarServiceQuotation); // Add this line
-        res.status(201).json(newBarServiceQuotation);
-        console.log('About to emit socket event for quotation:', newBarServiceQuotation._id);
-        io.emit("newBarServiceQuotation", newBarServiceQuotation);
-        console.log('Socket event emitted successfully');
-    } catch (error) {
-        console.error("Error creating quotation:", error);
-        res.status(500).json({ error });
-        next(error);
-    }
+    res.status(201).json(newBarServiceQuotation);
+    console.log('About to emit socket event for quotation:', newBarServiceQuotation._id);
+    io.emit("newBarServiceQuotation", newBarServiceQuotation);
+    console.log('Socket event emitted successfully');
+  } catch (error) {
+    console.error("Error creating quotation:", error);
+    next(error);
+  }
 };
 
+export const updateBarServiceQuotation: RequestHandler = async (req, res, next) => {
+  try {
+    const quotationId = req.params.id;
+    const { state } = req.body;
 
+    if (!["pending", "answered", "approved"].includes(state)) {
+      res.status(400).json({
+        error: "Invalid state value. Must be 'pending', 'answered', or 'approved'"
+      });
+      return;
+    }
 
-// export const createBarServiceQuotation: RequestHandler<unknown, unknown, BarServiceQuotationBody, unknown> = async (req, res, next) => {
-//     const { 
-//         clientName, 
-//         companyName,
-//         email,
-//         phone, 
-//         address, 
-//         eventDate, 
-//         startTime, 
-//         endTime, 
-//         numberOfGuests, 
-//         servicesRequested,
-//         notes 
-//     } = req.body;
+    const updatedQuotation = await BarServiceQuotationModel.findByIdAndUpdate(
+      quotationId,
+      { state },
+      { new: true }
+    );
 
-//     try {
-//         const state = 'pending'; // Default state
-//         // Create the quotation data object with explicit state
-//         const quotationData = {
-//             clientName,
-//             companyName,
-//             email,
-//             phone,
-//             address,
-//             eventDate,
-//             startTime,
-//             endTime,
-//             numberOfGuests,
-//             servicesRequested,
-//             notes,
-//             state
-//         };
+    if (!updatedQuotation) {
+      res.status(404).json({ error: "Quotation not found" });
+      return;
+    }
 
-//         const newBarServiceQuotation = await BarServiceQuotationModel.create(quotationData);
-        
-//         res.status(201).json(newBarServiceQuotation);
-//         console.log('About to emit socket event for quotation:', newBarServiceQuotation._id);
-//         io.emit("newBarServiceQuotation", newBarServiceQuotation);
-//         console.log('Socket event emitted successfully');
-//     } catch (error) {
-//         console.error("Error creating quotation:", error);
-//         res.status(500).json({ error });
-//         next(error); // Changed from next() to next(error)
-//         // Removed alert as it's not available in Node.js environment
-//     }
-// };
+    // Emit socket event for the update
+    io.emit('quotationUpdated', updatedQuotation);
+    
+    res.json(updatedQuotation);
+  } catch (error) {
+    next(error);
+    console.error("Error updating quotation:", error);
+    res.status(500).json({
+      error: "Failed to update quotation",
+      details: error instanceof Error ? error.message : "Unknown error"
+    });
+  }
+};
