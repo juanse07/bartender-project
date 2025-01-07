@@ -45,7 +45,7 @@ export const createBarServiceQuotation: RequestHandler<unknown, unknown, BarServ
         numberOfGuests,
         servicesRequested,
         notes,
-       // state
+        state: 'pending'
     });
 
     res.status(201).json(newBarServiceQuotation);
