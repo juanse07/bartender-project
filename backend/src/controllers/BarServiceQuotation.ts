@@ -25,7 +25,7 @@ interface BarServiceQuotationBody {
     numberOfGuests: number;
     servicesRequested?: string[];
     notes?: string;
-   //state?: string;
+    state?: string;
 } 
 
 export const createBarServiceQuotation: RequestHandler<unknown, unknown, BarServiceQuotationBody, unknown> = async (req, res,next) => {
