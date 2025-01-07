@@ -43,6 +43,7 @@ export const createBarServiceQuotation: RequestHandler<unknown, unknown, BarServ
     } = req.body;
 
     try {
+        const state = 'pending'; // Default state
         // Create the quotation data object with explicit state
         const quotationData = {
             clientName,
@@ -56,7 +57,7 @@ export const createBarServiceQuotation: RequestHandler<unknown, unknown, BarServ
             numberOfGuests,
             servicesRequested,
             notes,
-            state: 'pending' as const // Explicitly set state to 'pending'
+            state
         };
 
         const newBarServiceQuotation = await BarServiceQuotationModel.create(quotationData);
