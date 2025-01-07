@@ -50,7 +50,8 @@ const BarServiceQuotationSchema = new Schema({
     state: { // State of the quotation, e.g., pending, accepted, rejected
         type: String,
         enum: ['pending', 'accepted', 'rejected'],
-        default: 'pending'
+        default: 'pending',
+        required: true
     }
   
 },{timestamps: true});

@@ -13,15 +13,15 @@
   "rootMainFiles": [],
   "rootMainFilesTree": {},
   "pages": {
-    "/": [
-      "static/chunks/webpack.js",
-      "static/chunks/main.js",
-      "static/chunks/pages/index.js"
-    ],
     "/BarService/new-quotation": [
       "static/chunks/webpack.js",
       "static/chunks/main.js",
       "static/chunks/pages/BarService/new-quotation.js"
+    ],
+    "/BarService/thankyou": [
+      "static/chunks/webpack.js",
+      "static/chunks/main.js",
+      "static/chunks/pages/BarService/thankyou.js"
     ],
     "/_app": [
       "static/chunks/webpack.js",
@@ -32,11 +32,6 @@
       "static/chunks/webpack.js",
       "static/chunks/main.js",
       "static/chunks/pages/_error.js"
-    ],
-    "/blog": [
-      "static/chunks/webpack.js",
-      "static/chunks/main.js",
-      "static/chunks/pages/blog.js"
     ]
   },
   "ampFirstPages": []

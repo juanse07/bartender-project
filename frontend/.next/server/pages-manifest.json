@@ -2,7 +2,6 @@
   "/_app": "pages/_app.js",
   "/_error": "pages/_error.js",
   "/_document": "pages/_document.js",
-  "/": "pages/index.js",
-  "/blog": "pages/blog.js",
-  "/BarService/new-quotation": "pages/BarService/new-quotation.js"
+  "/BarService/new-quotation": "pages/BarService/new-quotation.js",
+  "/BarService/thankyou": "pages/BarService/thankyou.js"
 }
