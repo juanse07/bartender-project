@@ -27,41 +27,11 @@ interface BarServiceQuotationBody {
     state?: string;
 }
 
+
+
 export const createBarServiceQuotation: RequestHandler<unknown, unknown, BarServiceQuotationBody, unknown> = async (req, res, next) => {
-    const { 
-        clientName, 
-        companyName,
-        email,
-        phone, 
-        address, 
-        eventDate, 
-        startTime, 
-        endTime, 
-        numberOfGuests, 
-        servicesRequested,
-        notes 
-    } = req.body;
-
     try {
-        const state = 'pending'; // Default state
-        // Create the quotation data object with explicit state
-        const quotationData = {
-            clientName,
-            companyName,
-            email,
-            phone,
-            address,
-            eventDate,
-            startTime,
-            endTime,
-            numberOfGuests,
-            servicesRequested,
-            notes,
-            state
-        };
-
-        const newBarServiceQuotation = await BarServiceQuotationModel.create(quotationData);
-        
+        const newBarServiceQuotation = await BarServiceQuotationModel.create(req.body);
         res.status(201).json(newBarServiceQuotation);
         console.log('About to emit socket event for quotation:', newBarServiceQuotation._id);
         io.emit("newBarServiceQuotation", newBarServiceQuotation);
@@ -69,7 +39,55 @@ export const createBarServiceQuotation: RequestHandler<unknown, unknown, BarServ
     } catch (error) {
         console.error("Error creating quotation:", error);
         res.status(500).json({ error });
-        next(error); // Changed from next() to next(error)
-        // Removed alert as it's not available in Node.js environment
+        next(error);
     }
 };
+
+
+
+// export const createBarServiceQuotation: RequestHandler<unknown, unknown, BarServiceQuotationBody, unknown> = async (req, res, next) => {
+//     const { 
+//         clientName, 
+//         companyName,
+//         email,
+//         phone, 
+//         address, 
+//         eventDate, 
+//         startTime, 
+//         endTime, 
+//         numberOfGuests, 
+//         servicesRequested,
+//         notes 
+//     } = req.body;
+
+//     try {
+//         const state = 'pending'; // Default state
+//         // Create the quotation data object with explicit state
+//         const quotationData = {
+//             clientName,
+//             companyName,
+//             email,
+//             phone,
+//             address,
+//             eventDate,
+//             startTime,
+//             endTime,
+//             numberOfGuests,
+//             servicesRequested,
+//             notes,
+//             state
+//         };
+
+//         const newBarServiceQuotation = await BarServiceQuotationModel.create(quotationData);
+        
+//         res.status(201).json(newBarServiceQuotation);
+//         console.log('About to emit socket event for quotation:', newBarServiceQuotation._id);
+//         io.emit("newBarServiceQuotation", newBarServiceQuotation);
+//         console.log('Socket event emitted successfully');
+//     } catch (error) {
+//         console.error("Error creating quotation:", error);
+//         res.status(500).json({ error });
+//         next(error); // Changed from next() to next(error)
+//         // Removed alert as it's not available in Node.js environment
+//     }
+// };
