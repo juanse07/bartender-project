@@ -30,8 +30,15 @@ interface BarServiceQuotationBody {
 
 
 export const createBarServiceQuotation: RequestHandler<unknown, unknown, BarServiceQuotationBody, unknown> = async (req, res, next) => {
+    
+    
+    
     try {
-        const newBarServiceQuotation = await BarServiceQuotationModel.create(req.body);
+        const quotationData = req.body;
+
+        console.log("Quotation data before creation:", quotationData); // Add this line
+        const newBarServiceQuotation = await BarServiceQuotationModel.create(quotationData);
+        console.log("Created quotation:", newBarServiceQuotation); // Add this line
         res.status(201).json(newBarServiceQuotation);
         console.log('About to emit socket event for quotation:', newBarServiceQuotation._id);
         io.emit("newBarServiceQuotation", newBarServiceQuotation);
