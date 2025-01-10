@@ -1,0 +1,222 @@
+/* components/forms/EventQuestionnaire/EventQuestionnaire.module.css */
+.container {
+    min-height: 100vh;
+    background-color: black;
+    color: rgba(253, 224, 71, 0.9); /* yellow-100/90 equivalent */
+  }
+  
+  .wrapper {
+    max-width: 42rem; /* max-w-2xl equivalent */
+    margin: 0 auto;
+    padding: 1.5rem;
+  }
+  
+  .progressContainer {
+    margin-bottom: 3rem;
+  }
+  
+  .progressBar {
+    height: 0.25rem;
+    background-color: rgba(120, 53, 15, 0.3); /* yellow-900/30 equivalent */
+    border-radius: 9999px;
+  }
+  
+  .progressFill {
+    height: 0.25rem;
+    background-color: #eab308; /* yellow-500 equivalent */
+    border-radius: 9999px;
+    transition: all 500ms;
+  }
+  
+  .contentWrapper {
+    margin-top: 2rem;
+  }
+  
+  .title {
+    font-size: 1.875rem;
+    line-height: 2.25rem;
+    font-weight: 300;
+    color: #eab308; /* yellow-500 */
+  }
+  
+  .optionsContainer {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+  }
+  
+  .optionButton {
+    width: 100%;
+    padding: 1rem;
+    text-align: left;
+    background-color: #000000;
+    border-radius: 0.5rem;
+    border: 1px solid rgba(120, 53, 15, 0.3);
+    transition: all 150ms;
+    color: rgba(253, 224, 71, 0.9);
+  }
+  
+  .optionButtonSelected {
+    composes: optionButton;
+    border-color: #eab308;
+    
+    background-color: rgba(234, 179, 8, 0.2);
+    color: #eab308;
+  }
+  
+  .optionButton:hover:not(.optionButtonSelected) {
+    border-color: rgba(234, 179, 8, 0.5);
+    background-color: rgba(234, 179, 8, 0.1);
+  }
+  /* EventQuestionnaire.module.css */
+.inputContainer {
+  position: relative;
+  width: 100%;
+  margin-top: 0.5rem;
+  background-color: #000000;
+  background: #000000;
+}
+
+/* styles/EventQuestionnaire.module.css */
+/* First, let's target inputs specifically */
+.input {
+  width: 100%;
+  padding: 1rem;
+  border-radius: 0.5rem;
+  border: 1px solid rgba(120, 53, 15, 0.3);
+  color: rgba(253, 224, 71, 0.9);
+  background: #000000 !important;
+  -webkit-appearance: none;
+  appearance: none;
+}
+
+/* Target date and time inputs specifically */
+.input[type="date"],
+.input[type="time"] {
+  background-color: #000000 !important;
+  color: rgba(253, 224, 71, 0.9);
+  border: 1px solid rgba(120, 53, 15, 0.3);
+}
+
+/* Style the calendar and time picker icons */
+.input[type="date"]::-webkit-calendar-picker-indicator,
+.input[type="time"]::-webkit-calendar-picker-indicator {
+  filter: invert(1);
+  opacity: 0.5;
+  cursor: pointer;
+}
+
+/* Override autofill styles */
+.input:-webkit-autofill,
+.input:-webkit-autofill:hover,
+.input:-webkit-autofill:focus {
+  -webkit-text-fill-color: rgba(253, 224, 71, 0.9);
+  -webkit-box-shadow: 0 0 0px 1000px #000000 inset !important;
+  transition: background-color 5000s ease-in-out 0s;
+}
+
+/* Style the textarea */
+.textarea {
+  width: 100%;
+  padding: 1rem;
+  border-radius: 0.5rem;
+  border: 1px solid rgba(120, 53, 15, 0.3);
+  color: rgba(253, 224, 71, 0.9);
+  background: #000000 !important;
+  background-color: #000000 !important;
+  min-height: 8rem;
+  resize: none;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+}
+
+.textarea:focus {
+  outline: none;
+  border-color: #eab308;
+  box-shadow: 0 0 0 1px #eab308;
+}
+
+.textarea::placeholder {
+  color: rgba(253, 224, 71, 0.5);
+}
+  
+  .buttonsContainer {
+    margin-top: 3rem;
+    display: flex;
+    justify-content: space-between;
+  }
+  
+  .buttonPrev {
+    display: flex;
+    align-items: center;
+    background-color: #2a2a2a;
+    padding: 0.75rem 1.5rem;
+    border-radius: 0.5rem;
+    border: 1px solid rgba(120, 53, 15, 0.3);
+    color: rgba(253, 224, 71, 0.9);
+  }
+  
+  .buttonPrev:disabled {
+    opacity: 0.5;
+  }
+  
+  .buttonPrev:not(:disabled):hover {
+    border-color: rgba(234, 179, 8, 0.5);
+  }
+  
+  .buttonNext {
+    display: flex;
+    align-items: center;
+    padding: 0.75rem 1.5rem;
+    border-radius: 0.5rem;
+    background-color: #eab308;
+    color: black;
+    transition: background-color 150ms;
+  }
+  
+  .buttonNext:hover {
+    background-color: #facc15;
+  }
+  
+  .timeInputContainer {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+  }
+  
+  .timeInputRow {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+  }
+  
+  .timeLabel {
+    width: 5rem;
+    color: rgba(253, 224, 71, 0.9);
+  }
+
+  .input[type="text"],
+.otherInput {
+  /* Adding !important to override global styles */
+  width: 100% !important;
+  padding: 1rem !important;
+  border-radius: 0.5rem !important;
+  border: 1px solid rgba(120, 53, 15, 0.3) !important;
+  background-color: #000000 !important;
+  background: #000000 !important;
+  color: rgba(253, 224, 71, 0.9) !important;
+  -webkit-appearance: none !important;
+  -moz-appearance: none !important;
+  appearance: none !important;
+}
+
+.otherInput::placeholder {
+  color: rgba(253, 224, 71, 0.5) !important;
+}
+
+.otherInput:focus {
+  outline: none !important;
+  border-color: #eab308 !important;
+  box-shadow: 0 0 0 1px #eab308 !important;
+}
