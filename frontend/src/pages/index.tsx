@@ -1,6 +1,7 @@
 
 import LastSection from '@/components/LastSection';
 import ServiceSection from '@/components/ServiceSection';
+import { useRouter } from 'next/router';
 
 interface Service {
   category: string;
@@ -29,7 +30,7 @@ interface Service {
 }
 
 export default function Home() {
- 
+  const router = useRouter();
   const services: Service[] = [
     {
       category: "BARTENDING SERVICES",
@@ -176,9 +177,9 @@ onClickNavPath: '/',
             (e.target as HTMLButtonElement).style.backgroundColor = 'rgba(255, 255, 255, 0.2)';
             (e.target as HTMLButtonElement).style.color = 'white';
           }}
-          onClick={() => alert('Book Now!')}
+          onClick={() => router.push('/estimate-event')}
         >
-          Book Now
+          Start here
         </button>
       </div>
     </div>
