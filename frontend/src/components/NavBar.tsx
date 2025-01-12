@@ -2,7 +2,7 @@ import Image from 'next/image';
 import Link from 'next/link';
 import { useRouter } from 'next/router';
 import { Nav, Navbar } from 'react-bootstrap';
-import logo from "../assets/images/bartenderlogo.png";
+import logo from "../assets/images/bartools.png";
 import Sign from "../assets/images/denverbartendersSign.png";
 
 
@@ -14,9 +14,9 @@ export default function NavBar() {
     const router = useRouter();
     return (
         <Navbar expand="md" collapseOnSelect variant="dark" bg="body" sticky="top"  >
-            <Navbar.Brand as={Link} href='/' className='d-flex align-items-center gap-4'>
+            <Navbar.Brand as={Link} href='/' className='d-flex align-items-center gap-2'>
             
-            <Image src={logo} alt="technician (3)" width={60} height={60} /> 
+            <Image src={logo} alt="technician (3)" width={50} height={50} /> 
 
 
             <Image
