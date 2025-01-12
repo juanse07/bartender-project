@@ -14,9 +14,22 @@ export default function NavBar() {
     const router = useRouter();
     return (
         <Navbar expand="md" collapseOnSelect variant="dark" bg="body" sticky="top"  >
-            <Navbar.Brand as={Link} href='/' className='d-flex align-items-center gap-2'>
+            <Navbar.Brand as={Link} href='/' className='d-flex align-items-center '>
             
-            <Image src={logo} alt="technician (3)" width={120} height={70} /> 
+            {/* <Image src={logo} alt="technician (3)" width={90} height={70} />  */}
+
+            <Image
+      src={logo}
+      alt="DenverBartenders"
+      width={50} // Original size for larger screens
+      height={50}
+      sizes="(max-width: 768px) 60px, 70px" // Smaller on mobile
+      style={{
+        width: '100%', // Makes the image responsive
+        maxWidth: '120px', // Ensure it doesn’t exceed 250px
+        height: 'auto', // Maintain aspect ratio
+      }}
+    />
 
 
             <Image
