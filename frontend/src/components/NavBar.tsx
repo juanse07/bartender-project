@@ -19,7 +19,18 @@ export default function NavBar() {
             <Image src={logo} alt="technician (3)" width={60} height={60} /> 
 
 
-            <Image src={Sign} alt='DenverBartenders' width={250} height={70} />
+            <Image
+      src={Sign}
+      alt="DenverBartenders"
+      width={250} // Original size for larger screens
+      height={70}
+      sizes="(max-width: 768px) 200px, 250px" // Smaller on mobile
+      style={{
+        width: '100%', // Makes the image responsive
+        maxWidth: '230px', // Ensure it doesn’t exceed 250px
+        height: 'auto', // Maintain aspect ratio
+      }}
+    />
             
             {/* <span className={styles.brandText}>
             DenverBartenders
