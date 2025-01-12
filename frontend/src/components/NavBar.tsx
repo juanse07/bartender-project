@@ -2,8 +2,8 @@ import Image from 'next/image';
 import Link from 'next/link';
 import { useRouter } from 'next/router';
 import { Nav, Navbar } from 'react-bootstrap';
-import logo from "../assets/images/bartools.png";
 import Sign from "../assets/images/denverbartendersSign.png";
+import logo from "../assets/images/goldbarman.png";
 
 
 
@@ -16,7 +16,7 @@ export default function NavBar() {
         <Navbar expand="md" collapseOnSelect variant="dark" bg="body" sticky="top"  >
             <Navbar.Brand as={Link} href='/' className='d-flex align-items-center gap-2'>
             
-            <Image src={logo} alt="technician (3)" width={50} height={50} /> 
+            <Image src={logo} alt="technician (3)" width={120} height={70} /> 
 
 
             <Image
