@@ -3,6 +3,6 @@
   "/_error": "pages/_error.js",
   "/_document": "pages/_document.js",
   "/BarService/new-quotation": "pages/BarService/new-quotation.js",
-  "/estimate-event": "pages/estimate-event.js",
+  "/": "pages/index.js",
   "/blog": "pages/blog.js"
 }
