@@ -3,12 +3,13 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import "@/styles/globals.scss";
 
 
+import NavBar from '@/components/NavBar';
 import type { AppProps } from "next/app";
 import { Lato } from "next/font/google";
 import Head from "next/head";
+import { useRouter } from 'next/router';
 import NextNProgress from "nextjs-progressbar";
-import React from 'react';
-import NavBar from '@/components/NavBar';
+import { useEffect } from 'react';
 
 // Correct initialization
 
@@ -19,6 +20,37 @@ const latoFont = Lato({
 });
 
 export default function App({ Component, pageProps }: AppProps) {
+  const router = useRouter();
+  useEffect(() => {
+    const handleRouteChange = () => {
+      setTimeout(() => {
+        window.scrollTo({
+          top: 0,
+          behavior: 'smooth' // or 'smooth' if you want animation
+        });
+      }, 100); // Small delay to ensure DOM is ready
+    };
+  
+    router.events.on('routeChangeComplete', handleRouteChange);
+    
+    return () => {
+      router.events.off('routeChangeComplete', handleRouteChange);
+    };
+  }, [router]);
+  // useEffect(() => {
+  //   const handleRouteChange = () => {
+  //     document.documentElement.scrollTo(0, 0);
+  //     document.body.scrollTo(0, 0);
+  //     window.scrollTo(0, 0);
+  //   };
+
+  //   router.events.on('routeChangeComplete', handleRouteChange);
+
+  //   return () => {
+  //     router.events.off('routeChangeComplete', handleRouteChange);
+  //   };
+  // }, [router]);
+
   return (
     <>
       <Head>
@@ -35,7 +67,8 @@ export default function App({ Component, pageProps }: AppProps) {
           showOnShallow={true}    
          />
     
-      <div className={` ${latoFont.className}`}>
+      <div className={` ${latoFont.className}`}
+      style={{minHeight: '100vh', position: 'relative'}}>
         <NavBar />
 
         <main >
@@ -46,3 +79,5 @@ export default function App({ Component, pageProps }: AppProps) {
     
   );
 }
+
+
