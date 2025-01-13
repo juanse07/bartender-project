@@ -24,7 +24,7 @@ export default function App({ Component, pageProps }: AppProps) {
   const router = useRouter();
   
   useEffect(() => {
-    window.scrollTo({ top: 0, behavior: 'smooth' });
+    window.scrollTo({ top: 0, behavior: 'instant' });
   }, []);
   return (
     <>
