@@ -2,8 +2,7 @@ import Image from 'next/image';
 import Link from 'next/link';
 import { useRouter } from 'next/router';
 import { Nav, Navbar } from 'react-bootstrap';
-import Sign from "../assets/images/denverbartendersSign.png";
-import logo from "../assets/images/goldbarman.png";
+import Sign from "../assets/images/denversignandlogo.png";
 
 
 
@@ -18,7 +17,7 @@ export default function NavBar() {
             
             {/* <Image src={logo} alt="technician (3)" width={90} height={70} />  */}
 
-            <Image
+            {/* <Image
       src={logo}
       alt="DenverBartenders"
       width={90} // Original size for larger screens
@@ -29,7 +28,7 @@ export default function NavBar() {
         maxWidth: '90px', // Ensure it doesn’t exceed 250px
         height: 'auto', // Maintain aspect ratio
       }}
-    />
+    /> */}
 
 
             <Image
@@ -40,7 +39,7 @@ export default function NavBar() {
       sizes="(max-width: 768px) 200px, 250px" // Smaller on mobile
       style={{
         width: '100%', // Makes the image responsive
-        maxWidth: '230px', // Ensure it doesn’t exceed 250px
+        maxWidth: '100px', // Ensure it doesn’t exceed 250px
         height: 'auto', // Maintain aspect ratio
       }}
     />
