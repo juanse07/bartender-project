@@ -9,7 +9,8 @@ import { Lato } from "next/font/google";
 import Head from "next/head";
 import { useRouter } from 'next/router';
 import NextNProgress from "nextjs-progressbar";
-import { useEffect } from 'react';
+import { useEffect } from "react";
+
 
 // Correct initialization
 
@@ -21,38 +22,13 @@ const latoFont = Lato({
 
 export default function App({ Component, pageProps }: AppProps) {
   const router = useRouter();
-  useEffect(() => {
-    const handleRouteChange = () => {
-      setTimeout(() => {
-        window.scrollTo({
-          top: 0,
-          behavior: 'smooth' // or 'smooth' if you want animation
-        });
-      }, 100); // Small delay to ensure DOM is ready
-    };
   
-    router.events.on('routeChangeComplete', handleRouteChange);
-    
-    return () => {
-      router.events.off('routeChangeComplete', handleRouteChange);
-    };
-  }, [router]);
-  // useEffect(() => {
-  //   const handleRouteChange = () => {
-  //     document.documentElement.scrollTo(0, 0);
-  //     document.body.scrollTo(0, 0);
-  //     window.scrollTo(0, 0);
-  //   };
-
-  //   router.events.on('routeChangeComplete', handleRouteChange);
-
-  //   return () => {
-  //     router.events.off('routeChangeComplete', handleRouteChange);
-  //   };
-  // }, [router]);
-
+  useEffect(() => {
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  }, []);
   return (
     <>
+     
       <Head>
         <title>Bartender App</title>
         <meta name="description" content="Upscale Bartender app under contruction" />
@@ -72,6 +48,7 @@ export default function App({ Component, pageProps }: AppProps) {
         <NavBar />
 
         <main >
+         
            <Component {...pageProps} />
        </main>
       </div>
