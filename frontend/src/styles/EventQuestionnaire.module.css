@@ -1,16 +1,22 @@
 /* components/forms/EventQuestionnaire/EventQuestionnaire.module.css */
 .container {
-    min-height: 100vh;
-    background-color: black;
-    color: rgba(253, 224, 71, 0.9); /* yellow-100/90 equivalent */
-  }
-  
-  .wrapper {
-    max-width: 42rem; /* max-w-2xl equivalent */
-    margin: 0 auto;
-    padding: 1.5rem;
-  }
-  
+  min-height: 100vh;
+  background-color: black;
+  color: rgba(253, 224, 71, 0.9);
+  position: relative;
+}
+.wrapper {
+  max-width: 42rem;
+  margin: 0 auto;
+  padding: 2rem;
+  height: 100vh;
+  overflow-y: auto;
+  position: fixed;
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  scroll-behavior: smooth;
+}
   .progressContainer {
     margin-bottom: 3rem;
   }
@@ -19,6 +25,7 @@
     height: 0.25rem;
     background-color: rgba(120, 53, 15, 0.3); /* yellow-900/30 equivalent */
     border-radius: 9999px;
+    overflow: visible;
   }
   
   .progressFill {

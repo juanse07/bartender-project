@@ -1,15 +1,13 @@
-// components/forms/EventQuestionnaire/index.tsx
 import { ArrowLeft, ArrowRight } from 'lucide-react';
 import { useRouter } from 'next/router';
-import { useEffect, useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import styles from '../../../styles/EventQuestionnaire.module.css';
 import { FormData, Question } from './types';
-
-
 
 const EventQuestionnaire = () => {
   const router = useRouter();
   const [currentSlide, setCurrentSlide] = useState(0);
+  const wrapperRef = useRef<HTMLDivElement>(null);
   const [formData, setFormData] = useState<FormData>({
     eventType: '',
     eventTypeOther: '',
@@ -23,10 +21,34 @@ const EventQuestionnaire = () => {
     notes: ''
   });
 
-  useEffect(() => {
-    window.scrollTo({ top: 0, behavior: 'smooth' });
-  }, [currentSlide]);
+  const scrollToTop = () => {
+    console.log('Wrapper ref:', wrapperRef.current);
+    if (wrapperRef.current) {
+      wrapperRef.current.scrollTo({ top: 0, behavior: 'instant' });
+      console.log('Scrolled using ref');
+    } else {
+      window.scrollTo({ top: 0, behavior: 'instant' });
+      console.log('Scrolled using window');
+    }
+  };
 
+  const handleSubmit = async () => {
+    console.log('Form submitted:', formData);
+    await router.push('/estimate-event', undefined, { shallow: true });
+  };
+
+  // Listen for route changes to scroll to top
+  useEffect(() => {
+    const handleRouteChange = () => {
+      scrollToTop();
+    };
+
+    router.events.on('routeChangeComplete', handleRouteChange);
+
+    return () => {
+      router.events.off('routeChangeComplete', handleRouteChange);
+    };
+  }, [router.events]);
   const questions: Question[] = [
     {
       id: 'eventType',
@@ -92,19 +114,26 @@ const EventQuestionnaire = () => {
     }));
   };
 
-  const handleSubmit = async () => {
-    console.log('Form submitted:', formData);
-    await router.push('/estimate-event');
+  const handleNext = () => {
+    if (currentSlide === questions.length - 1) {
+      router.push('/estimate-event', undefined, { shallow: true });
+    } else {
+      setCurrentSlide(prev => Math.min(questions.length - 1, prev + 1));
+      scrollToTop();
+    }
   };
 
+  const handlePrevious = () => {
+    setCurrentSlide(prev => Math.max(0, prev - 1));
+    scrollToTop();
+  };
 
   const renderQuestion = (question: Question) => {
     switch (question.type) {
       case 'select':
         return (
           <>
-      
-          <div className={styles.optionsContainer}>
+          <div className={styles.optionsContainer}  >
             {question.options?.map((option: string) => (
               <div key={option}>
                 <button
@@ -199,8 +228,8 @@ const EventQuestionnaire = () => {
   };
 
   return (
-    <div className={styles.container}>
-      <div className={styles.wrapper}>
+    <div className={styles.container} >
+      <div className={styles.wrapper} ref={wrapperRef} >
         <div className={styles.progressContainer}>
           <div className={styles.progressBar}>
             <div
@@ -222,7 +251,11 @@ const EventQuestionnaire = () => {
 
         <div className={styles.buttonsContainer}>
           <button
-            onClick={() => setCurrentSlide(prev => Math.max(0, prev - 1))}
+            onClick={handlePrevious}
+              // setCurrentSlide(prev => Math.max(0, prev - 1));
+              // window.scroll(0, 0);
+              
+            
             disabled={currentSlide === 0}
             className={styles.buttonPrev}
           >
@@ -233,10 +266,10 @@ const EventQuestionnaire = () => {
           <button
             onClick={() => {
               if (currentSlide === questions.length - 1) {
-                console.log('Form submitted:', formData);
-                // Handle form submission
+                handleSubmit();
               } else {
-                setCurrentSlide(prev => Math.min(questions.length - 1, prev + 1));
+                handleNext();
+             
               }
             }}
             className={styles.buttonNext}
