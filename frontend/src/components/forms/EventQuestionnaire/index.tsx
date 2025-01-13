@@ -1,10 +1,9 @@
 // components/forms/EventQuestionnaire/index.tsx
 import { ArrowLeft, ArrowRight } from 'lucide-react';
 import { useRouter } from 'next/router';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import styles from '../../../styles/EventQuestionnaire.module.css';
 import { FormData, Question } from './types';
-
 
 
 
@@ -23,6 +22,10 @@ const EventQuestionnaire = () => {
     },
     notes: ''
   });
+
+  useEffect(() => {
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  }, [currentSlide]);
 
   const questions: Question[] = [
     {
@@ -99,6 +102,8 @@ const EventQuestionnaire = () => {
     switch (question.type) {
       case 'select':
         return (
+          <>
+      
           <div className={styles.optionsContainer}>
             {question.options?.map((option: string) => (
               <div key={option}>
@@ -134,6 +139,7 @@ const EventQuestionnaire = () => {
               </div>
             ))}
           </div>
+          </>
         );
 
       case 'date':
