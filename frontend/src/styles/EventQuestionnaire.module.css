@@ -12,20 +12,19 @@
   padding: 2rem;
   height: 100vh;
   overflow-y: auto;
-  padding-bottom: 6rem; /* Ensure space for buttons */
-  /* position: relative; /* Change from fixed */
-  /* top: 0; */
-  /* left: 50%;
-  transform: translateX(-50%);
-  scroll-behavior: smooth; */ 
+  padding-bottom: 6rem; 
+  scroll-behavior: smooth;
 }
+ 
+  
+
   .progressContainer {
     margin-bottom: 3rem;
   }
   
   .progressBar {
     height: 0.25rem;
-    background-color: rgba(120, 53, 15, 0.3); /* yellow-900/30 equivalent */
+    /* background-color: rgba(120, 53, 15, 0.3); /* yellow-900/30 equivalent  */
     border-radius: 9999px;
     overflow: visible;
   }
