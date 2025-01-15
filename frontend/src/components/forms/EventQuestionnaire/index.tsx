@@ -5,6 +5,7 @@ import styles from '../../../styles/EventQuestionnaire.module.css';
 import CustomGoldDatePicker from '../../DatePickerComponent';
 import { FormData, Question } from './types';
 
+
 const EventQuestionnaire = () => {
   const router = useRouter();
   const [currentSlide, setCurrentSlide] = useState(0);
@@ -32,6 +33,15 @@ const EventQuestionnaire = () => {
       window.scrollTo({ top: 0, behavior: 'instant' });
       console.log('Scrolled using window');
     }
+  };
+
+  const validateTime = (time: string) => {
+    const [hours, minutes] = time.split(':').map(Number);
+    if (minutes % 30 !== 0) {
+      const roundedMinutes = Math.round(minutes / 30) * 30;
+      return `${hours.toString().padStart(2, '0')}:${roundedMinutes.toString().padStart(2, '0')}`;
+    }
+    return time;
   };
 
   const handleSubmit = async () => {
@@ -183,16 +193,7 @@ const EventQuestionnaire = () => {
           </>
         );
 
-      // case 'date':
-      //   return (
-        
-      //     // <input
-      //     //   type="date"
-      //     //   className={styles.input}
-      //     //   value={formData[question.id] as string}
-      //     //   onChange={(e) => handleInputChange(question.id, e.target.value)}
-      //     // />
-      //   );
+
 
         case 'date':
           return (
@@ -217,41 +218,80 @@ const EventQuestionnaire = () => {
       )}
     </div>
           );
-
-      case 'time':
-        return (
-          <div className={styles.timeContainer}>
-            <div className={styles.timeRow}>
-              <label className={styles.timeLabel}>Start:</label>
-              <input
-                type="time"
-                className={styles.input}
-                value={formData.eventTime.start}
-                onChange={(e) => 
-                  handleInputChange('eventTime', {
-                    ...formData.eventTime,
-                    start: e.target.value
-                  })
-                }
-              />
-            </div>
-            <div className={styles.timeRow}>
-              <label className={styles.timeLabel}>End:</label>
-              <input
-                type="time"
-                className={styles.input}
-                value={formData.eventTime.end}
-                onChange={(e) => 
-                  handleInputChange('eventTime', {
-                    ...formData.eventTime,
-                    end: e.target.value
-                  })
-                }
-              />
-            </div>
-          </div>
-        );
-
+          
+         
+          
+          case 'time':
+            return (
+              <div className={styles.timeContainer}>
+                <div className={styles.timeRow}>
+                  <label className={styles.timeLabel}>Start:</label>
+                  <input
+                    type="time"
+                    className={styles.input}
+                    value={formData.eventTime.start}
+                    onChange={(e) => {
+                      const validTime = validateTime(e.target.value);
+                      handleInputChange('eventTime', {
+                        ...formData.eventTime,
+                        start: validTime
+                      });
+                    }}
+                    step="1800" // 30 minutes in seconds
+                  />
+                </div>
+                <div className={styles.timeRow}>
+                  <label className={styles.timeLabel}>End:</label>
+                  <input
+                    type="time"
+                    className={styles.input}
+                    value={formData.eventTime.end}
+                    onChange={(e) => {
+                      const validTime = validateTime(e.target.value);
+                      handleInputChange('eventTime', {
+                        ...formData.eventTime,
+                        end: validTime
+                      });
+                    }}
+                    min={formData.eventTime.start}
+                    step="1800"
+                  />
+                </div>
+              </div>
+            );
+          // case 'time':
+          //   return (
+          //     <div className={styles.timeContainer}>
+          //       <div className={styles.timeRow}>
+          //         <label className={styles.timeLabel}>Start:</label>
+          //         <input
+          //           type="time"
+          //           className={styles.input}
+          //           value={formData.eventTime.start}
+          //           onChange={(e) => 
+          //             handleInputChange('eventTime', {
+          //               ...formData.eventTime,
+          //               start: e.target.value
+          //             })
+          //           }
+          //         />
+          //       </div>
+          //       <div className={styles.timeRow}>
+          //         <label className={styles.timeLabel}>End:</label>
+          //         <input
+          //           type="time"
+          //           className={styles.input}
+          //           value={formData.eventTime.end}
+          //           onChange={(e) => 
+          //             handleInputChange('eventTime', {
+          //               ...formData.eventTime,
+          //               end: e.target.value
+          //             })
+          //           }
+          //         />
+          //       </div>
+          //     </div>
+          //   );
       case 'textarea':
         return (
           <textarea

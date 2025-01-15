@@ -233,3 +233,126 @@
   border-color: #eab308 !important;
   box-shadow: 0 0 0 1px #eab308 !important;
 }
+
+.timeContainer {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  width: 100%;
+}
+
+.timeRow {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  width: 100%;
+}
+
+.timeLabel {
+  width: 5rem;
+  color: rgba(253, 224, 71, 0.9);
+}
+
+.input[type="time"] {
+  background-color: #000000 !important;
+  color: rgba(253, 224, 71, 0.9) !important;
+  border: 1px solid rgba(120, 53, 15, 0.3) !important;
+  border-radius: 0.5rem !important;
+  padding: 0.75rem !important;
+  width: 100% !important;
+  max-width: 200px !important;
+  font-size: 1rem !important;
+  -webkit-appearance: none !important;
+  -moz-appearance: none !important;
+  appearance: none !important;
+}
+
+.input[type="time"]::-webkit-calendar-picker-indicator {
+  filter: invert(1) !important;
+  opacity: 0.7 !important;
+  cursor: pointer !important;
+}
+
+.input[type="time"]::-webkit-list-button {
+  background-color: #000000 !important;
+  color: rgba(253, 224, 71, 0.9) !important;
+}
+
+.input[type="time"]::-webkit-time-picker-popup {
+  background-color: #000000 !important;
+  color: rgba(253, 224, 71, 0.9) !important;
+  border: 1px solid rgba(120, 53, 15, 0.3) !important;
+  border-radius: 0.5rem !important;
+}
+
+.input[type="time"]::-webkit-time-picker-popup option {
+  background-color: #000000 !important;
+  color: rgba(253, 224, 71, 0.9) !important;
+  padding: 0.5rem !important;
+}
+
+.input[type="time"]::-webkit-time-picker-popup option:hover {
+  background-color: rgba(234, 179, 8, 0.2) !important;
+}
+
+/* For Firefox */
+.input[type="time"] {
+  -moz-appearance: textfield !important;
+}
+
+.input[type="time"]::-moz-time-picker {
+  background-color: #000000 !important;
+  color: rgba(253, 224, 71, 0.9) !important;
+}
+
+.input[type="time"] {
+  -webkit-appearance: none;
+  appearance: none;
+  background-color: #000000;
+  color: rgba(253, 224, 71, 0.9);
+  border: 1px solid rgba(120, 53, 15, 0.3);
+  border-radius: 0.5rem;
+  padding: 0.75rem;
+  width: 100%;
+  max-width: 200px;
+  font-size: 1rem;
+  position: relative;
+  cursor: pointer;
+}
+
+/* Safari specific styles */
+@supports (-webkit-touch-callout: none) {
+  .input[type="time"] {
+    padding-right: 2rem;
+  }
+
+  .input[type="time"]::-webkit-calendar-picker-indicator {
+    position: absolute;
+    right: 8px;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 20px;
+    height: 20px;
+    filter: invert(1);
+    opacity: 0.7;
+    cursor: pointer;
+    z-index: 1;
+    pointer-events: none; /* Allow clicking on the entire input */
+  }
+
+  .input[type="time"]::-webkit-calendar-picker-indicator:hover {
+    opacity: 1;
+  }
+
+  .input[type="time"]::after {
+    content: '';
+    position: absolute;
+    right: 8px;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 20px;
+    height: 20px;
+    background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 24 24' stroke='rgba(253, 224, 71, 0.9)'%3E%3Cpath stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z'%3E%3C/path%3E") no-repeat center;
+    pointer-events: none; /* Ensure icon is not clickable */
+  }
+}
