@@ -2,12 +2,14 @@ import { ArrowLeft, ArrowRight } from 'lucide-react';
 import { useRouter } from 'next/router';
 import { useEffect, useRef, useState } from 'react';
 import styles from '../../../styles/EventQuestionnaire.module.css';
+import CustomGoldDatePicker from '../../DatePickerComponent';
 import { FormData, Question } from './types';
 
 const EventQuestionnaire = () => {
   const router = useRouter();
   const [currentSlide, setCurrentSlide] = useState(0);
   const wrapperRef = useRef<HTMLDivElement>(null);
+  const[isMobile, setIsMobile] = useState(false);
   const [formData, setFormData] = useState<FormData>({
     eventType: '',
     eventTypeOther: '',
@@ -36,6 +38,16 @@ const EventQuestionnaire = () => {
     console.log('Form submitted:', formData);
     await router.push('/estimate-event', undefined, { shallow: true });
   };
+
+  useEffect(() => {
+    const checkMobile = () => {
+      setIsMobile(window.innerWidth <= 768);
+    };
+
+    checkMobile();
+    window.addEventListener('resize', checkMobile);
+    return () => window.removeEventListener('resize', checkMobile);
+  }, []);
 
   // Listen for route changes to scroll to top
   useEffect(() => {
@@ -171,15 +183,40 @@ const EventQuestionnaire = () => {
           </>
         );
 
-      case 'date':
-        return (
-          <input
-            type="date"
-            className={styles.input}
-            value={formData[question.id] as string}
-            onChange={(e) => handleInputChange(question.id, e.target.value)}
-          />
-        );
+      // case 'date':
+      //   return (
+        
+      //     // <input
+      //     //   type="date"
+      //     //   className={styles.input}
+      //     //   value={formData[question.id] as string}
+      //     //   onChange={(e) => handleInputChange(question.id, e.target.value)}
+      //     // />
+      //   );
+
+        case 'date':
+          return (
+            <div className={styles.dateContainer}>
+      {isMobile ? (
+        <input
+          type="date"
+          className={styles.input}
+          value={formData[question.id] as string}
+          onChange={(e) => handleInputChange(question.id, e.target.value)}
+        />
+      ) : (
+        <CustomGoldDatePicker
+          value={formData[question.id] ? new Date(formData[question.id] as string) : null}
+          onChange={(date: Date | null) => {
+            if (date) {
+              handleInputChange(question.id, date.toISOString());
+            }
+          }}
+          label="Select event date"
+        />
+      )}
+    </div>
+          );
 
       case 'time':
         return (

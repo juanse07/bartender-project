@@ -92,7 +92,7 @@
   width: 100%;
   padding: 1rem;
   border-radius: 0.5rem;
-  border: 1px solid rgba(120, 53, 15, 0.3);
+  border: 1px solid rgba(124, 110, 2, 0.3);
   color: rgba(253, 224, 71, 0.9);
   background: #000000 !important;
   -webkit-appearance: none;
@@ -166,7 +166,7 @@
     background-color: #2a2a2a;
     padding: 0.75rem 1.5rem;
     border-radius: 0.5rem;
-    border: 1px solid rgba(120, 53, 15, 0.3);
+    border: 1px solid rgba(121, 109, 1, 0.3);
     color: rgba(253, 224, 71, 0.9);
   }
   
@@ -215,7 +215,7 @@
   width: 100% !important;
   padding: 1rem !important;
   border-radius: 0.5rem !important;
-  border: 1px solid rgba(120, 53, 15, 0.3) !important;
+  border: 1px solid rgba(118, 111, 2, 0.3) !important;
   background-color: #000000 !important;
   background: #000000 !important;
   color: rgba(253, 224, 71, 0.9) !important;
