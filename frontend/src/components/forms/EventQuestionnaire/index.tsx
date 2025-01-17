@@ -1,3 +1,4 @@
+import AddressInput from '@/components/AddressInput';
 import { ArrowLeft, ArrowRight } from 'lucide-react';
 import { useRouter } from 'next/router';
 import { useEffect, useRef, useState } from 'react';
@@ -21,6 +22,10 @@ const EventQuestionnaire = () => {
       start: '',
       end: ''
     },
+    contactName: '',
+    contactEmail: '',
+    contactPhone: '',
+    eventLocation: '',
     notes: ''
   });
 
@@ -120,10 +125,33 @@ const EventQuestionnaire = () => {
       type: 'time'
     },
     {
+      id: 'contactName',
+      title: 'What is your name?',
+      type: 'name'
+    },
+    {
+      id: 'contactEmail',
+      title: 'What is your email address?',
+      type: 'email'
+    },
+    {
+      id: 'contactPhone',
+      title: 'What is the best phone number to reach you at?',
+      type: 'phone'
+    },
+    {
+      id: 'eventLocation',
+      title: 'Where will your event take place?',
+      type: 'location'
+    },
+    {
       id: 'notes',
       title: 'Any additional details we should know?',
       type: 'textarea'
-    }
+    },
+   
+
+  
   ];
 
   const handleInputChange = (
@@ -259,39 +287,42 @@ const EventQuestionnaire = () => {
                 </div>
               </div>
             );
-          // case 'time':
-          //   return (
-          //     <div className={styles.timeContainer}>
-          //       <div className={styles.timeRow}>
-          //         <label className={styles.timeLabel}>Start:</label>
-          //         <input
-          //           type="time"
-          //           className={styles.input}
-          //           value={formData.eventTime.start}
-          //           onChange={(e) => 
-          //             handleInputChange('eventTime', {
-          //               ...formData.eventTime,
-          //               start: e.target.value
-          //             })
-          //           }
-          //         />
-          //       </div>
-          //       <div className={styles.timeRow}>
-          //         <label className={styles.timeLabel}>End:</label>
-          //         <input
-          //           type="time"
-          //           className={styles.input}
-          //           value={formData.eventTime.end}
-          //           onChange={(e) => 
-          //             handleInputChange('eventTime', {
-          //               ...formData.eventTime,
-          //               end: e.target.value
-          //             })
-          //           }
-          //         />
-          //       </div>
-          //     </div>
-          //   );
+      case 'name':
+        return (
+          <input
+            type="text"
+            className={styles.input}
+            value={formData[question.id] as string}
+            onChange={(e) => handleInputChange(question.id, e.target.value)}
+          />
+         
+        );
+      case 'email':
+        return (
+          <input
+            type="email"
+            className={styles.input}
+            value={formData[question.id] as string}
+            onChange={(e) => handleInputChange(question.id, e.target.value)}
+          />
+        );
+      case 'phone':
+        return (
+          <input
+            type="tel"
+            className={styles.input}
+            value={formData[question.id] as string}
+            onChange={(e) => handleInputChange(question.id, e.target.value)}
+          />
+        );
+      case 'location':
+        return(
+         
+          <AddressInput
+          
+          onAddressChange={(address) => handleInputChange(question.id, address)}
+        />
+        );
       case 'textarea':
         return (
           <textarea
