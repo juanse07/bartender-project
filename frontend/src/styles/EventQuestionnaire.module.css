@@ -50,8 +50,23 @@
   
   .optionsContainer {
     display: flex;
-    flex-direction: column;
-    gap: 1rem;
+    justify-content: center;
+  }
+  
+  .optionsWrapper {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+  }
+  
+  .optionItem {
+    flex: 1 1 45%; /* Adjust the percentage as needed */
+  }
+  
+  @media (max-width: 600px) {
+    .optionItem {
+      flex: 1 1 100%;
+    }
   }
   
   .optionButton {
