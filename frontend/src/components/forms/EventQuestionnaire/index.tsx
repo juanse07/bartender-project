@@ -183,40 +183,42 @@ const EventQuestionnaire = () => {
       case 'select':
         return (
           <>
-          <div className={styles.optionsContainer}  >
-            {question.options?.map((option: string) => (
-              <div key={option}>
-                <button
-                  onClick={() => handleInputChange(question.id, option)}
-                  className={
-                    formData[question.id] === option
-                      ? styles.optionButtonSelected
-                      : styles.optionButton
-                  }
-                >
-                  {option}
-                </button>
-                {option === 'Other' && formData[question.id] === 'Other' && (
-                  <div className={styles.inputContainer}>
-                    <input
-                      type="text"
-                      placeholder={
-                        question.id === 'eventType' 
-                          ? "Please specify your event type" 
-                          : "Please specify number of guests"
-                      }
-                      className={styles.otherInput}
-                      value={formData[`${question.id}Other`] as string}
-                      onChange={(e) => handleInputChange(`${question.id}Other` as keyof FormData, e.target.value)}
-                      style={{
-                        backgroundColor: '#000000',
-                        color: 'rgba(253, 224, 71, 0.9)'
-                      }}
-                    />
-                  </div>
-                )}
-              </div>
-            ))}
+          <div className={styles.optionsContainer}>
+            <div className={styles.optionsWrapper}>
+              {question.options?.map((option: string) => (
+                <div key={option} className={styles.optionItem}>
+                  <button
+                    onClick={() => handleInputChange(question.id, option)}
+                    className={
+                      formData[question.id] === option
+                        ? styles.optionButtonSelected
+                        : styles.optionButton
+                    }
+                  >
+                    {option}
+                  </button>
+                  {option === 'Other' && formData[question.id] === 'Other' && (
+                    <div className={styles.inputContainer}>
+                      <input
+                        type="text"
+                        placeholder={
+                          question.id === 'eventType' 
+                            ? "Please specify your event type" 
+                            : "Please specify number of guests"
+                        }
+                        className={styles.otherInput}
+                        value={formData[`${question.id}Other`] as string}
+                        onChange={(e) => handleInputChange(`${question.id}Other` as keyof FormData, e.target.value)}
+                        style={{
+                          backgroundColor: '#000000',
+                          color: 'rgba(253, 224, 71, 0.9)'
+                        }}
+                      />
+                    </div>
+                  )}
+                </div>
+              ))}
+            </div>
           </div>
           </>
         );
