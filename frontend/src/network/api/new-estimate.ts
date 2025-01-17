@@ -1,5 +1,5 @@
 import { NewEstimate } from "@/models/newEstimate";
-import axios from "@/network/axiosInstance";
+import api from "@/network/axiosInstance";
 import { AxiosError } from "axios";
 interface CreateNewEstimateValues{
     
@@ -7,8 +7,9 @@ interface CreateNewEstimateValues{
     eventTypeOther?: string;
     guestCount: string;
     guestCountOther?: string;
-    eventDate: string;
-    eventTime: Date;
+    eventDate: Date;
+    eventDateOther?: string;
+    eventTime: string;
     contactName: string;
     contactEmail: string;
     contactPhone: string;
@@ -22,7 +23,7 @@ interface CreateNewEstimateValues{
 export async function createNewEstimate(input: CreateNewEstimateValues) {
 
     try {
-        const response = await axios.post<NewEstimate>('/new-estimates', input);
+        const response = await api.post<NewEstimate>('/new-estimates', input);
         return response.data;
     } catch (error) {
         if (error instanceof AxiosError) {
@@ -33,7 +34,3 @@ export async function createNewEstimate(input: CreateNewEstimateValues) {
     }
 }
 
-export const createEventQuestionnaire = async (data: any) => {
-  const response = await axios.post('/api/event-questionnaire', data);
-  return response.data;
-};

@@ -38,7 +38,7 @@ export const createBarServiceQuotation: RequestHandler = async (req, res, next) 
     
     res.status(201).json(newBarServiceQuotation);
     console.log('About to emit socket event for quotation:', newBarServiceQuotation._id);
-    io.emit("newBarServiceQuotation", newBarServiceQuotation);
+    // io.emit("newBarServiceQuotation", newBarServiceQuotation);
     console.log('Socket event emitted successfully');
   } catch (error) {
     console.error("Error creating quotation:", error);
@@ -47,10 +47,20 @@ export const createBarServiceQuotation: RequestHandler = async (req, res, next) 
 };
 
 export const createNewEstimate: RequestHandler = async (req, res, next) => {
+  try {
 const estimateData = req.body;
 console.log("Estimate data before creation:", estimateData);
 const newEstimate = await NewEstimateModel.create(estimateData);
 console.log("Created estimate:", newEstimate);
+
+res.status(201).json(newEstimate);
+console.log('About to emit socket event for estimate:', newEstimate._id);
+io.emit("newEstimate", newEstimate);
+console.log('Socket event emitted successfully');
+}catch (error) {
+console.error("Error creating estimate:", error);
+next(error);
+}
 };
 
 export const updateBarServiceQuotation: RequestHandler = async (req, res, next) => {

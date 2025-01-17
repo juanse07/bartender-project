@@ -4,8 +4,9 @@ export interface NewEstimate {
     eventTypeOther: string;
     guestCount: string;
     guestCountOther: string;
-    eventDate: string;
-    eventTime: Date;
+    eventDate: Date;
+    eventDateOther: string;
+    eventTime: string;
     contactName: string;
     contactEmail: string;
     contactPhone: string;

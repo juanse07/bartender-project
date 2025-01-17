@@ -2,6 +2,7 @@ import AddressInput from '@/components/AddressInput';
 import { ArrowLeft, ArrowRight } from 'lucide-react';
 import { useRouter } from 'next/router';
 import { useEffect, useRef, useState } from 'react';
+import * as newEstimateApi from '../../../network/api/new-estimate';
 import styles from '../../../styles/EventQuestionnaire.module.css';
 import CustomGoldDatePicker from '../../DatePickerComponent';
 import TimePicker from '../../timepicker';
@@ -41,18 +42,38 @@ const EventQuestionnaire = () => {
     }
   };
 
-  const validateTime = (time: string) => {
-    const [hours, minutes] = time.split(':').map(Number);
-    if (minutes % 30 !== 0) {
-      const roundedMinutes = Math.round(minutes / 30) * 30;
-      return `${hours.toString().padStart(2, '0')}:${roundedMinutes.toString().padStart(2, '0')}`;
+  
+  const handleSubmit = async (event: React.FormEvent) => {
+    event.preventDefault();
+    if (currentSlide !== questions.length - 1) {
+      return;
     }
-    return time;
-  };
+    try {
+      const formDataToSend = {
+        eventType: formData.eventType === 'Other' ? formData.eventTypeOther : formData.eventType,
+        guestCount: formData.guestCount === 'Other' ? formData.guestCountOther : formData.guestCount,
+        eventDate: new Date(formData.eventDate),
+        eventTime: `${formData.eventTime.start}-${formData.eventTime.end}`,
+        contactName: formData.contactName,
+        contactEmail: formData.contactEmail,
+        contactPhone: formData.contactPhone,
+        eventLocation: formData.eventLocation,
+        notes: formData.notes
 
-  const handleSubmit = async () => {
-    console.log('Form submitted:', formData);
-    await router.push('/estimate-event', undefined, { shallow: true });
+      };
+
+      await newEstimateApi.createNewEstimate(formDataToSend);
+      console.log("API call successful");
+             alert("Quotation successfully created!");
+         router.push("/BarService/thankyou");
+    } catch (error) {
+      console.error("Error during API call:", error);
+                 const errorMessage = error instanceof Error ? error.message : "Unknown error";
+                   alert("Error creating quotation: " + errorMessage);
+      
+    }
+    // console.log('Form submitted:', formData);
+    // await router.push('/estimate-event', undefined, { shallow: true });
   };
 
   useEffect(() => {
@@ -184,6 +205,7 @@ const EventQuestionnaire = () => {
     switch (question.type) {
       case 'select':
         return (
+        
           <>
           <div className={styles.optionsContainer}>
             <div className={styles.optionsWrapper}>
@@ -223,10 +245,12 @@ const EventQuestionnaire = () => {
             </div>
           </div>
           </>
+         
         );
 
         case 'date':
           return (
+           
             <div className={styles.dateContainer}>
             <div className={styles.datePickerWrapper}>
               {isMobile ? (
@@ -289,11 +313,13 @@ const EventQuestionnaire = () => {
               </div>
             </div>
           </div>
+      
           );
          
           
           case 'time':
             return (
+            
               <div className={styles.timeContainer}>
               <div className={styles.timeRow}>
                 <label className={styles.timeLabel}>Start:</label>
@@ -320,86 +346,61 @@ const EventQuestionnaire = () => {
                 />
               </div>
             </div>        
-              // <div className={styles.timeContainer}>
-              //   <div className={styles.timeRow}>
-              //     <label className={styles.timeLabel}>Start:</label>
-              //     <input
-              //       type="time"
-              //       className={styles.input}
-              //       value={formData.eventTime.start}
-              //       onChange={(e) => {
-              //         const validTime = validateTime(e.target.value);
-              //         handleInputChange('eventTime', {
-              //           ...formData.eventTime,
-              //           start: validTime
-              //         });
-              //       }}
-              //       step="1800" // 30 minutes in seconds
-              //     />
-              //   </div>
-              //   <div className={styles.timeRow}>
-              //     <label className={styles.timeLabel}>End:</label>
-              //     <input
-              //       type="time"
-              //       className={styles.input}
-              //       value={formData.eventTime.end}
-              //       onChange={(e) => {
-              //         const validTime = validateTime(e.target.value);
-              //         handleInputChange('eventTime', {
-              //           ...formData.eventTime,
-              //           end: validTime
-              //         });
-              //       }}
-              //       min={formData.eventTime.start}
-              //       step="1800"
-              //     />
-              //   </div>
-              // </div>
+        
+              
             );
       case 'name':
         return (
+       
           <input
             type="text"
             className={styles.input}
             value={formData[question.id] as string}
             onChange={(e) => handleInputChange(question.id, e.target.value)}
           />
-         
+      
         );
       case 'email':
         return (
+        
           <input
             type="email"
             className={styles.input}
             value={formData[question.id] as string}
             onChange={(e) => handleInputChange(question.id, e.target.value)}
           />
+        
         );
       case 'phone':
         return (
+         
           <input
             type="tel"
             className={styles.input}
             value={formData[question.id] as string}
             onChange={(e) => handleInputChange(question.id, e.target.value)}
           />
+        
         );
       case 'location':
         return(
-         
+        
           <AddressInput
           
           onAddressChange={(address) => handleInputChange(question.id, address)}
         />
+      
         );
       case 'textarea':
         return (
+         
           <textarea
             className={styles.textarea}
             value={formData[question.id] as string}
             onChange={(e) => handleInputChange(question.id, e.target.value)}
             placeholder="Share any specific requirements or preferences..."
           />
+         
         );
     }
   };
@@ -407,6 +408,7 @@ const EventQuestionnaire = () => {
   return (
     <div className={styles.container} >
       <div className={styles.wrapper} ref={wrapperRef} >
+        <form onSubmit={handleSubmit} >
         <div className={styles.progressContainer}>
           <div className={styles.progressBar}>
             <div
@@ -426,13 +428,10 @@ const EventQuestionnaire = () => {
           {renderQuestion(questions[currentSlide])}
         </div>
 
-        <div className={styles.buttonsContainer}>
+        <div className={styles.buttonContainer}>
           <button
+            type="button"
             onClick={handlePrevious}
-              // setCurrentSlide(prev => Math.max(0, prev - 1));
-              // window.scroll(0, 0);
-              
-            
             disabled={currentSlide === 0}
             className={styles.buttonPrev}
           >
@@ -440,23 +439,25 @@ const EventQuestionnaire = () => {
             Previous
           </button>
 
-          <button
-            onClick={() => {
-              if (currentSlide === questions.length - 1) {
-                handleSubmit();
-              } else {
-                handleNext();
-             
-              }
-            }}
-            className={styles.buttonNext}
-          >
-            {currentSlide === questions.length - 1 ? 'Submit' : 'Next'}
-            {currentSlide !== questions.length - 1 && (
+          {currentSlide === questions.length - 1 ? (
+            <button
+              type="submit"
+              className={styles.buttonNext}
+            >
+              Submit
+            </button>
+          ) : (
+            <button
+              type="button"
+              onClick={handleNext}
+              className={styles.buttonNext}
+            >
+              Next
               <ArrowRight className="w-4 h-4 ml-2" />
-            )}
-          </button>
+            </button>
+          )}
         </div>
+        </form>
       </div>
     </div>
   );
