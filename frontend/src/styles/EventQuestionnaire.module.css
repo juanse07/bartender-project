@@ -65,7 +65,8 @@
   
   @media (max-width: 600px) {
     .optionItem {
-      flex: 1 1 100%;
+      flex: 1 1 35%;
+      font-size: smaller;
     }
   }
   
