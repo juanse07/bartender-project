@@ -1,9 +1,9 @@
-import { Schema } from 'mongoose';
+import { InferSchemaType, model, Schema } from 'mongoose';
 
-const NewStimateSchema = new Schema({
+const NewEstimateSchema = new Schema({
     eventType:{
         type:String,
-        required:true,
+      
         trim:true
     },
     eventTypeOther:{
@@ -12,7 +12,7 @@ const NewStimateSchema = new Schema({
     },
     guestCount:{
         type:String,
-        required:true,
+       
         trim:true
     },
     guestCountOther:{
@@ -21,7 +21,11 @@ const NewStimateSchema = new Schema({
     },
     eventDate:{
         type:Date,
-        required:true
+    },
+    otherDate:{
+        type:String,
+        trim:true
+
     },
     eventTime:{
         type:String,
@@ -29,17 +33,17 @@ const NewStimateSchema = new Schema({
     },
     contactName:{
         type:String,
-        required:true,
+       
         trim:true
     },
     contactEmail:{
         type:String,
-        required:true,
+     
         trim:true
     },
     contactPhone:{
         type:String,
-        required:true,
+      
         trim:true
     },
     eventLocation:{
@@ -49,5 +53,15 @@ const NewStimateSchema = new Schema({
     notes:{
         type:String,
         trim:true
+    },
+    state: { // State of the quotation, e.g., pending, accepted, rejected
+        type: String,
+        enum: ['pending', 'answered', 'approved'],
+        default: 'pending',
+        required: true
+      
     }
-})
+},{timestamps: true});
+
+type NewStimate = InferSchemaType<typeof NewEstimateSchema>;
+export default model<NewStimate>('NewEstimate', NewEstimateSchema);

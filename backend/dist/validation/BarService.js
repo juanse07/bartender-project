@@ -1,5 +1,5 @@
+"use strict";
 // import * as yup from 'yup';
-
 // export const barServiceQuotationSchema = yup.object({
 //     clientName: yup.string().required("Client name is required"),
 //     companyName: yup.string().optional(),
