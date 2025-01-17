@@ -372,3 +372,136 @@
     pointer-events: none; /* Ensure icon is not clickable */
   }
 }
+
+.dateContainer {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  width: 100%;
+  max-width: 500px;
+}
+
+.datePickerWrapper {
+  width: 100%;
+}
+
+.seasonSelector {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.seasonLabel {
+  font-size: 0.9rem;
+  color: var(--gold-color);
+  font-weight: 500;
+}
+
+
+
+.seasonButtons {
+  display: flex;
+  gap: 0.5rem;
+  flex-wrap: wrap;
+}
+
+.seasonButton {
+  padding: 0.5rem 1rem;
+  border: 1px solid #D4AF37;
+  background: transparent;
+  color: #D4AF37;
+  border-radius: 20px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  font-size: 0.9rem;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.seasonButton:hover {
+  background-color: rgba(212, 175, 55, 0.1);
+  transform: translateY(-1px);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
+}
+
+.seasonButton.active {
+  background: #D4AF37;
+  color: #1a1a1a;
+  transform: translateY(1px);
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
+}
+
+.seasonButton:active {
+  transform: translateY(1px);
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
+}
+
+@media (max-width: 768px) {
+  .seasonButtons {
+    justify-content: center;
+  }
+  
+  .seasonButton {
+    padding: 0.4rem 0.8rem;
+    font-size: 0.8rem;
+  }
+}
+
+.monthSelector {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.monthLabel {
+  font-size: 0.9rem;
+  color: #D4AF37;
+  font-weight: 500;
+}
+
+.monthButtons {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(100px, 1fr));
+  gap: 0.5rem;
+  width: 100%;
+}
+
+.monthButton {
+  padding: 0.5rem 1rem;
+  border: 1px solid #D4AF37;
+  background: transparent;
+  color: #D4AF37;
+  border-radius: 20px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  font-size: 0.9rem;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.monthButton:hover {
+  background-color: rgba(212, 175, 55, 0.1);
+  transform: translateY(-1px);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
+}
+
+.monthButton.active {
+  background: #D4AF37;
+  color: #1a1a1a;
+  transform: translateY(1px);
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
+}
+
+.monthButton:active {
+  transform: translateY(1px);
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
+}
+
+@media (max-width: 768px) {
+  .monthButtons {
+    grid-template-columns: repeat(auto-fill, minmax(80px, 1fr));
+  }
+  
+  .monthButton {
+    padding: 0.4rem 0.8rem;
+    font-size: 0.8rem;
+  }
+}

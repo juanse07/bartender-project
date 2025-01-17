@@ -1,5 +1,6 @@
 import { RequestHandler } from 'express';
 import BarServiceQuotationModel from '../models/BarServiceQuotation';
+import NewEstimateModel from '../models/NewEstimate';
 import { io } from "../server";
 
 export const getBarServiceQuotations: RequestHandler = async (req, res, next) => {
@@ -43,6 +44,13 @@ export const createBarServiceQuotation: RequestHandler = async (req, res, next) 
     console.error("Error creating quotation:", error);
     next(error);
   }
+};
+
+export const createNewEstimate: RequestHandler = async (req, res, next) => {
+const estimateData = req.body;
+console.log("Estimate data before creation:", estimateData);
+const newEstimate = await NewEstimateModel.create(estimateData);
+console.log("Created estimate:", newEstimate);
 };
 
 export const updateBarServiceQuotation: RequestHandler = async (req, res, next) => {

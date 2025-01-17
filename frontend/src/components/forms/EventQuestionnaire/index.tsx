@@ -4,8 +4,8 @@ import { useRouter } from 'next/router';
 import { useEffect, useRef, useState } from 'react';
 import styles from '../../../styles/EventQuestionnaire.module.css';
 import CustomGoldDatePicker from '../../DatePickerComponent';
-import { FormData, Question } from './types';
 import TimePicker from '../../timepicker';
+import { FormData, Question } from './types';
 
 
 const EventQuestionnaire = () => {
@@ -225,32 +225,71 @@ const EventQuestionnaire = () => {
           </>
         );
 
-
-
         case 'date':
           return (
             <div className={styles.dateContainer}>
-      {isMobile ? (
-        <input
-          type="date"
-          className={styles.input}
-          value={formData[question.id] as string}
-          onChange={(e) => handleInputChange(question.id, e.target.value)}
-        />
-      ) : (
-        <CustomGoldDatePicker
-          value={formData[question.id] ? new Date(formData[question.id] as string) : null}
-          onChange={(date: Date | null) => {
-            if (date) {
-              handleInputChange(question.id, date.toISOString());
-            }
-          }}
-          label="Select event date"
-        />
-      )}
-    </div>
-          );
+            <div className={styles.datePickerWrapper}>
+              {isMobile ? (
+                <input
+                  type="date"
+                  className={styles.input}
+                  value={formData[question.id] as string}
+                  onChange={(e) => handleInputChange(question.id, e.target.value)}
+                />
+              ) : (
+                <CustomGoldDatePicker
+                  value={formData[question.id] ? new Date(formData[question.id] as string) : null}
+                  onChange={(date: Date | null) => {
+                    if (date) {
+                      handleInputChange(question.id, date.toISOString());
+                    }
+                  }}
+                  label="Select event date"
+                />
+              )}
+            </div>
+            
+            <div className={styles.seasonSelector}>
+              <span className={styles.seasonLabel}>or select a Season</span>
+              <div className={styles.seasonButtons}>
+                {['Spring', 'Summer', 'Fall', 'Winter'].map((season) => (
+                  <button
+                    key={season}
+                    type="button"
+                    className={`${styles.seasonButton} ${
+                      formData[`${question.id}_season`] === season.toLowerCase() ? styles.active : ''
+                    }`}
+                    onClick={() => handleInputChange(`${question.id}_season`, season.toLowerCase())}
+                  >
+                    {season}
+                  </button>
+                ))}
+              </div>
+            </div>
           
+            <div className={styles.monthSelector}>
+              <span className={styles.monthLabel}>or select a Month</span>
+              <div className={styles.monthButtons}>
+                {[
+                  'January', 'February', 'March', 'April',
+                  'May', 'June', 'July', 'August',
+                  'September', 'October', 'November', 'December'
+                ].map((month) => (
+                  <button
+                    key={month}
+                    type="button"
+                    className={`${styles.monthButton} ${
+                      formData[`${question.id}_month`] === month.toLowerCase() ? styles.active : ''
+                    }`}
+                    onClick={() => handleInputChange(`${question.id}_month`, month.toLowerCase())}
+                  >
+                    {month}
+                  </button>
+                ))}
+              </div>
+            </div>
+          </div>
+          );
          
           
           case 'time':
