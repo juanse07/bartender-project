@@ -1,8 +1,8 @@
 
 import LastSection from '@/components/LastSection';
 import ServiceSection from '@/components/ServiceSection';
+import styles from '@/styles/facepage.module.css';
 import { useRouter } from 'next/router';
-
 interface Service {
   category: string;
   title: string;
@@ -154,9 +154,16 @@ onClickNavPath: '/',
           transform: 'translateY(-50%)',
         }}
       >
-        <img src="/denverbartendersSign.png" alt="DenverBartenders" style={{ width: '360px', height: '140px' }} />
+       <div className={styles.logoContainer}>
+  <img 
+    src="/denverbartendersSign.png" 
+    alt="DenverBartenders" 
+    className={styles.logo}
+  />
+  <p className={styles.tagline}>Crafting unforgettable cocktail experiences</p>
+</div>
         {/* <h1>DenverBartenders</h1> */}
-        <p>Crafting unforgettable cocktail experiences</p>
+        {/* <p>Crafting unforgettable cocktail experiences</p> */}
 
         {/* Transparent Button */}
         <button
