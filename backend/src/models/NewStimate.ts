@@ -1,0 +1,53 @@
+import { Schema } from 'mongoose';
+
+const NewStimateSchema = new Schema({
+    eventType:{
+        type:String,
+        required:true,
+        trim:true
+    },
+    eventTypeOther:{
+        type:String,
+        trim:true
+    },
+    guestCount:{
+        type:String,
+        required:true,
+        trim:true
+    },
+    guestCountOther:{
+        type:String,
+        trim:true
+    },
+    eventDate:{
+        type:Date,
+        required:true
+    },
+    eventTime:{
+        type:String,
+        required:true
+    },
+    contactName:{
+        type:String,
+        required:true,
+        trim:true
+    },
+    contactEmail:{
+        type:String,
+        required:true,
+        trim:true
+    },
+    contactPhone:{
+        type:String,
+        required:true,
+        trim:true
+    },
+    eventLocation:{
+        type:String,
+        trim:true
+    },
+    notes:{
+        type:String,
+        trim:true
+    }
+})

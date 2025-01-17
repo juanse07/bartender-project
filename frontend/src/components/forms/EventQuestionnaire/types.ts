@@ -18,6 +18,7 @@ export interface EventTime {
     contactPhone: string;
     eventLocation: string;
     notes: string;
+
     [key: string]: string | EventTime; // Add index signature
   }
 
