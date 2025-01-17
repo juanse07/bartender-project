@@ -5,6 +5,7 @@ import { useEffect, useRef, useState } from 'react';
 import styles from '../../../styles/EventQuestionnaire.module.css';
 import CustomGoldDatePicker from '../../DatePickerComponent';
 import { FormData, Question } from './types';
+import TimePicker from '../../timepicker';
 
 
 const EventQuestionnaire = () => {
@@ -91,6 +92,7 @@ const EventQuestionnaire = () => {
         'Community Event',
         'Retirement Party',
         'Private Dinner Party',
+        'Graduation Party',
         'Other'
       ]
     },
@@ -254,40 +256,66 @@ const EventQuestionnaire = () => {
           case 'time':
             return (
               <div className={styles.timeContainer}>
-                <div className={styles.timeRow}>
-                  <label className={styles.timeLabel}>Start:</label>
-                  <input
-                    type="time"
-                    className={styles.input}
-                    value={formData.eventTime.start}
-                    onChange={(e) => {
-                      const validTime = validateTime(e.target.value);
-                      handleInputChange('eventTime', {
-                        ...formData.eventTime,
-                        start: validTime
-                      });
-                    }}
-                    step="1800" // 30 minutes in seconds
-                  />
-                </div>
-                <div className={styles.timeRow}>
-                  <label className={styles.timeLabel}>End:</label>
-                  <input
-                    type="time"
-                    className={styles.input}
-                    value={formData.eventTime.end}
-                    onChange={(e) => {
-                      const validTime = validateTime(e.target.value);
-                      handleInputChange('eventTime', {
-                        ...formData.eventTime,
-                        end: validTime
-                      });
-                    }}
-                    min={formData.eventTime.start}
-                    step="1800"
-                  />
-                </div>
+              <div className={styles.timeRow}>
+                <label className={styles.timeLabel}>Start:</label>
+                <TimePicker
+                  value={formData.eventTime.start}
+                  onChange={(time) => {
+                    handleInputChange('eventTime', {
+                      ...formData.eventTime,
+                      start: time
+                    });
+                  }}
+                />
               </div>
+              <div className={styles.timeRow}>
+                <label className={styles.timeLabel}>End:</label>
+                <TimePicker
+                  value={formData.eventTime.end}
+                  onChange={(time) => {
+                    handleInputChange('eventTime', {
+                      ...formData.eventTime,
+                      end: time
+                    });
+                  }}
+                />
+              </div>
+            </div>        
+              // <div className={styles.timeContainer}>
+              //   <div className={styles.timeRow}>
+              //     <label className={styles.timeLabel}>Start:</label>
+              //     <input
+              //       type="time"
+              //       className={styles.input}
+              //       value={formData.eventTime.start}
+              //       onChange={(e) => {
+              //         const validTime = validateTime(e.target.value);
+              //         handleInputChange('eventTime', {
+              //           ...formData.eventTime,
+              //           start: validTime
+              //         });
+              //       }}
+              //       step="1800" // 30 minutes in seconds
+              //     />
+              //   </div>
+              //   <div className={styles.timeRow}>
+              //     <label className={styles.timeLabel}>End:</label>
+              //     <input
+              //       type="time"
+              //       className={styles.input}
+              //       value={formData.eventTime.end}
+              //       onChange={(e) => {
+              //         const validTime = validateTime(e.target.value);
+              //         handleInputChange('eventTime', {
+              //           ...formData.eventTime,
+              //           end: validTime
+              //         });
+              //       }}
+              //       min={formData.eventTime.start}
+              //       step="1800"
+              //     />
+              //   </div>
+              // </div>
             );
       case 'name':
         return (
