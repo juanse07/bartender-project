@@ -7,7 +7,6 @@ import NavBar from '@/components/NavBar';
 import type { AppProps } from "next/app";
 import { Lato } from "next/font/google";
 import Head from "next/head";
-import { useRouter } from 'next/router';
 import NextNProgress from "nextjs-progressbar";
 import { useEffect } from "react";
 
@@ -21,7 +20,7 @@ const latoFont = Lato({
 });
 
 export default function App({ Component, pageProps }: AppProps) {
-  const router = useRouter();
+  // const router = useRouter();
   
   useEffect(() => {
     window.scrollTo({ top: 0, behavior: 'instant' });

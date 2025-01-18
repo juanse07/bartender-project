@@ -10,7 +10,7 @@ interface Service {
   category: string;
   title: string;
   description: string;
-  price: number;
+  // price: number;
   imageUrl: string;
   imagePosition?: 'left' | 'right';
   backgroundHandler?: string;
@@ -22,7 +22,7 @@ interface Service {
   highLightTitle1?: string;
   highLightTitle2?: string;
   highLightTitle3?: string;
-  highLightTitle4?: string;
+  // highLightTitle4?: string;
   highLightBody1?: string;
   highLightBody2?: string;
   highLightBody3?: string;
@@ -39,7 +39,7 @@ export default function Home() {
       category: "BARTENDING SERVICES",
 title: "Craft Cocktails, Unforgettable Moments!",
 description: "Elevating events with premium mobile bartending across the metro area.",
-price: 0.1,
+// price: 0.1,
 imageUrl: "/bon-vivant-FcS257Cw9es-unsplash.jpg",
 imagePosition: "left" as const,
 backgroundHandler: "#000000",
@@ -62,7 +62,7 @@ onClickNavPath: '/',
       category: "Premium Bartenders",
       title: "Reliable. Professional. Exceptional.",
       description: "Experienced mixologists at your service, ready to elevate your event today.",
-      price: 0.12,
+      // price: 0.12,
       imageUrl: "/alex-voulgaris-6Dx-6MfDTI8-unsplash.jpg",
       imagePosition: "right" as const,
       backgroundHandler: "#D6CFC7",
@@ -85,7 +85,7 @@ onClickNavPath: '/',
       category: "MOBILE BARS",
 title: "Premium Bars, Unforgettable Experiences!",
 description: "Transforming events with stunning mobile bar setups across the metro area.",
-price: 0.1,
+// price: 0.1,
 imageUrl: "/joseph-gonzalez-EOnHT42R1a8-unsplash.jpg",
 imagePosition: "left" as const,
 backgroundHandler: "#000000",
@@ -108,7 +108,7 @@ onClickNavPath: '/',
       category: "Moving",
       title: "Making Your Move Smooth and Simple",
       description: "From packing to unloading, trust us to care for your belongings..",
-      price: 0.12,
+      // price: 0.12,
       imageUrl: "/benjamin-begin-FSDYJNNh2uk-unsplash.jpg",
       imagePosition: "right" as const,
       hightLightsBackgroundColor: "linear-gradient(135deg,rgb(161, 162, 167), #f4f4f4)",
@@ -220,7 +220,7 @@ onClickNavPath: '/',
           category={service.category}
           title={service.title}
           description={service.description}
-          price={service.price}
+          // price={service.price}
           imageUrl={service.imageUrl}
           imagePosition={service.imagePosition}
           backgroundHandler={service.backgroundHandler}
@@ -232,11 +232,11 @@ onClickNavPath: '/',
           highLightBody1={service.highLightBody1}
           highLightBody2={service.highLightBody2}
           highLightBody3={service.highLightBody3}
-          highLightBody4={service.highLightBody4}
+          // highLightBody4={service.highLightBody4}
           highLightTitle1={service.highLightTitle1}
           highLightTitle2={service.highLightTitle2}
           highLightTitle3={service.highLightTitle3}
-          highLightTitle4={service.highLightTitle4}
+          // highLightTitle4={service.highLightTitle4}
           buttonText={service.buttonText}
           onClickNavPath={service.onClickNavPath}
         />
@@ -247,8 +247,8 @@ onClickNavPath: '/',
       </div>
     
       <LastSection
-      title="Thank you for choosing DenverBartenders!"
-      description="We look forward to serving you soon."
+      // title="Thank you for choosing DenverBartenders!"
+      // description="We look forward to serving you soon."
       // title=''
       // description=''
       backgroundImage="/hand2.jpeg"

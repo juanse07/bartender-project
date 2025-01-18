@@ -11,7 +11,7 @@ interface ServiceSectionProps {
   category: string;
   title: string;
   description: string;
-  price: number;
+  // price: number;
   imageUrl: string;
   imagePosition?: 'left' | 'right';
   backgroundHandler?: string;
@@ -23,11 +23,11 @@ interface ServiceSectionProps {
   highLightTitle1?: string;
   highLightTitle2?: string;
   highLightTitle3?: string;
-  highLightTitle4?: string;
+  // highLightTitle4?: string;
   highLightBody1?: string;
   highLightBody2?: string;
   highLightBody3?: string;
-  highLightBody4?: string;
+  // highLightBody4?: string;
   buttonText?: string;
   onClick?: () => void;
   onClickNavPath?: string;
@@ -38,7 +38,7 @@ const ServiceSection: React.FC<ServiceSectionProps> = ({
   category,
   title,
   description,
-  price,
+  // price,
   imageUrl,
   imagePosition = 'right',
   backgroundHandler='#FFFFFF', // Default background color if none provided
@@ -50,13 +50,13 @@ const ServiceSection: React.FC<ServiceSectionProps> = ({
   highLightTitle1 = 'Quality Service',
   highLightTitle2 = 'Affordable Pricing',
   highLightTitle3 = 'Trusted Professionals',
-  highLightTitle4 = 'titulo',
+  // highLightTitle4 = 'titulo',
   highLightBody1 = 'body',
   highLightBody2 = 'body',
   highLightBody3 = 'body',
-  highLightBody4 = 'body',
+  // highLightBody4 = 'body',
   buttonText = 'Book Now',
-  onClick= () => {alert('Book Now!')},
+  // onClick= () => {alert('Book Now!')},
   onClickNavPath= '/BarService/new-quotation',
   
 }) => {
