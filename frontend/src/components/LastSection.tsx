@@ -1,13 +1,13 @@
 import styles from '@/styles/LastSection.module.css';
 interface LastSectionProps {
-    title: string; // Title text
-    description: string; // Description text
+    // title: string; // Title text
+    // description: string; // Description text
     backgroundImage: string; // URL or path for the background image
   }
 
   import React from 'react';
 
-const LastSection: React.FC<LastSectionProps> = ({   title,description,backgroundImage }) => {
+const LastSection: React.FC<LastSectionProps> = ({   backgroundImage }) => {
   return (
     <section
       className={styles.lastSection}
