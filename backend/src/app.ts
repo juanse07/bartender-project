@@ -30,9 +30,10 @@ app.get('/socket.io/', (req, res) => {
 });
 
 // Error handling middleware - should be last
-// app.use((err: any, req: express.Request, res: express.Response, next: express.NextFunction) => {
-//     console.error(err.stack);
-//     res.status(500).send('Something broke!');
-// });
+// eslint-disable-next-line @typescript-eslint/no-explicit-any, @typescript-eslint/no-unused-vars
+app.use((err: any, req: express.Request, res: express.Response, next: express.NextFunction) => {
+    console.error(err.stack);
+    res.status(500).send('Something broke!');
+});
 
 export default app;

@@ -60,7 +60,7 @@ mongoose.connection.once("open", () => {
   console.log("MongoDB connection is open, setting up change streams...");
   // logToFile("MongoDB connection is open, setting up change streams...");
 
-  const barServiceQuotationCollection = mongoose.connection.collection("barservicequotations");
+  const barServiceQuotationCollection = mongoose.connection.collection("newestimates");
 
   // Watch for changes in the collection
   const changeStream = barServiceQuotationCollection.watch();
