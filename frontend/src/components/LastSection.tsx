@@ -1,13 +1,13 @@
 import styles from '@/styles/LastSection.module.css';
 interface LastSectionProps {
-    title: string; // Title text
-    description: string; // Description text
+    // title: string; // Title text
+    // description: string; // Description text
     backgroundImage: string; // URL or path for the background image
   }
 
   import React from 'react';
 
-const LastSection: React.FC<LastSectionProps> = ({ title, description, backgroundImage }) => {
+const LastSection: React.FC<LastSectionProps> = ({   backgroundImage }) => {
   return (
     <section
       className={styles.lastSection}
@@ -29,7 +29,6 @@ const LastSection: React.FC<LastSectionProps> = ({ title, description, backgroun
       <div className={styles.footertext}>
         <p>© 2025 DenverBartenders. All rights reserved.</p>
         <p>Privacy Policy | Terms of Service</p>
-        <p>Designed by DenverBartenders</p>
         <p>Email: booking@denvebartenders.online</p>
       </div>
       </div>
