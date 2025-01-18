@@ -33,4 +33,4 @@ export async function createNewEstimate(input: CreateNewEstimateValues) {
         throw error;
     }
 }
-
+/// Compare this snippet from frontend/src/network/api/BarService.ts:
