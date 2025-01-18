@@ -2,7 +2,10 @@
 import LastSection from '@/components/LastSection';
 import ServiceSection from '@/components/ServiceSection';
 import styles from '@/styles/facepage.module.css';
+import Image from 'next/image';
 import { useRouter } from 'next/router';
+import Sign from "../assets/images/denverbartendersSign.png";
+
 interface Service {
   category: string;
   title: string;
@@ -155,11 +158,24 @@ onClickNavPath: '/',
         }}
       >
        <div className={styles.logoContainer}>
-  <img 
+  {/* <img 
     src="/denverbartendersSign.png" 
     alt="DenverBartenders" 
     className={styles.logo}
-  />
+  /> */}
+  
+  <Image
+      src={Sign}
+      alt="DenverBartenders"
+      width={260} // Original size for larger screens
+      height={80}
+      sizes="(max-width: 768px) 200px, 250px" // Smaller on mobile
+      style={{
+        width: '100%', // Makes the image responsive
+        maxWidth: '500px', // Ensure it doesn’t exceed 250px
+        height: 'auto', // Maintain aspect ratio
+      }}
+    />
   <p className={styles.tagline}>Crafting unforgettable cocktail experiences</p>
 </div>
         {/* <h1>DenverBartenders</h1> */}
