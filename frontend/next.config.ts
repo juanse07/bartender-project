@@ -12,10 +12,10 @@ const nextConfig = {
     quietDeps: true, // Suppress deprecation warnings from dependencies
     additionalData: `@import "custom-theme.scss";`, // Automatically import shared variables/mixins
   },
-  eslint: {
-    // This allows production builds to complete even if there are ESLint errors.
-    ignoreDuringBuilds: true,
-  },
+  // eslint: {
+  //   // This allows production builds to complete even if there are ESLint errors.
+  //   ignoreDuringBuilds: true,
+  // },
 };
 
 module.exports = nextConfig;
