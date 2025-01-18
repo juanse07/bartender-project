@@ -21,7 +21,7 @@ app.use(cors({
 }));
 
 // Routes
-app.use("/bar-service-quotations", BarServicequotationRoutes);
+// app.use("/bar-service-quotations", BarServicequotationRoutes);
 app.use("/new-estimates", BarServicequotationRoutes);
 
 // Add a basic route handler for Socket.IO health check

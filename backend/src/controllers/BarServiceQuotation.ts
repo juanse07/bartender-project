@@ -48,8 +48,12 @@ export const createBarServiceQuotation: RequestHandler = async (req, res, next) 
 
 export const createNewEstimate: RequestHandler = async (req, res, next) => {
   try {
+// Log the incoming request
+console.log("Received POST request to /new-estimates");
+console.log("Headers:", req.headers);
 const estimateData = req.body;
 console.log("Estimate data before creation:", estimateData);
+
 const newEstimate = await NewEstimateModel.create(estimateData);
 console.log("Created estimate:", newEstimate);
 
@@ -59,6 +63,7 @@ io.emit("newEstimate", newEstimate);
 console.log('Socket event emitted successfully');
 }catch (error) {
 console.error("Error creating estimate:", error);
+
 next(error);
 }
 };
