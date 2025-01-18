@@ -8,5 +8,5 @@ router.get("/",BarServiceQuotationController.getBarServiceQuotationsbystate);
 
 router.patch("/:id", BarServiceQuotationController.updateBarServiceQuotation);
 
-router.post("/",BarServiceQuotationController.createNewEstimate);
+router.post("/", BarServiceQuotationController.createNewEstimate);
 export default router;
