@@ -1,37 +1,67 @@
 {
   "polyfillFiles": [
-    "static/chunks/polyfills.js"
+    "static/chunks/polyfills-42372ed130431b0a.js"
   ],
-  "devFiles": [
-    "static/chunks/react-refresh.js"
-  ],
+  "devFiles": [],
   "ampDevFiles": [],
   "lowPriorityFiles": [
-    "static/development/_buildManifest.js",
-    "static/development/_ssgManifest.js"
+    "static/buLVEP3nwQtHwMhPK_H8v/_buildManifest.js",
+    "static/buLVEP3nwQtHwMhPK_H8v/_ssgManifest.js"
   ],
   "rootMainFiles": [],
   "rootMainFilesTree": {},
   "pages": {
+    "/": [
+      "static/chunks/webpack-6224d37324e372cb.js",
+      "static/chunks/framework-b96261d959dd50e7.js",
+      "static/chunks/main-0cbf85444d434ff5.js",
+      "static/chunks/36d2f571-b778ea42c2ba62cf.js",
+      "static/chunks/cb355538-2e19c77b39647397.js",
+      "static/css/4a41b15f9dbfe883.css",
+      "static/chunks/pages/index-3aec63bbc432f9a4.js"
+    ],
+    "/BarService/new-quotation": [
+      "static/chunks/webpack-6224d37324e372cb.js",
+      "static/chunks/framework-b96261d959dd50e7.js",
+      "static/chunks/main-0cbf85444d434ff5.js",
+      "static/chunks/pages/BarService/new-quotation-bc5528263b9eab67.js"
+    ],
     "/BarService/thankyou": [
-      "static/chunks/webpack.js",
-      "static/chunks/main.js",
-      "static/chunks/pages/BarService/thankyou.js"
+      "static/chunks/webpack-6224d37324e372cb.js",
+      "static/chunks/framework-b96261d959dd50e7.js",
+      "static/chunks/main-0cbf85444d434ff5.js",
+      "static/css/b971288e82101818.css",
+      "static/chunks/pages/BarService/thankyou-5ff4bd3dcacfb18c.js"
     ],
     "/_app": [
-      "static/chunks/webpack.js",
-      "static/chunks/main.js",
-      "static/chunks/pages/_app.js"
+      "static/chunks/webpack-6224d37324e372cb.js",
+      "static/chunks/framework-b96261d959dd50e7.js",
+      "static/chunks/main-0cbf85444d434ff5.js",
+      "static/css/ce95d49c39920fdc.css",
+      "static/chunks/pages/_app-427616abae805d3a.js"
     ],
     "/_error": [
-      "static/chunks/webpack.js",
-      "static/chunks/main.js",
-      "static/chunks/pages/_error.js"
+      "static/chunks/webpack-6224d37324e372cb.js",
+      "static/chunks/framework-b96261d959dd50e7.js",
+      "static/chunks/main-0cbf85444d434ff5.js",
+      "static/chunks/pages/_error-fde50cb7f1ab27e0.js"
+    ],
+    "/blog": [
+      "static/chunks/webpack-6224d37324e372cb.js",
+      "static/chunks/framework-b96261d959dd50e7.js",
+      "static/chunks/main-0cbf85444d434ff5.js",
+      "static/chunks/pages/blog-5d7ac079fbbe66b4.js"
     ],
     "/estimate-event": [
-      "static/chunks/webpack.js",
-      "static/chunks/main.js",
-      "static/chunks/pages/estimate-event.js"
+      "static/chunks/webpack-6224d37324e372cb.js",
+      "static/chunks/framework-b96261d959dd50e7.js",
+      "static/chunks/main-0cbf85444d434ff5.js",
+      "static/chunks/7d0bf13e-410c622b6d1bf437.js",
+      "static/chunks/26770aaf-1b8a2e5cded8a387.js",
+      "static/css/f97bf82c1c367e82.css",
+      "static/chunks/70-164c521c1afc33ce.js",
+      "static/css/9e7d5bdf569ff29b.css",
+      "static/chunks/pages/estimate-event-d242c9dba3d1a854.js"
     ]
   },
   "ampFirstPages": []

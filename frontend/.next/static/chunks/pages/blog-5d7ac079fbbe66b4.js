@@ -1,0 +1,1 @@
+(self.webpackChunk_N_E=self.webpackChunk_N_E||[]).push([[892],{2528:(e,_,l)=>{(window.__NEXT_P=window.__NEXT_P||[]).push(["/blog",function(){return l(5847)}])},5847:(e,_,l)=>{"use strict";l.r(_),l.d(_,{default:()=>s});var n=l(4848);let s=()=>(0,n.jsx)("div",{children:"Welcome to the Blog!"})}},e=>{var _=_=>e(e.s=_);e.O(0,[636,593,792],()=>_(2528)),_N_E=e.O()}]);

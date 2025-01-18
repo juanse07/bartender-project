@@ -1,8 +1,11 @@
 {
   "/_app": "pages/_app.js",
-  "/_error": "pages/_error.js",
   "/_document": "pages/_document.js",
+  "/BarService/new-quotation": "pages/BarService/new-quotation.js",
+  "/api/hello": "pages/api/hello.js",
+  "/blog": "pages/blog.js",
   "/estimate-event": "pages/estimate-event.js",
+  "/BarService/thankyou": "pages/BarService/thankyou.js",
   "/": "pages/index.js",
-  "/BarService/thankyou": "pages/BarService/thankyou.js"
+  "/_error": "pages/_error.js"
 }
