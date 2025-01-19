@@ -28,23 +28,23 @@ export const getBarServiceQuotationsbystate: RequestHandler = async (req, res, n
   };
 
 
-export const createBarServiceQuotation: RequestHandler = async (req, res, next) => {
-  try {
-    const quotationData = req.body;
-    console.log("Quotation data before creation:", quotationData);
+// export const createBarServiceQuotation: RequestHandler = async (req, res, next) => {
+//   try {
+//     const quotationData = req.body;
+//     console.log("Quotation data before creation:", quotationData);
     
-    const newBarServiceQuotation = await BarServiceQuotationModel.create(quotationData);
-    console.log("Created quotation:", newBarServiceQuotation);
+//     const newBarServiceQuotation = await BarServiceQuotationModel.create(quotationData);
+//     console.log("Created quotation:", newBarServiceQuotation);
     
-    res.status(201).json(newBarServiceQuotation);
-    console.log('About to emit socket event for quotation:', newBarServiceQuotation._id);
-    // io.emit("newBarServiceQuotation", newBarServiceQuotation);
-    console.log('Socket event emitted successfully');
-  } catch (error) {
-    console.error("Error creating quotation:", error);
-    next(error);
-  }
-};
+//     res.status(201).json(newBarServiceQuotation);
+//     console.log('About to emit socket event for quotation:', newBarServiceQuotation._id);
+//     // io.emit("newBarServiceQuotation", newBarServiceQuotation);
+//     console.log('Socket event emitted successfully');
+//   } catch (error) {
+//     console.error("Error creating quotation:", error);
+//     next(error);
+//   }
+// };
 
 export const createNewEstimate: RequestHandler = async (req, res, next) => {
   try {
