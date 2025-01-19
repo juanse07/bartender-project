@@ -2,7 +2,7 @@
   "/_app": "pages/_app.js",
   "/_error": "pages/_error.js",
   "/_document": "pages/_document.js",
-  "/estimate-event": "pages/estimate-event.js",
+  "/": "pages/index.js",
   "/BarService/thankyou": "pages/BarService/thankyou.js",
-  "/": "pages/index.js"
+  "/estimate-event": "pages/estimate-event.js"
 }

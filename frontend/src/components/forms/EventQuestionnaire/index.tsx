@@ -3,12 +3,12 @@ import LoadingButton from '@/components/LoadingButton';
 import { ArrowLeft, ArrowRight, Wine } from 'lucide-react';
 import { useRouter } from 'next/router';
 import { useEffect, useRef, useState } from 'react';
+import { Button, Form } from 'react-bootstrap';
 import * as newEstimateApi from '../../../network/api/new-estimate';
 import styles from '../../../styles/EventQuestionnaire.module.css';
 import CustomGoldDatePicker from '../../DatePickerComponent';
 import TimePicker from '../../timepicker';
 import { FormData, Question } from './types';
-import { Button, Form } from 'react-bootstrap';
 
 
 const EventQuestionnaire = () => {
@@ -448,7 +448,7 @@ const EventQuestionnaire = () => {
 
           {currentSlide === questions.length - 1 ? (
             <LoadingButton
-                                        className={`${styles.submitButton} w-100`}
+                                        className={styles.buttonNext}
                                         type="submit"
                                         isLoading={isLoading}
                                     >
