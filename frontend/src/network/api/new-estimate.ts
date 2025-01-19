@@ -21,9 +21,10 @@ interface CreateNewEstimateValues{
 }
 
 export async function createNewEstimate(input: CreateNewEstimateValues) {
+    const endpoint = process.env.NODE_ENV=== 'production'? '/api/new-estimates': '/new-estimates';
 
     try {
-        const response = await api.post<NewEstimate>('/new-estimates', input);
+        const response = await api.post<NewEstimate>(endpoint, input);
         return response.data;
     } catch (error) {
         if (error instanceof AxiosError) {
