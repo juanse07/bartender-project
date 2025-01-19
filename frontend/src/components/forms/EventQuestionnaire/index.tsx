@@ -1,5 +1,6 @@
 import AddressInput from '@/components/AddressInput';
-import { ArrowLeft, ArrowRight } from 'lucide-react';
+import LoadingButton from '@/components/LoadingButton';
+import { ArrowLeft, ArrowRight, Wine } from 'lucide-react';
 import { useRouter } from 'next/router';
 import { useEffect, useRef, useState } from 'react';
 import * as newEstimateApi from '../../../network/api/new-estimate';
@@ -7,6 +8,7 @@ import styles from '../../../styles/EventQuestionnaire.module.css';
 import CustomGoldDatePicker from '../../DatePickerComponent';
 import TimePicker from '../../timepicker';
 import { FormData, Question } from './types';
+import { Button, Form } from 'react-bootstrap';
 
 
 const EventQuestionnaire = () => {
@@ -14,6 +16,7 @@ const EventQuestionnaire = () => {
   const [currentSlide, setCurrentSlide] = useState(0);
   const wrapperRef = useRef<HTMLDivElement>(null);
   const[isMobile, setIsMobile] = useState(false);
+  const [isLoading, setIsLoading] = useState(false);
   const [formData, setFormData] = useState<FormData>({
     eventType: '',
     eventTypeOther: '',
@@ -49,6 +52,7 @@ const EventQuestionnaire = () => {
       return;
     }
     try {
+      setIsLoading(true);
       const formDataToSend = {
         eventType: formData.eventType === 'Other' ? formData.eventTypeOther : formData.eventType,
         guestCount: formData.guestCount === 'Other' ? formData.guestCountOther : formData.guestCount,
@@ -71,7 +75,9 @@ const EventQuestionnaire = () => {
                  const errorMessage = error instanceof Error ? error.message : "Unknown error";
                    alert("Error creating quotation: " + errorMessage);
       
-    }
+    }finally {
+      setIsLoading(false); // Reset loading state
+  }
     // console.log('Form submitted:', formData);
     // await router.push('/estimate-event', undefined, { shallow: true });
   };
@@ -149,17 +155,17 @@ const EventQuestionnaire = () => {
     },
     {
       id: 'contactName',
-      title: 'What is your name?',
+      title: 'Please provide a contact name',
       type: 'name'
     },
     {
       id: 'contactEmail',
-      title: 'What is your email address?',
+      title: 'please provide a contact email',
       type: 'email'
     },
     {
       id: 'contactPhone',
-      title: 'What is the best phone number to reach you at?',
+      title: 'and a phone number',
       type: 'phone'
     },
     {
@@ -211,7 +217,7 @@ const EventQuestionnaire = () => {
             <div className={styles.optionsWrapper}>
               {question.options?.map((option: string) => (
                 <div key={option} className={styles.optionItem}>
-                  <button
+                  <Button
                     onClick={() => handleInputChange(question.id, option)}
                     className={
                       formData[question.id] === option
@@ -220,7 +226,7 @@ const EventQuestionnaire = () => {
                     }
                   >
                     {option}
-                  </button>
+                  </Button >
                   {option === 'Other' && formData[question.id] === 'Other' && (
                     <div className={styles.inputContainer}>
                       <input
@@ -235,7 +241,7 @@ const EventQuestionnaire = () => {
                         onChange={(e) => handleInputChange(`${question.id}Other` as keyof FormData, e.target.value)}
                         style={{
                           backgroundColor: '#000000',
-                          color: 'rgba(253, 224, 71, 0.9)'
+                          color: 'rgba(119, 100, 3, 0.9)'
                         }}
                       />
                     </div>
@@ -408,7 +414,7 @@ const EventQuestionnaire = () => {
   return (
     <div className={styles.container} >
       <div className={styles.wrapper} ref={wrapperRef} >
-        <form onSubmit={handleSubmit} >
+        <Form onSubmit={handleSubmit} >
         <div className={styles.progressContainer}>
           <div className={styles.progressBar}>
             <div
@@ -428,8 +434,9 @@ const EventQuestionnaire = () => {
           {renderQuestion(questions[currentSlide])}
         </div>
 
-        <div className={styles.buttonContainer}>
-          <button
+              <div className={styles.buttonContainer}>
+     
+          <Button
             type="button"
             onClick={handlePrevious}
             disabled={currentSlide === 0}
@@ -437,27 +444,30 @@ const EventQuestionnaire = () => {
           >
             <ArrowLeft className="w-4 h-4 mr-2" />
             Previous
-          </button>
+          </Button>
 
           {currentSlide === questions.length - 1 ? (
-            <button
-              type="submit"
-              className={styles.buttonNext}
-            >
-              Submit
-            </button>
+            <LoadingButton
+                                        className={`${styles.submitButton} w-100`}
+                                        type="submit"
+                                        isLoading={isLoading}
+                                    >
+                                        {isLoading ? "Submitting..." : "Request an Estimate"}
+                                        {!isLoading && <Wine size={24} className="ms-2" />}
+                                    </LoadingButton>
           ) : (
-            <button
+            <Button
               type="button"
               onClick={handleNext}
               className={styles.buttonNext}
             >
               Next
               <ArrowRight className="w-4 h-4 ml-2" />
-            </button>
+            </Button>
           )}
         </div>
-        </form>
+     
+        </Form>
       </div>
     </div>
   );

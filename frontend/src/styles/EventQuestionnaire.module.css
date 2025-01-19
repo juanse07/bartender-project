@@ -32,7 +32,8 @@
   
   .progressFill {
     height: 0.25rem;
-    background-color: #eab308; /* yellow-500 equivalent */
+    /* background-color: #eab308; yellow-500 equivalent */
+    background-color: #b18605; 
     border-radius: 9999px;
     transition: all 500ms;
   }
@@ -45,7 +46,8 @@
     font-size: 1.875rem;
     line-height: 2.25rem;
     font-weight: 300;
-    color: #eab308; /* yellow-500 */
+    color: rgba(175, 149, 23, 0.9);
+    /* color: #eab308; yellow-500 */
   }
   
   .optionsContainer {
@@ -76,9 +78,11 @@
     text-align: left;
     background-color: #000000;
     border-radius: 0.5rem;
-    border: 1px solid rgba(120, 53, 15, 0.3);
+    border: 1px solid rgba(189, 72, 13, 0.3);
+    /* border: 1px solid rgba(120, 53, 15, 0.3); */
     transition: all 150ms;
-    color: rgba(253, 224, 71, 0.9);
+    color: rgba(175, 149, 23, 0.9);
+    /* color: rgba(253, 224, 71, 0.9); */
   }
   
   .optionButtonSelected {
@@ -108,7 +112,7 @@
   width: 100%;
   padding: 1rem;
   border-radius: 0.5rem;
-  border: 1px solid rgba(124, 110, 2, 0.3);
+  border: 1px solid rgba(189, 72, 13, 0.3);
   color: rgba(253, 224, 71, 0.9);
   background: #000000 !important;
   -webkit-appearance: none;
@@ -167,46 +171,54 @@
 }
   
   
-.buttonsContainer {
-  margin-top: auto;
-  padding: 1rem;
-  background-color: black;
+.buttonContainer {
   display: flex;
   justify-content: space-between;
+  align-items: center;
   gap: 1rem;
+  margin-top: 2rem;
+  padding: 1rem;
+  background-color: black;
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
   z-index: 10;
 }
-  .buttonPrev {
-    display: flex;
-    align-items: center;
-    background-color: #2a2a2a;
-    padding: 0.75rem 1.5rem;
-    border-radius: 0.5rem;
-    border: 1px solid rgba(121, 109, 1, 0.3);
-    color: rgba(253, 224, 71, 0.9);
-  }
-  
-  .buttonPrev:disabled {
-    opacity: 0.5;
-  }
-  
-  .buttonPrev:not(:disabled):hover {
-    border-color: rgba(234, 179, 8, 0.5);
-  }
-  
-  .buttonNext {
-    display: flex;
-    align-items: center;
-    padding: 0.75rem 1.5rem;
-    border-radius: 0.5rem;
-    background-color: #eab308;
-    color: black;
-    transition: background-color 150ms;
-  }
-  
-  .buttonNext:hover {
-    background-color: #facc15;
-  }
+
+.buttonPrev {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #2a2a2a;
+  padding: 0.75rem 1.5rem;
+  border-radius: 0.5rem;
+  border: 1px solid rgba(121, 109, 1, 0.3);
+  color: rgba(253, 224, 71, 0.9);
+}
+
+.buttonPrev:disabled {
+  opacity: 0.5;
+}
+
+.buttonPrev:not(:disabled):hover {
+  border-color: rgba(234, 179, 8, 0.5);
+}
+
+.buttonNext {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0.75rem 1.5rem;
+  border-radius: 0.5rem;
+  background-color: #eab308;
+  color: black;
+  transition: background-color 150ms;
+}
+
+.buttonNext:hover {
+  background-color: #facc15;
+}
   
   .timeInputContainer {
     display: flex;
