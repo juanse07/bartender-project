@@ -22,7 +22,7 @@ app.use(cors({
 
 // Routes
 
-app.use("/new-estimates", BarServicequotationRoutes);
+app.use("/new-estimate", BarServicequotationRoutes);
 
 // app.use("/bar-service-quotations", BarServicequotationRoutes);
 

@@ -49,7 +49,7 @@ export const getBarServiceQuotationsbystate: RequestHandler = async (req, res, n
 export const createNewEstimate: RequestHandler = async (req, res, next) => {
   try {
 // Log the incoming request
-console.log("Received POST request to /new-estimates");
+console.log("Received POST request to /new-estimate");
 console.log("Headers:", req.headers);
 const estimateData = req.body;
 console.log("Estimate data before creation:", estimateData);
