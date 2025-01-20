@@ -84,7 +84,7 @@ next(error);
 }
 };
 
-export const updateBarServiceQuotation: RequestHandler = async (req, res, next) => {
+export const updateNewEstimate: RequestHandler = async (req, res, next) => {
   try {
     const quotationId = req.params.id;
     const { state } = req.body;
@@ -96,7 +96,7 @@ export const updateBarServiceQuotation: RequestHandler = async (req, res, next) 
       return;
     }
 
-    const updatedQuotation = await BarServiceQuotationModel.findByIdAndUpdate(
+    const updatedQuotation = await NewEstimateModel.findByIdAndUpdate(
       quotationId,
       { state },
       { new: true }
@@ -120,3 +120,40 @@ export const updateBarServiceQuotation: RequestHandler = async (req, res, next) 
     });
   }
 };
+
+// export const updateBarServiceQuotation: RequestHandler = async (req, res, next) => {
+//   try {
+//     const quotationId = req.params.id;
+//     const { state } = req.body;
+
+//     if (!["pending", "answered", "approved"].includes(state)) {
+//       res.status(400).json({
+//         error: "Invalid state value. Must be 'pending', 'answered', or 'approved'"
+//       });
+//       return;
+//     }
+
+//     const updatedQuotation = await BarServiceQuotationModel.findByIdAndUpdate(
+//       quotationId,
+//       { state },
+//       { new: true }
+//     );
+
+//     if (!updatedQuotation) {
+//       res.status(404).json({ error: "Quotation not found" });
+//       return;
+//     }
+
+//     // Emit socket event for the update
+//     io.emit('quotationUpdated', updatedQuotation);
+    
+//     res.json(updatedQuotation);
+//   } catch (error) {
+//     next(error);
+//     console.error("Error updating quotation:", error);
+//     res.status(500).json({
+//       error: "Failed to update quotation",
+//       details: error instanceof Error ? error.message : "Unknown error"
+//     });
+//   }
+// };
