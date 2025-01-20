@@ -24,6 +24,7 @@
 }
 /* Logo container */
 .logo-container {
+    margin-left: 1rem; /* Adds some spacing to the left of the logo */
     display: flex;
     justify-content: center; /* Centers the logo horizontally */
     align-items: center; /* Centers the logo vertically */

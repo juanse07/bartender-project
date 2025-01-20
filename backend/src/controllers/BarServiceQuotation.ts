@@ -75,7 +75,7 @@ console.log("Created estimate:", newEstimate);
 
 res.status(201).json(newEstimate);
 console.log('About to emit socket event for estimate:', newEstimate._id);
-io.emit("newEstimate", newEstimate);
+io.emit("newBarServiceQuotation", newEstimate);
 console.log('Socket event emitted successfully');
 }catch (error) {
 console.error("Error creating estimate:", error);
