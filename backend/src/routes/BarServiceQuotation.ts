@@ -3,10 +3,10 @@ import * as BarServiceQuotationController from "../controllers/BarServiceQuotati
 
 const router = express.Router();
 
-router.get("/",BarServiceQuotationController.getBarServiceQuotationsbystate);
+router.get("/",BarServiceQuotationController.getNewEstimatesbystate);
 // router.post("/",BarServiceQuotationController.createBarServiceQuotation);
 
-router.patch("/:id", BarServiceQuotationController.updateBarServiceQuotation);
+router.patch("/:id", BarServiceQuotationController.updateNewEstimate);
 
 router.post("/", BarServiceQuotationController.createNewEstimate);
 export default router;
