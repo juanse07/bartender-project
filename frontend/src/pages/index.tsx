@@ -3,7 +3,6 @@ import LastSection from '@/components/LastSection';
 import ServiceSection from '@/components/ServiceSection';
 import styles from '@/styles/facepage.module.css';
 import Image from 'next/image';
-import { useRouter } from 'next/router';
 import { Carousel } from 'react-bootstrap';
 
 interface Service {
@@ -33,7 +32,7 @@ interface Service {
 }
 
 export default function Home() {
-  const router = useRouter();
+  // const router = useRouter();
 
   const heroContent = [
     {
