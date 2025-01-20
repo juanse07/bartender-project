@@ -68,7 +68,7 @@ const EventQuestionnaire = () => {
 
       await newEstimateApi.createNewEstimate(formDataToSend);
       console.log("API call successful");
-             alert("Quotation successfully created!");
+            //  alert("Quotation successfully created!");
          router.push("/BarService/thankyou");
     } catch (error) {
       console.error("Error during API call:", error);
