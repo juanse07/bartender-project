@@ -52,7 +52,7 @@ export default function Home() {
     },
     {
       type: 'image',
-      src: '/blanco.png',
+      src: '/bartable.png',
       heading: 'Special Events',
       subheading: 'Memorable Experiences'
     }
@@ -72,7 +72,7 @@ export default function Home() {
     },
     {
       type: 'image',
-      src: '/neutralbeige.png',
+      src: '/olives.png',
       heading: 'Special Events',
       subheading: 'Memorable Experiences'
     }

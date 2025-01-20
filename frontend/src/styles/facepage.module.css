@@ -69,7 +69,7 @@
   .carouselCaption {
     
     position: absolute;
-    top: 72%;
+    top: 65%;
     left: 50%;
     transform: translate(-50%, -50%);
     text-align: center;
@@ -100,12 +100,12 @@
   @media (max-width: 768px) {
     .carouselCaption {
       top: 65%;
-      width: 90%;
+      width: 80%;
       padding: 1rem;
     }
   
     .carouselCaption h1 {
-      font-size: 2.75rem;
+      font-size: 2.4rem;
     }
   
     .carouselCaption p {
