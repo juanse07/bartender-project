@@ -12,20 +12,36 @@ export const getBarServiceQuotations: RequestHandler = async (req, res, next) =>
   }
 };
 
-export const getBarServiceQuotationsbystate: RequestHandler = async (req, res, next) => {
-    try {
-      const { state } = req.query; // Extract the `state` query parameter
+// export const getBarServiceQuotationsbystate: RequestHandler = async (req, res, next) => {
+//     try {
+//       const { state } = req.query; // Extract the `state` query parameter
   
-      // Build the filter based on the `state` parameter
-      const filter = state ? { state } : {};
+//       // Build the filter based on the `state` parameter
+//       const filter = state ? { state } : {};
   
-      const barServiceQuotations = await BarServiceQuotationModel.find(filter).exec();
+//       const barServiceQuotations = await BarServiceQuotationModel.find(filter).exec();
   
-      res.status(200).json(barServiceQuotations);
-    } catch (error) {
-      next(error);
-    }
-  };
+//       res.status(200).json(barServiceQuotations);
+//     } catch (error) {
+//       next(error);
+//     }
+//   };
+
+export const getNewEstimatesbystate: RequestHandler = async (req, res, next) => {
+  try {
+    const { state } = req.query; // Extract the `state` query parameter
+
+    // Build the filter based on the `state` parameter
+    const filter = state ? { state } : {};
+
+    const barServiceQuotations = await NewEstimateModel.find(filter).exec();
+
+    res.status(200).json(barServiceQuotations);
+  } catch (error) {
+    next(error);
+  }
+};
+
 
 
 // export const createBarServiceQuotation: RequestHandler = async (req, res, next) => {
