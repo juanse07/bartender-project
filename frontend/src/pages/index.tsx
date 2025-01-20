@@ -46,16 +46,18 @@ export default function Home() {
     },
     {
       type: 'image',
-      src: '/tools.png',
-      heading: 'Premium Service',
-      subheading: 'Professional Bartenders'
+      src: '/bartools6.jpg',
+      heading: 'Mobile Bars',
+      subheading: 'Incredible Bar Setups'
+
     },
     {
       type: 'image',
-      src: '/bartable.png',
+      src: '/glasschampaigne.jpg',
       heading: 'Special Events',
       subheading: 'Memorable Experiences'
-    }
+    },
+   
   ];
   const mobileContent = [
     {
@@ -66,13 +68,13 @@ export default function Home() {
     },
     {
       type: 'image',
-      src: '/bartoolssmaller.png',
+      src: '/bartools2.png',
       heading: 'Premium Service',
       subheading: 'Professional Bartenders'
     },
     {
       type: 'image',
-      src: '/bartools2.png',
+      src: '/champagneBottle.jpg',
       heading: 'Special Events',
       subheading: 'Memorable Experiences'
     }
