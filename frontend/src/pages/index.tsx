@@ -205,7 +205,7 @@ onClickNavPath: '/',
                 src={content.src}
                 alt={content.heading}
                 layout="fill"
-                objectFit="contain"
+                objectFit="cover"
                 priority={index === 0}
               />
             </div>
