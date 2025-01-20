@@ -4,7 +4,7 @@ import ServiceSection from '@/components/ServiceSection';
 import styles from '@/styles/facepage.module.css';
 import Image from 'next/image';
 import { useRouter } from 'next/router';
-import Sign from "../assets/images/denverbartendersSign.png";
+import { Carousel } from 'react-bootstrap';
 
 interface Service {
   category: string;
@@ -34,6 +34,27 @@ interface Service {
 
 export default function Home() {
   const router = useRouter();
+
+  const heroContent = [
+    {
+      type: 'video',
+      src: '/barfilmnoir.mp4',
+      heading: 'Craft Cocktails',
+      subheading: 'Unforgettable Moments'
+    },
+    {
+      type: 'image',
+      src: '/2025.png',
+      heading: 'Premium Service',
+      subheading: 'Professional Bartenders'
+    },
+    {
+      type: 'image',
+      src: '/luces.png',
+      heading: 'Special Events',
+      subheading: 'Memorable Experiences'
+    }
+  ];
   const services: Service[] = [
     {
       category: "BARTENDING SERVICES",
@@ -128,93 +149,43 @@ onClickNavPath: '/',
     // ... other services
   ];
   return (
-    <div className="relative h-screen w-full flex justify-center items-center"> {/* Centers VideoContainer */}
-   <div style={{ position: 'relative', height: '100vh', overflow: 'hidden' }}>
-      {/* Video Background */}
-      <video
-        autoPlay
-        loop
-        muted
-        playsInline
-        style={{
-          position: 'absolute',
-          width: '100%',
-          height: '100%',
-          objectFit: 'cover',
-        }}
-      >
-        <source src="/barfilmnoir.mp4"  type="video/mp4" />
-      </video>
 
-      {/* Content Overlay */}
-      <div
-        style={{
-          position: 'relative',
-          zIndex: 1,
-          color: 'white',
-          textAlign: 'center',
-          top: '50%',
-          transform: 'translateY(-50%)',
-        }}
-      >
-       <div className={styles.logoContainer}>
-  {/* <img 
-    src="/denverbartendersSign.png" 
-    alt="DenverBartenders" 
-    className={styles.logo}
-  /> */}
-  
-  <Image
-      src={Sign}
-      alt="DenverBartenders"
-      width={260} // Original size for larger screens
-      height={80}
-      sizes="(max-width: 768px) 200px, 250px" // Smaller on mobile
-      style={{
-        width: '100%', // Makes the image responsive
-        maxWidth: '500px', // Ensure it doesn’t exceed 250px
-        height: 'auto', // Maintain aspect ratio
-      }}
-    />
-  <p className={styles.tagline}>Crafting unforgettable cocktail experiences</p>
-</div>
-        {/* <h1>DenverBartenders</h1> */}
-        {/* <p>Crafting unforgettable cocktail experiences</p> */}
-
-        {/* Transparent Button */}
-        <button
-          style={{
-            // backgroundColor: 'rgba(255, 255, 255, 0.2)', // Semi-transparent white
-            backgroundColor: 'rgba(231, 208, 7, 0.2)',
-            border: '1px solid #e0c097',
-            borderRadius: '5px',
-            padding: '10px 20px',
-            color: '#e0c097',
-            fontSize: '16px',
-            cursor: 'pointer',
-            transition: 'all 0.3s ease',
-          }}
-          onMouseOver={(e) => {
-            // (e.target as HTMLButtonElement).style.backgroundColor = 'rgba(255, 255, 255, 0.5)';
-            // (e.target as HTMLButtonElement).style.color = 'black';
-            (e.target as HTMLButtonElement).style.backgroundColor = 'rgba(224, 192, 151, 0.2)';
-            (e.target as HTMLButtonElement).style.color = '#66500f';
-            (e.target as HTMLButtonElement).style.fontWeight = '600';
-          }}
-          onMouseOut={(e) => {
-            // (e.target as HTMLButtonElement).style.backgroundColor = 'rgba(255, 255, 255, 0.2)';
-            // (e.target as HTMLButtonElement).style.color = 'white';
-            (e.target as HTMLButtonElement).style.backgroundColor = 'rgba(231, 208, 7, 0.2)';
-            (e.target as HTMLButtonElement).style.color = '#e0c097';
-          }}
-          onClick={() => router.push('/estimate-event')}
-        >
-          Start here
-        </button>
-      </div>
-    </div>
-      
-      {services.map((service, index) => (
+    <div className={styles.container}>
+    <Carousel fade interval={5000} className={styles.carousel}>
+      {heroContent.map((content, index) => (
+        <Carousel.Item key={index} className={styles.carouselItem}>
+          {content.type === 'video' ? (
+            <div className={styles.videoWrapper}>
+              <video
+                autoPlay
+                muted
+                loop
+                playsInline
+                className={styles.video}
+              >
+                <source src={content.src} type="video/mp4" />
+              </video>
+            </div>
+          ) : (
+            <div className={styles.imageWrapper}>
+              <Image
+                src={content.src}
+                alt={content.heading}
+                layout="fill"
+                objectFit="contain"
+                priority={index === 0}
+              />
+            </div>
+          )}
+          <Carousel.Caption className={styles.carouselCaption}>
+            <h1>{content.heading}</h1>
+            <p>{content.subheading}</p>
+          </Carousel.Caption>
+        </Carousel.Item>
+      ))}
+    </Carousel>
+    {/* ...existing code... */}
+    {services.map((service, index) => (
         <ServiceSection
           key={index}
           category={service.category}
@@ -241,11 +212,7 @@ onClickNavPath: '/',
           onClickNavPath={service.onClickNavPath}
         />
       ))}
-      <div>
-
-
-      </div>
-    
+     
       <LastSection
       // title="Thank you for choosing DenverBartenders!"
       // description="We look forward to serving you soon."
@@ -253,8 +220,12 @@ onClickNavPath: '/',
       // description=''
       backgroundImage="/hand2.jpeg"
       />
+  </div>
     
-    </div>
+ 
+    
+    
+    
   );
   
   

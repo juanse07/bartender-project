@@ -1,5 +1,5 @@
-@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap');
+/* @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap'); */
 
 
 .parentContainer {
@@ -40,7 +40,7 @@
 .serviceButton {
   min-width: 150px; /* Minimum width */
   min-height: 50px; /* Minimum height */
-  font-family: 'Montserrat', sans-serif; /* Set Montserrat font */
+  font-family: 'Montserrat', sans-serif; 
   font-weight: 600; /* Use semi-bold for better readability */
   font-size: 4rem; /* Adjust font size as needed */
   display: flex; /* Use flexbox for better alignment */
