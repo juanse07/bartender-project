@@ -66,20 +66,20 @@ export default function Home() {
     },
     {
       type: 'image',
-      src: '/martini.png',
+      src: '/bartoolssmaller.png',
       heading: 'Premium Service',
       subheading: 'Professional Bartenders'
     },
     {
       type: 'image',
-      src: '/olives.png',
+      src: '/bartools2.png',
       heading: 'Special Events',
       subheading: 'Memorable Experiences'
     }
   ];
   useEffect(() => {
     const handleResize = () => {
-      setIsMobile(window.innerWidth < 768);
+      setIsMobile(window.innerWidth < 1090);
     };
 
   handleResize();
