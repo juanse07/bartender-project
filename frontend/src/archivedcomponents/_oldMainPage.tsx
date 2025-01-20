@@ -181,36 +181,36 @@
 //         {/* <h1>DenverBartenders</h1> */}
 //         {/* <p>Crafting unforgettable cocktail experiences</p> */}
 
-//         {/* Transparent Button */}
-//         <button
-//           style={{
-//             // backgroundColor: 'rgba(255, 255, 255, 0.2)', // Semi-transparent white
-//             backgroundColor: 'rgba(231, 208, 7, 0.2)',
-//             border: '1px solid #e0c097',
-//             borderRadius: '5px',
-//             padding: '10px 20px',
-//             color: '#e0c097',
-//             fontSize: '16px',
-//             cursor: 'pointer',
-//             transition: 'all 0.3s ease',
-//           }}
-//           onMouseOver={(e) => {
-//             // (e.target as HTMLButtonElement).style.backgroundColor = 'rgba(255, 255, 255, 0.5)';
-//             // (e.target as HTMLButtonElement).style.color = 'black';
-//             (e.target as HTMLButtonElement).style.backgroundColor = 'rgba(224, 192, 151, 0.2)';
-//             (e.target as HTMLButtonElement).style.color = '#66500f';
-//             (e.target as HTMLButtonElement).style.fontWeight = '600';
-//           }}
-//           onMouseOut={(e) => {
-//             // (e.target as HTMLButtonElement).style.backgroundColor = 'rgba(255, 255, 255, 0.2)';
-//             // (e.target as HTMLButtonElement).style.color = 'white';
-//             (e.target as HTMLButtonElement).style.backgroundColor = 'rgba(231, 208, 7, 0.2)';
-//             (e.target as HTMLButtonElement).style.color = '#e0c097';
-//           }}
-//           onClick={() => router.push('/estimate-event')}
-//         >
-//           Start here
-//         </button>
+        // {/* Transparent Button */}
+        // <button
+        //   style={{
+        //     // backgroundColor: 'rgba(255, 255, 255, 0.2)', // Semi-transparent white
+        //     backgroundColor: 'rgba(231, 208, 7, 0.2)',
+        //     border: '1px solid #e0c097',
+        //     borderRadius: '5px',
+        //     padding: '10px 20px',
+        //     color: '#e0c097',
+        //     fontSize: '16px',
+        //     cursor: 'pointer',
+        //     transition: 'all 0.3s ease',
+        //   }}
+        //   onMouseOver={(e) => {
+        //     // (e.target as HTMLButtonElement).style.backgroundColor = 'rgba(255, 255, 255, 0.5)';
+        //     // (e.target as HTMLButtonElement).style.color = 'black';
+        //     (e.target as HTMLButtonElement).style.backgroundColor = 'rgba(224, 192, 151, 0.2)';
+        //     (e.target as HTMLButtonElement).style.color = '#66500f';
+        //     (e.target as HTMLButtonElement).style.fontWeight = '600';
+        //   }}
+        //   onMouseOut={(e) => {
+        //     // (e.target as HTMLButtonElement).style.backgroundColor = 'rgba(255, 255, 255, 0.2)';
+        //     // (e.target as HTMLButtonElement).style.color = 'white';
+        //     (e.target as HTMLButtonElement).style.backgroundColor = 'rgba(231, 208, 7, 0.2)';
+        //     (e.target as HTMLButtonElement).style.color = '#e0c097';
+        //   }}
+        //   onClick={() => router.push('/estimate-event')}
+        // >
+        //   Start here
+        // </button>
 //       </div>
 //     </div>
       

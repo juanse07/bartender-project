@@ -3,6 +3,8 @@ import LastSection from '@/components/LastSection';
 import ServiceSection from '@/components/ServiceSection';
 import styles from '@/styles/facepage.module.css';
 import Image from 'next/image';
+import { useRouter } from 'next/router';
+import { useEffect, useState } from 'react';
 import { Carousel } from 'react-bootstrap';
 
 interface Service {
@@ -32,28 +34,60 @@ interface Service {
 }
 
 export default function Home() {
-  // const router = useRouter();
+  const router = useRouter();
+  const [isMobile, setIsMobile] = useState(false);
 
-  const heroContent = [
+  const desktopContent = [
     {
       type: 'video',
       src: '/barfilmnoir.mp4',
-      heading: 'Craft Cocktails',
+      heading: 'DenverBartenders',
       subheading: 'Unforgettable Moments'
     },
     {
       type: 'image',
-      src: '/2025.png',
+      src: '/tools.png',
       heading: 'Premium Service',
       subheading: 'Professional Bartenders'
     },
     {
       type: 'image',
-      src: '/luces.png',
+      src: '/blanco.png',
       heading: 'Special Events',
       subheading: 'Memorable Experiences'
     }
   ];
+  const mobileContent = [
+    {
+      type: 'video',
+      src: '/videos/barfilmnoir.mp4',
+      heading: 'DenverBartenders',
+      subheading: 'Unforgettable Moments'
+    },
+    {
+      type: 'image',
+      src: '/martini.png',
+      heading: 'Premium Service',
+      subheading: 'Professional Bartenders'
+    },
+    {
+      type: 'image',
+      src: '/neutralbeige.png',
+      heading: 'Special Events',
+      subheading: 'Memorable Experiences'
+    }
+  ];
+  useEffect(() => {
+    const handleResize = () => {
+      setIsMobile(window.innerWidth < 768);
+    };
+
+  handleResize();
+  window.addEventListener('resize', handleResize);
+  return () => window.removeEventListener('resize', handleResize);
+}, []);
+
+const heroContent = isMobile ? mobileContent : desktopContent;
   const services: Service[] = [
     {
       category: "BARTENDING SERVICES",
@@ -179,7 +213,41 @@ onClickNavPath: '/',
           <Carousel.Caption className={styles.carouselCaption}>
             <h1>{content.heading}</h1>
             <p>{content.subheading}</p>
+
+             {/* Transparent Button */}
+        <button
+          style={{
+            backgroundColor: 'rgba(255, 255, 255, 0.2)', // Semi-transparent white
+            // backgroundColor: 'rgba(231, 208, 7, 0.2)',
+            
+            border: '2px solid white',
+            borderRadius: '5px',
+            padding: '15px 30px',
+            color: 'white',
+            fontSize: '18px',
+            cursor: 'pointer',
+            transition: 'all 0.3s ease',
+          }}
+          onMouseOver={(e) => {
+            (e.target as HTMLButtonElement).style.backgroundColor = 'rgba(255, 255, 255, 0.5)';
+            (e.target as HTMLButtonElement).style.color = 'black';
+            // (e.target as HTMLButtonElement).style.backgroundColor = 'rgba(224, 192, 151, 0.2)';
+            // (e.target as HTMLButtonElement).style.color = '#66500f';
+            (e.target as HTMLButtonElement).style.fontWeight = '600';
+          }}
+          onMouseOut={(e) => {
+            (e.target as HTMLButtonElement).style.backgroundColor = 'rgba(255, 255, 255, 0.2)';
+            (e.target as HTMLButtonElement).style.color = 'white';
+            // (e.target as HTMLButtonElement).style.backgroundColor = 'rgba(231, 208, 7, 0.2)';
+            // (e.target as HTMLButtonElement).style.color = '#e0c097';
+          }}
+          onClick={() => router.push('/estimate-event')}
+        >
+          Start here
+        </button>
+
           </Carousel.Caption>
+          
         </Carousel.Item>
       ))}
     </Carousel>
