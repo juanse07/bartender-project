@@ -38,6 +38,7 @@
   
 }
 .serviceButton {
+  
   min-width: 150px; /* Minimum width */
   min-height: 50px; /* Minimum height */
   font-family: 'Montserrat', sans-serif; 
@@ -80,6 +81,7 @@
 
 @media (max-width: 768px) {
   .serviceButton {
+    margin-bottom: 2rem; /* Add space below the button */
     font-size: 0.9rem; /* Adjust font size for smaller screens */
     padding: 0.8rem 1rem; /* Adjust padding for responsiveness */
     white-space: normal; /* Allow text to wrap for small screens */

@@ -452,7 +452,7 @@ const EventQuestionnaire = () => {
                                         type="submit"
                                         isLoading={isLoading}
                                     >
-                                        {isLoading ? "Submitting..." : "Request an Estimate"}
+                                        {isLoading ? "Submitting..." : "Submit"}
                                         {!isLoading && <Wine size={24} className="ms-2" />}
                                     </LoadingButton>
           ) : (
