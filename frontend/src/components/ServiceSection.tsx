@@ -97,12 +97,14 @@ const ServiceSection: React.FC<ServiceSectionProps> = ({
                  title={buttonText}onClick={handleClick}>
                   {buttonText} 
                 </Button>
+                <div className={styles.ActionsContainer}>
                 <a href="#" className={styles.serviceIcon}>
                   <FaComments size={24} />
                 </a>
                 <a href="#" className={styles.serviceIcon}>
                   <FiMail size={24} />
                 </a>
+                </div>
               </div>
             </div>
 
