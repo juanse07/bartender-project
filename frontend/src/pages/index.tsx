@@ -134,7 +134,7 @@ onClickNavPath: '/',
       highLightBody1: "Need exceptional service? Our bartenders will craft perfect cocktails every time.",
       highLightBody2: "Custom drink menus, signature cocktails, and more! We'll design it for you.",
       highLightBody3: "We'll handle your entire bar service so you can enjoy your event worry-free.",
-      onClickNavPath: '/BarService/new-quotation',
+      onClickNavPath: '/new-estimate',
     },
     
     {
@@ -179,7 +179,7 @@ onClickNavPath: '/',
       highLightBody1:"We'll load and unload your belongings with care and precision.",
       highLightBody2:"We'll pack your belongings safely and securely for your move.",
       highLightBody3:"  We'll disassemble your furniture so it's ready for moving day.",
-      onClickNavPath: '/BarService/new-quotation',
+      onClickNavPath: '/new-estimate',
     },
     // ... other services
   ];
