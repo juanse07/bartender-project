@@ -111,10 +111,20 @@ const ServiceSection: React.FC<ServiceSectionProps> = ({
           <Col >
             <Image
               src={imageUrl}
-              alt={title}
+              // alt={title}
+              alt="Responsive Image"
               width={500}
               height={400}
-              className={styles.serviceImage}
+               className="img-fluid"
+               style={{
+                borderRadius: '8px',
+                boxShadow: '4px 8px 12px rgba(0, 0, 0, 0.5), 2px 4px 6px rgba(255, 255, 255, 0.1)'
+              //   boxShadow: `
+              //     0px 0px 15px rgba(120, 120 120, 0.3),
+              //     0px 0px 30px rgba(90, 90, 90, 0.2)
+              //   `
+              }}
+              // className={styles.serviceImage}
               
             />
           </Col>
