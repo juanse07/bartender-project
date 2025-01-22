@@ -97,38 +97,35 @@ const ServiceSection: React.FC<ServiceSectionProps> = ({
                  title={buttonText}onClick={handleClick}>
                   {buttonText} 
                 </Button>
-                <div className={styles.ActionsContainer}>
+              
+              
                 <a href="#" className={styles.serviceIcon}>
                   <FaComments size={24} />
                 </a>
                 <a href="#" className={styles.serviceIcon}>
                   <FiMail size={24} />
                 </a>
-                </div>
+            
               </div>
             </div>
 
           
           </Col>
           <Col >
-            <Image
-              src={imageUrl}
-              // alt={title}
-              alt="Responsive Image"
-              width={500}
-              height={400}
-               className="img-fluid"
-               style={{
-                borderRadius: '8px',
-                boxShadow: '4px 8px 12px rgba(0, 0, 0, 0.5), 2px 4px 6px rgba(255, 255, 255, 0.1)'
-              //   boxShadow: `
-              //     0px 0px 15px rgba(120, 120 120, 0.3),
-              //     0px 0px 30px rgba(90, 90, 90, 0.2)
-              //   `
-              }}
-              // className={styles.serviceImage}
-              
-            />
+          <Image
+  src={imageUrl}
+  alt="Responsive Image"
+  width={500}
+  height={400}
+  className={styles.serviceImage}
+  style={{
+    borderRadius: '8px',
+    boxShadow: '4px 8px 12px rgba(0, 0, 0, 0.5), 2px 4px 6px rgba(255, 255, 255, 0.1)',
+    width: '100%', // Ensures the image scales with its container
+    maxWidth: '500px', // Prevents the image from exceeding its original dimensions
+    height: 'auto', // Maintains aspect ratio
+  }}
+/>
           </Col>
         </Row>
 

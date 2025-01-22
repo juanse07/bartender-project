@@ -88,12 +88,6 @@
   }
 }
 
-  @media (max-width: 768px) {
-    .serviceSection {
-      padding: 2rem; /* Adjust padding */
-    margin: 0; /* Prevent vertical gaps */
-    }
-  }
  
   
  
@@ -107,11 +101,36 @@
       padding: 2rem; /* Reduce padding for phones */
     }
   }
+  @media (max-width: 1080px) {
+    .serviceSection {
+      margin-bottom: 0; /* Ensure no space between sections */
+      padding: 2rem; /* Reduce padding for phones */
+    }
+   
+    .serviceButton{
+      margin-bottom: 2rem; /* Add space below the button */
+      font-size: 0.9rem; /* Adjust font size for smaller screens */
+      padding: 0.8rem 1rem; /* Adjust padding for responsiveness */
+      white-space: normal; /* Allow text to wrap for small screens */
+    }
+    
+  }
   
   /* Additional styles for ultra-wide screens if needed */
   @media (min-width: 1200px) {
     .serviceSection {
       padding: 5rem; /* Add more padding for large screens */
+    }
+
+    .serviceActions {
+      margin-bottom: 2rem; /* Add space below the buttons */
+      gap: 1rem; /* Add space between buttons */
+    }
+    .serviceButton{
+      margin-bottom: 2rem; /* Add space below the button */
+      font-size: 0.9rem; /* Adjust font size for smaller screens */
+      padding: 0.8rem 1rem; /* Adjust padding for responsiveness */
+      white-space: normal; /* Allow text to wrap for small screens */
     }
   }
 
@@ -146,9 +165,9 @@
   .serviceImage {
     max-width: 100%; /* Ensure the image is responsive */
   height: auto; /* Maintain aspect ratio */
-  min-width: 300px; /* Minimum width */
-  min-height: 300px; /* Minimum height */
-  object-fit: contain; /* Prevent image distortion */
+  min-width: 400px; /* Minimum width */
+  min-height: 400px; /* Minimum height */
+  object-fit: cover; /* Prevent image distortion */
   display: block; /* Remove extra spacing caused by inline images */
   }
 
@@ -161,26 +180,22 @@
       margin-bottom: 5px; /* Add space between buttons */
     }
   
-    .serviceImage {
-      width: 100%; /* Full width of the parent container */
-  height: auto; /* Maintain aspect ratio */
-  max-width: 350px; /* Optional: Limit the maximum size */
-    }
+
+    
   }
   
   .serviceActions {
     display: flex;
+    flex-direction: row;
     align-items: center;
+   
     gap: 4rem; /* Add space between buttons and icons */
   }
-  .ActionsContainer{
-    display: flex;
-    align-items: center;
-    gap: 4rem; /* Add space icons */
-  }
+ 
   .serviceIcon {
     color: var(--primary-color);
     transition: color 0.2s ease;
+    vertical-align: middle;
   }
   
   .serviceIcon:hover {
@@ -238,10 +253,14 @@
     .highlight {
       flex: 1 1 100%; /* Stack highlights on smaller screens */
     }
+   
+    .serviceImage{
+      flex: 1 1 100%; /* Stack highlights on smaller screens */
+    }
     .serviceActions {
-      margin-bottom: 2rem; /* Add space below the buttons */
-      flex-direction: column; /* Stack buttons on mobile */
+      flex-direction: row; /* Stack buttons on smaller screens */
       gap: 1rem; /* Add space between buttons */
+      margin-bottom: 2rem; /* Space below the buttons */
     }
   }
   .category {
