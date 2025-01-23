@@ -15,21 +15,7 @@ export default function NavBar() {
         <Navbar expand="md" collapseOnSelect variant="dark" bg="body" sticky="top"  >
             <Navbar.Brand as={Link} href='/' className='d-flex align-items-center '>
             
-            {/* <Image src={logo} alt="technician (3)" width={90} height={70} />  */}
-
-            {/* <Image
-      src={logo}
-      alt="DenverBartenders"
-      width={90} // Original size for larger screens
-      height={90}
-      sizes="(max-width: 768px) 40px, 40px" // Smaller on mobile
-      style={{
-        width: '100%', // Makes the image responsive
-        maxWidth: '90px', // Ensure it doesn’t exceed 250px
-        height: 'auto', // Maintain aspect ratio
-      }}
-    /> */}
-
+    
 
             <Image
       src={Sign}

@@ -7,7 +7,7 @@
     width: 100%;
     padding: 10px;
     background-color: #000000;
-    color: rgba(253, 224, 71, 0.9);
+    color: #c0c0c0;
     border: 1px solid rgba(253, 224, 71, 0.9);
     border-radius: 4px;
     cursor: pointer;
@@ -45,7 +45,8 @@
   .timeOption {
     padding: 8px;
     background-color: transparent;
-    color: rgba(253, 224, 71, 0.9);
+    /* color: rgba(253, 224, 71, 0.9); */
+    color: #c0c0c0;
     border: 1px solid rgba(253, 224, 71, 0.4);
     border-radius: 4px;
     cursor: pointer;
