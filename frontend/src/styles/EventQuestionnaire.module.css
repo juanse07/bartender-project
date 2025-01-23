@@ -247,11 +247,15 @@
   font-family: 'Poppins', sans-serif;
 }
 .monthLabel {
+  margin-top: 2rem;
+  margin-bottom: 0.3rem;
   color: #c0c0c0;
   font-family: 'Poppins', sans-serif;
   font-weight: 600;
 }
 .seasonLabel {
+  margin-top: 2rem;
+  margin-bottom: 0.3rem;
     color: #c0c0c0;
     font-family: 'Poppins', sans-serif;
     font-weight: 600;
@@ -260,7 +264,7 @@
 .seasonButtons,
 .monthButtons {
   display: flex;
-  gap: 0.5rem;
+  gap: 1rem;
   flex-wrap: wrap;
  
   font-family: 'Poppins', sans-serif;
@@ -344,6 +348,25 @@
 
 /* Media Queries */
 @media (max-width: 768px) {
+  .input {
+    padding: 1rem 1rem;
+  }
+  .input[type="date"]::-webkit-calendar-picker-indicator {
+
+    right: 8px;
+    top: 50% !important;
+    transform: translateY(-50%);
+    width: 24px;
+    height: 24px;
+    filter: invert(70%) sepia(75%) saturate(500%) hue-rotate(360deg) brightness(100%) contrast(107%);
+    opacity: 0.9;
+    cursor: pointer;
+    z-index: 1;
+  }
+  
+  .input[type="date"]::-webkit-calendar-picker-indicator:hover {
+    opacity: 1;
+  }
   .optionItem {
     flex: 1 1 35%;
     font-size: smaller;
@@ -353,12 +376,13 @@
   .seasonButtons,
   .monthButtons {
     justify-content: center;
+    gap: 1rem;
   }
   
   .seasonButton,
   .monthButton {
-    padding: 0.4rem 0.8rem;
-    font-size: 0.8rem;
+    padding: 1 rem 1.5rem;
+    font-size: 1rem;
   }
   .monthButtons {
     grid-template-columns: repeat(auto-fill, minmax(80px, 1fr));
@@ -367,11 +391,11 @@
 
 /* Safari-specific styles */
 @supports (-webkit-touch-callout: none) {
-  .input[type="time"] {
+  .input[type="date"] {
     padding-right: 2rem;
   }
 
-  .input[type="time"]::-webkit-calendar-picker-indicator {
+  .input[type="date"]::-webkit-calendar-picker-indicator {
     position: absolute;
     right: 8px;
     top: 50%;
@@ -385,7 +409,7 @@
     pointer-events: none;
   }
 
-  .input[type="time"]::-webkit-calendar-picker-indicator:hover {
+  .input[type="date"]::-webkit-calendar-picker-indicator:hover {
     opacity: 1;
   }
 }
