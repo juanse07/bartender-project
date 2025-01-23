@@ -1,4 +1,4 @@
-/* components/forms/EventQuestionnaire/EventQuestionnaire.module.css */
+/* Layout and Container Styles */
 .container {
   min-height: 100vh;
   background-color: black;
@@ -6,260 +6,200 @@
   overflow-y: auto;
   -webkit-overflow-scrolling: touch;
 }
+
 .wrapper {
   max-width: 42rem;
   margin: 0 auto;
   padding: 2rem;
   height: 100vh;
   overflow-y: auto;
-  padding-bottom: 6rem; 
+  padding-bottom: 6rem;
   scroll-behavior: smooth;
   flex-direction: column;
 }
- 
-  
 
-  .progressContainer {
-    margin-bottom: 3rem;
-  }
-  
-  .progressBar {
-    height: 0.25rem;
-    /* background-color: rgba(120, 53, 15, 0.3); /* yellow-900/30 equivalent  */
-    border-radius: 9999px;
-    overflow: visible;
-  }
-  
-  .progressFill {
-    height: 0.25rem;
-    /* background-color: #eab308; yellow-500 equivalent */
-    background-color: #b18605; 
-    border-radius: 9999px;
-    transition: all 500ms;
-  }
-  
-  .contentWrapper {
-    margin-top: 2rem;
-  }
-  
-  .title {
-    font-size: 1.875rem;
-    line-height: 2.25rem;
-    font-weight: 300;
-    color: rgba(175, 149, 23, 0.9);
-    /* color: #eab308; yellow-500 */
-  }
-  
-  .optionsContainer {
-    display: flex;
-    justify-content: center;
-  }
-  
-  .optionsWrapper {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 10px;
-  }
-  
-  .optionItem {
-    flex: 1 1 45%; /* Adjust the percentage as needed */
-  }
-  
-  @media (max-width: 600px) {
-    .optionItem {
-      flex: 1 1 35%;
-      font-size: smaller;
-    }
-  }
-  
-  .optionButton {
-    width: 100%;
-    padding: 1rem;
-    text-align: left;
-    background-color: #000000;
-    border-radius: 0.5rem;
-    border: 1px solid rgba(189, 72, 13, 0.3);
-    /* border: 1px solid rgba(120, 53, 15, 0.3); */
-    transition: all 150ms;
-    color: rgba(175, 149, 23, 0.9);
-    /* color: rgba(253, 224, 71, 0.9); */
-  }
-  
-  .optionButtonSelected {
-    composes: optionButton;
-    border-color: #eab308;
-    
-    background-color: rgba(234, 179, 8, 0.2);
-    color: #eab308;
-  }
-  
-  .optionButton:hover:not(.optionButtonSelected) {
-    border-color: rgba(234, 179, 8, 0.5);
-    background-color: rgba(234, 179, 8, 0.1);
-  }
-  /* EventQuestionnaire.module.css */
+.contentWrapper {
+  margin-top: 2rem;
+}
+
+/* Progress Bar Styles */
+.progressContainer {
+  margin-bottom: 3rem;
+}
+
+.progressBar {
+  height: 0.25rem;
+  border-radius: 9999px;
+  overflow: visible;
+}
+
+.progressFill {
+  height: 0.25rem;
+  background-color: #b18605;
+  border-radius: 9999px;
+  transition: all 500ms;
+}
+
+/* Typography */
+.title {
+  font-size: 1.875rem;
+  line-height: 2.25rem;
+  font-weight: 300;
+  color: #B8860B;
+  font-family: 'Poppins', sans-serif;
+}
+
+/* Option Buttons Styles */
+.optionsContainer {
+  display: flex;
+  justify-content: center;
+}
+
+.optionsWrapper {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.optionItem {
+  flex: 1 1 45%;
+}
+
+.optionButton {
+  width: 100%;
+  padding: 1rem;
+  text-align: left;
+  background-color: #000000;
+  border-radius: 0.5rem;
+  border: 1px solid rgba(147, 113, 3, 0.782);
+  color: #c0c0c0;
+  /* color: #F9F9F9; */
+  font-family: 'Poppins', sans-serif;
+  transition: all 150ms;
+}
+
+.optionButtonSelected {
+  width: 100%;
+  padding: 1rem;
+  text-align: left;
+  background-color: rgba(234, 179, 8, 0.2);
+  border-radius: 0.5rem;
+  border: 1px solid #eab308;
+  color: #bb931b;
+  font-family: 'Poppins', sans-serif;
+  transition: all 150ms;
+}
+.optionButtonSelected:hover {
+  border-color: rgba(234, 179, 8, 0.5);
+  background-color: rgba(234, 178, 8, 0.514);
+}
+
+.optionButton:hover:not(.optionButtonSelected) {
+  border-color: rgba(234, 179, 8, 0.5);
+  background-color: rgba(234, 178, 8, 0.514);
+}
+.optionButton:focus {
+  border-color: rgba(216, 181, 63, 0.782);
+  box-shadow: 0 0 5px rgba(216, 181, 63, 0.782);
+}
+/* Input Field Styles */
 .inputContainer {
   position: relative;
   width: 100%;
   margin-top: 0.5rem;
   background-color: #000000;
-  background: #000000;
 }
 
-/* styles/EventQuestionnaire.module.css */
-/* First, let's target inputs specifically */
 .input {
   width: 100%;
   padding: 1rem;
   border-radius: 0.5rem;
-  border: 1px solid rgba(189, 72, 13, 0.3);
-  color: rgba(253, 224, 71, 0.9);
+  border: 2px solid rgba(147, 113, 3, 0.782); 
+  color: #c0c0c0;
+  font-family: 'Poppins', sans-serif;
   background: #000000 !important;
   -webkit-appearance: none;
   appearance: none;
+  font-family: 'Poppins', sans-serif;
 }
 
-/* Target date and time inputs specifically */
-.input[type="date"],
-.input[type="time"] {
-  background-color: #000000 !important;
-  color: rgba(253, 224, 71, 0.9);
-  border: 1px solid rgba(120, 53, 15, 0.3);
-}
+.input[type="date"]::-webkit-calendar-picker-indicator {
 
-/* Style the calendar and time picker icons */
-.input[type="date"]::-webkit-calendar-picker-indicator,
-.input[type="time"]::-webkit-calendar-picker-indicator {
-  filter: invert(1);
-  opacity: 0.5;
+  right: 8px;
+  top: 50% !important;
+  transform: translateY(-50%);
+  width: 24px;
+  height: 24px;
+  filter: invert(70%) sepia(75%) saturate(500%) hue-rotate(360deg) brightness(100%) contrast(107%);
+  opacity: 0.9;
   cursor: pointer;
+  z-index: 1;
 }
 
-/* Override autofill styles */
-.input:-webkit-autofill,
-.input:-webkit-autofill:hover,
-.input:-webkit-autofill:focus {
-  -webkit-text-fill-color: rgba(253, 224, 71, 0.9);
-  -webkit-box-shadow: 0 0 0px 1000px #000000 inset !important;
-  transition: background-color 5000s ease-in-out 0s;
+.input[type="date"]::-webkit-calendar-picker-indicator:hover {
+  opacity: 1;
+}
+.input:hover {
+  border: 2px solid rgba(216, 181, 63, 0.782);
+  box-shadow: 0 0 5px rgba(216, 181, 63, 0.782);
+}
+.input:focus {
+  border: 2px solid rgba(216, 181, 63, 0.782);
+  box-shadow: 0 0 5px rgba(216, 181, 63, 0.782);
+}
+.otherInput {
+  width: 100%;
+  padding: 1rem;
+  text-align: left;
+  background-color: #000000;
+  border-radius: 0.5rem;
+  border: 1px solid rgba(147, 113, 3, 0.782);
+  color: #c0c0c0;
+  /* color: #F9F9F9; */
+  font-family: 'Poppins', sans-serif;
+  transition: all 150ms;
+}
+.otherInput:hover {
+  border: 2px solid rgba(216, 181, 63, 0.782);
+  box-shadow: 0 0 5px rgba(216, 181, 63, 0.782);
+}
+.otherInput:focus {
+  border: 2px solid rgba(216, 181, 63, 0.782);
+  box-shadow: 0 0 5px rgba(216, 181, 63, 0.782);
+}
+.otherInput:active {
+  border: 2px solid rgba(216, 181, 63, 0.782);
+  box-shadow: 0 0 5px rgba(216, 181, 63, 0.782);
 }
 
-/* Style the textarea */
+
+
 .textarea {
   width: 100%;
   padding: 1rem;
   border-radius: 0.5rem;
-  border: 1px solid rgba(120, 53, 15, 0.3);
-  color: rgba(253, 224, 71, 0.9);
+  border: 1px solid rgba(147, 113, 3, 0.782);
+  color: #c0c0c0;
+  font-family: 'Poppins', sans-serif;
   background: #000000 !important;
-  background-color: #000000 !important;
   min-height: 8rem;
   resize: none;
   -webkit-appearance: none;
-  -moz-appearance: none;
   appearance: none;
 }
-
-.textarea:focus {
-  outline: none;
-  border-color: #eab308;
-  box-shadow: 0 0 0 1px #eab308;
+.textarea:hover {
+  border: 2px solid rgba(216, 181, 63, 0.782);
+  box-shadow: 0 0 5px rgba(216, 181, 63, 0.782);
 }
 
-.textarea::placeholder {
-  color: rgba(253, 224, 71, 0.5);
-}
-  
-  
-.buttonContainer {
+/* Date and Time Input Styles */
+.dateContainer {
   display: flex;
-  justify-content: space-between;
-  align-items: center;
+  flex-direction: column;
   gap: 1rem;
-  margin-top: 2rem;
-  padding: 1rem;
-  background-color: black;
-  position: fixed;
-  bottom: 0;
-  left: 0;
-  right: 0;
-  z-index: 10;
-}
-
-.buttonPrev {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  background-color: #2a2a2a;
-  padding: 0.75rem 1.5rem;
-  border-radius: 0.5rem;
-  border: 1px solid rgba(121, 109, 1, 0.3);
-  background:linear-gradient(90deg, #FFC107, #FFA000);
-}
-
-.buttonPrev:disabled {
-  opacity: 0.5;
-}
-
-.buttonPrev:not(:disabled):hover {
-  border-color: rgba(234, 179, 8, 0.5);
-}
-
-.buttonNext {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  padding: 0.75rem 1.5rem;
-  border-radius: 0.5rem;
-  background:linear-gradient(90deg, #FFC107, #FFA000);
-  color: black;
-  transition: background-color 150ms;
-}
-
-.buttonNext:hover {
-  background-color: #facc15;
-}
-  
-  .timeInputContainer {
-    display: flex;
-    flex-direction: column;
-    gap: 1rem;
-  }
-  
-  .timeInputRow {
-    display: flex;
-    align-items: center;
-    gap: 1rem;
-  }
-  
-  .timeLabel {
-    width: 5rem;
-    color: rgba(253, 224, 71, 0.9);
-  }
-
-  .input[type="text"],
-.otherInput {
-  /* Adding !important to override global styles */
-  width: 100% !important;
-  padding: 1rem !important;
-  border-radius: 0.5rem !important;
-  border: 1px solid rgba(118, 111, 2, 0.3) !important;
-  background-color: #000000 !important;
-  background: #000000 !important;
-  color: rgba(253, 224, 71, 0.9) !important;
-  -webkit-appearance: none !important;
-  -moz-appearance: none !important;
-  appearance: none !important;
-}
-
-.otherInput::placeholder {
-  color: rgba(253, 224, 71, 0.5) !important;
-}
-
-.otherInput:focus {
-  outline: none !important;
-  border-color: #eab308 !important;
-  box-shadow: 0 0 0 1px #eab308 !important;
+  width: 100%;
+  max-width: 500px;
+  font-family: 'Poppins', sans-serif;
 }
 
 .timeContainer {
@@ -267,88 +207,101 @@
   flex-direction: column;
   gap: 1rem;
   width: 100%;
+  font-family: 'Poppins', sans-serif;
 }
 
-.timeRow {
+/* Season and Month Selector Styles */
+.seasonSelector,
+.monthSelector {
   display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+
+  font-family: 'Poppins', sans-serif;
+}
+.monthLabel {
+  color: #c0c0c0;
+  font-family: 'Poppins', sans-serif;
+  font-weight: 600;
+}
+.seasonLabel {
+    color: #c0c0c0;
+    font-family: 'Poppins', sans-serif;
+    font-weight: 600;
+}
+
+.seasonButtons,
+.monthButtons {
+  display: flex;
+  gap: 0.5rem;
+  flex-wrap: wrap;
+ 
+  font-family: 'Poppins', sans-serif;
+}
+
+.seasonButton,
+.monthButton {
+  padding: 0.5rem 1rem;
+  border: 2px solid rgba(147, 113, 3, 0.782);
+
+  background: transparent;
+  color: #c0c0c0;
+  border-radius: 20px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  font-size: 0.9rem;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  font-family: 'Poppins', sans-serif;
+}
+
+/* Navigation Button Styles */
+.buttonContainer {
+  display: flex;
+  justify-content: space-between;
   align-items: center;
   gap: 1rem;
-  width: 100%;
+  margin-top: 2rem;
+  padding: 1rem;
+  background-color: rgb(0, 0, 0);
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  z-index: 10;
 }
 
-.timeLabel {
-  width: 5rem;
-  color: rgba(253, 224, 71, 0.9);
-}
-
-.input[type="time"] {
-  background-color: #000000 !important;
-  color: rgba(253, 224, 71, 0.9) !important;
-  border: 1px solid rgba(120, 53, 15, 0.3) !important;
-  border-radius: 0.5rem !important;
-  padding: 0.75rem !important;
-  width: 100% !important;
-  max-width: 200px !important;
-  font-size: 1rem !important;
-  -webkit-appearance: none !important;
-  -moz-appearance: none !important;
-  appearance: none !important;
-}
-
-.input[type="time"]::-webkit-calendar-picker-indicator {
-  filter: invert(1) !important;
-  opacity: 0.7 !important;
-  cursor: pointer !important;
-}
-
-.input[type="time"]::-webkit-list-button {
-  background-color: #000000 !important;
-  color: rgba(253, 224, 71, 0.9) !important;
-}
-
-.input[type="time"]::-webkit-time-picker-popup {
-  background-color: #000000 !important;
-  color: rgba(253, 224, 71, 0.9) !important;
-  border: 1px solid rgba(120, 53, 15, 0.3) !important;
-  border-radius: 0.5rem !important;
-}
-
-.input[type="time"]::-webkit-time-picker-popup option {
-  background-color: #000000 !important;
-  color: rgba(253, 224, 71, 0.9) !important;
-  padding: 0.5rem !important;
-}
-
-.input[type="time"]::-webkit-time-picker-popup option:hover {
-  background-color: rgba(234, 179, 8, 0.2) !important;
-}
-
-/* For Firefox */
-.input[type="time"] {
-  -moz-appearance: textfield !important;
-}
-
-.input[type="time"]::-moz-time-picker {
-  background-color: #000000 !important;
-  color: rgba(253, 224, 71, 0.9) !important;
-}
-
-.input[type="time"] {
-  -webkit-appearance: none;
-  appearance: none;
-  background-color: #000000;
-  color: rgba(253, 224, 71, 0.9);
-  border: 1px solid rgba(120, 53, 15, 0.3);
+.buttonPrev,
+.buttonNext {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0.75rem 1.5rem;
   border-radius: 0.5rem;
-  padding: 0.75rem;
-  width: 100%;
-  max-width: 200px;
-  font-size: 1rem;
-  position: relative;
-  cursor: pointer;
+  background: linear-gradient(90deg, #FFC107, #FFA000);
+  font-family: 'Poppins', sans-serif;
 }
 
-/* Safari specific styles */
+/* Media Queries */
+@media (max-width: 768px) {
+  .optionItem {
+    flex: 1 1 35%;
+    font-size: smaller;
+    
+  }
+
+  .seasonButtons,
+  .monthButtons {
+    justify-content: center;
+  }
+  
+  .seasonButton,
+  .monthButton {
+    padding: 0.4rem 0.8rem;
+    font-size: 0.8rem;
+  }
+}
+
+/* Safari-specific styles */
 @supports (-webkit-touch-callout: none) {
   .input[type="time"] {
     padding-right: 2rem;
@@ -361,159 +314,14 @@
     transform: translateY(-50%);
     width: 20px;
     height: 20px;
-    filter: invert(1);
-    opacity: 0.7;
+    filter: invert(70%) sepia(75%) saturate(500%) hue-rotate(360deg) brightness(100%) contrast(107%);
+    opacity: 0.9;
     cursor: pointer;
     z-index: 1;
-    pointer-events: none; /* Allow clicking on the entire input */
+    pointer-events: none;
   }
 
   .input[type="time"]::-webkit-calendar-picker-indicator:hover {
     opacity: 1;
-  }
-
-  .input[type="time"]::after {
-    content: '';
-    position: absolute;
-    right: 8px;
-    top: 50%;
-    transform: translateY(-50%);
-    width: 20px;
-    height: 20px;
-    background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 24 24' stroke='rgba(253, 224, 71, 0.9)'%3E%3Cpath stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z'%3E%3C/path%3E") no-repeat center;
-    pointer-events: none; /* Ensure icon is not clickable */
-  }
-}
-
-.dateContainer {
-  display: flex;
-  flex-direction: column;
-  gap: 1rem;
-  width: 100%;
-  max-width: 500px;
-}
-
-.datePickerWrapper {
-  width: 100%;
-}
-
-.seasonSelector {
-  display: flex;
-  flex-direction: column;
-  gap: 0.5rem;
-}
-
-.seasonLabel {
-  font-size: 0.9rem;
-  color: var(--gold-color);
-  font-weight: 500;
-}
-
-
-
-.seasonButtons {
-  display: flex;
-  gap: 0.5rem;
-  flex-wrap: wrap;
-}
-
-.seasonButton {
-  padding: 0.5rem 1rem;
-  border: 1px solid #D4AF37;
-  background: transparent;
-  color: #D4AF37;
-  border-radius: 20px;
-  cursor: pointer;
-  transition: all 0.3s ease;
-  font-size: 0.9rem;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-}
-
-.seasonButton:hover {
-  background-color: rgba(212, 175, 55, 0.1);
-  transform: translateY(-1px);
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
-}
-
-.seasonButton.active {
-  background: #D4AF37;
-  color: #1a1a1a;
-  transform: translateY(1px);
-  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
-}
-
-.seasonButton:active {
-  transform: translateY(1px);
-  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
-}
-
-@media (max-width: 768px) {
-  .seasonButtons {
-    justify-content: center;
-  }
-  
-  .seasonButton {
-    padding: 0.4rem 0.8rem;
-    font-size: 0.8rem;
-  }
-}
-
-.monthSelector {
-  display: flex;
-  flex-direction: column;
-  gap: 0.5rem;
-}
-
-.monthLabel {
-  font-size: 0.9rem;
-  color: #D4AF37;
-  font-weight: 500;
-}
-
-.monthButtons {
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(100px, 1fr));
-  gap: 0.5rem;
-  width: 100%;
-}
-
-.monthButton {
-  padding: 0.5rem 1rem;
-  border: 1px solid #D4AF37;
-  background: transparent;
-  color: #D4AF37;
-  border-radius: 20px;
-  cursor: pointer;
-  transition: all 0.3s ease;
-  font-size: 0.9rem;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-}
-
-.monthButton:hover {
-  background-color: rgba(212, 175, 55, 0.1);
-  transform: translateY(-1px);
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
-}
-
-.monthButton.active {
-  background: #D4AF37;
-  color: #1a1a1a;
-  transform: translateY(1px);
-  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
-}
-
-.monthButton:active {
-  transform: translateY(1px);
-  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
-}
-
-@media (max-width: 768px) {
-  .monthButtons {
-    grid-template-columns: repeat(auto-fill, minmax(80px, 1fr));
-  }
-  
-  .monthButton {
-    padding: 0.4rem 0.8rem;
-    font-size: 0.8rem;
   }
 }

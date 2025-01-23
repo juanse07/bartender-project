@@ -239,10 +239,7 @@ const EventQuestionnaire = () => {
                         className={styles.otherInput}
                         value={formData[`${question.id}Other`] as string}
                         onChange={(e) => handleInputChange(`${question.id}Other` as keyof FormData, e.target.value)}
-                        style={{
-                          backgroundColor: '#000000',
-                          color: 'rgba(119, 100, 3, 0.9)'
-                        }}
+                     
                       />
                     </div>
                   )}
@@ -262,6 +259,7 @@ const EventQuestionnaire = () => {
               {isMobile ? (
                 <input
                   type="date"
+                  placeholder="Select event date"
                   className={styles.input}
                   value={formData[question.id] as string}
                   onChange={(e) => handleInputChange(question.id, e.target.value)}
@@ -274,7 +272,7 @@ const EventQuestionnaire = () => {
                       handleInputChange(question.id, date.toISOString());
                     }
                   }}
-                  label="Select event date"
+                  label=""
                 />
               )}
             </div>
@@ -360,6 +358,7 @@ const EventQuestionnaire = () => {
        
           <input
             type="text"
+            placeholder="Enter your name"
             className={styles.input}
             value={formData[question.id] as string}
             onChange={(e) => handleInputChange(question.id, e.target.value)}
@@ -372,6 +371,7 @@ const EventQuestionnaire = () => {
           <input
             type="email"
             className={styles.input}
+            placeholder="Enter your email"
             value={formData[question.id] as string}
             onChange={(e) => handleInputChange(question.id, e.target.value)}
           />
@@ -383,6 +383,7 @@ const EventQuestionnaire = () => {
           <input
             type="tel"
             className={styles.input}
+            placeholder="Enter your phone number"
             value={formData[question.id] as string}
             onChange={(e) => handleInputChange(question.id, e.target.value)}
           />

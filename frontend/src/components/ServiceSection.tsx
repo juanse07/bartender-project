@@ -124,6 +124,7 @@ const ServiceSection: React.FC<ServiceSectionProps> = ({
     width: '100%', // Ensures the image scales with its container
     maxWidth: '500px', // Prevents the image from exceeding its original dimensions
     height: 'auto', // Maintains aspect ratio
+    objectFit: 'cover',
   }}
 />
           </Col>

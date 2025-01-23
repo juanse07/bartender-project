@@ -4,7 +4,11 @@ import React, { useRef, useState } from "react";
 
 const libraries: ("places")[] = ["places"];
 
-const AddressInput: React.FC<{ onAddressChange: (address: string) => void }> = ({ onAddressChange }) => {
+interface AddressInputProps {
+  onAddressChange: (address: string) => void;
+}
+
+const AddressInput = ({ onAddressChange }: AddressInputProps) => {
   const [address, setAddress] = useState<string>(""); // React's state for the input value
   const [error, setError] = useState<string | null>(null); // For error handling
   const autocompleteRef = useRef<google.maps.places.Autocomplete | null>(null);
@@ -71,7 +75,7 @@ const AddressInput: React.FC<{ onAddressChange: (address: string) => void }> = (
             width: "100%",
             padding: "18px",
             fontSize: "20px",
-            border: error ? "1px solid red" : "1px solid #f9f9f9",
+            border: error ? "1px solid red" : "1px solid rgba(147, 113, 3, 0.782)",
             borderRadius: "4px",
             backgroundColor: "#121212",
             color: "#e0c097",
