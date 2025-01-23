@@ -253,10 +253,13 @@ const EventQuestionnaire = () => {
 
         case 'date':
           return (
-           
+
+         
             <div className={styles.dateContainer}>
             <div className={styles.datePickerWrapper}>
+            <label className={styles.seasonLabel}>Select event date</label>
               {isMobile ? (
+              
                 <input
                   type="date"
                   placeholder="Select event date"
