@@ -80,19 +80,13 @@
 
   .addressInput {
     width: 100%;
-    padding: 18px;
-    font-size: 20px;
     border-radius: 8px;
-    border: 2px solid rgba(147, 113, 3, 0.782); 
+    border: 4px solid rgba(147, 113, 3, 0.782); 
     /* border: `error ? "1px solid red" : "1px solid rgba(147, 113, 3, 0.782)"`, */
     color: #c0c0c0;
   font-family: 'Poppins', sans-serif;
   background: #000000 !important;
-    color: #c0c0c0;
-    font-family: 'Poppins', sans-serif;
-    background: #000000 !important;
-    font-family: 'Poppins', sans-serif;
-   
+  outline: none;
     appearance: none;
     -moz-appearance: textfield;
   }
@@ -103,9 +97,9 @@
   }
   
   .addressInput:focus {
-    border: 2px solid #e0c097; /* Highlighted border color on focus */
-    outline: none; /* Removes default focus outline */
-    box-shadow: 0 0 5px #989586;
+    border: 2px solid rgba(216, 181, 63, 0.782);
+    box-shadow: 0 0 5px rgba(216, 181, 63, 0.782);
+    outline: none;
   }
 
   .addressLink {

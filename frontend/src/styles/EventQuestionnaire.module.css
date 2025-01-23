@@ -78,29 +78,52 @@
   transition: all 150ms;
 }
 
+.optionButton:hover {
+  border-color: rgba(234, 179, 8, 0.3);
+  background-color: rgba(11, 9, 0, 0.714);
+  color: #bb931b;
+}
+
 .optionButtonSelected {
   width: 100%;
   padding: 1rem;
   text-align: left;
   background-color: rgba(234, 179, 8, 0.2);
   border-radius: 0.5rem;
-  border: 1px solid #eab308;
+  border: 2px solid #eab308;
   color: #bb931b;
+  box-shadow: 0 0 12px rgba(216, 181, 63, 0.782);
   font-family: 'Poppins', sans-serif;
   transition: all 150ms;
 }
 .optionButtonSelected:hover {
   border-color: rgba(234, 179, 8, 0.5);
-  background-color: rgba(234, 178, 8, 0.514);
+  background-color: rgba(11, 9, 0, 0.514);
+  color: #bb931b;
 }
 
-.optionButton:hover:not(.optionButtonSelected) {
+/* .optionButton:hover:not(.optionButtonSelected) {
   border-color: rgba(234, 179, 8, 0.5);
   background-color: rgba(234, 178, 8, 0.514);
-}
+} */
 .optionButton:focus {
   border-color: rgba(216, 181, 63, 0.782);
   box-shadow: 0 0 5px rgba(216, 181, 63, 0.782);
+}
+.optionButton:active {
+  border-color: rgba(216, 181, 63, 0.782);
+  box-shadow: 0 0 5px rgba(216, 181, 63, 0.782);
+}
+.optionButton.selected {
+  background-color: rgba(234, 179, 8, 0.2);
+  border: 2px solid #eab308;
+  color: #bb931b;
+  font-weight: 600;
+  box-shadow: 0 0 12px rgba(216, 181, 63, 0.782);
+}
+.optionButton.selected:hover {
+  border-color: rgba(216, 181, 63, 0.782);
+  box-shadow: 0 0 12px rgba(216, 181, 63, 0.782);
 }
 /* Input Field Styles */
 .inputContainer {
@@ -119,6 +142,7 @@
   font-family: 'Poppins', sans-serif;
   background: #000000 !important;
   -webkit-appearance: none;
+  outline: none;
   appearance: none;
   font-family: 'Poppins', sans-serif;
 }
@@ -155,7 +179,9 @@
   border-radius: 0.5rem;
   border: 1px solid rgba(147, 113, 3, 0.782);
   color: #c0c0c0;
-  /* color: #F9F9F9; */
+  -webkit-appearance: none;
+  outline: none;
+  appearance: none;
   font-family: 'Poppins', sans-serif;
   transition: all 150ms;
 }
@@ -178,11 +204,12 @@
   width: 100%;
   padding: 1rem;
   border-radius: 0.5rem;
-  border: 1px solid rgba(147, 113, 3, 0.782);
+  border: 2px solid rgba(147, 113, 3, 0.782);
   color: #c0c0c0;
   font-family: 'Poppins', sans-serif;
   background: #000000 !important;
   min-height: 8rem;
+  outline: none;
   resize: none;
   -webkit-appearance: none;
   appearance: none;
@@ -254,6 +281,40 @@
   font-family: 'Poppins', sans-serif;
 }
 
+.seasonButton:hover,
+.monthButton:hover {
+  background-color: rgba(234, 179, 8, 0.2);
+  border-color: #eab308;
+  color: #bb931b;
+}
+.seasonButton:focus,
+.monthButton:focus {
+  border-color: rgba(216, 181, 63, 0.782);
+  box-shadow: 0 0 5px rgba(216, 181, 63, 0.782);
+}
+.seasonButton.active,
+.monthButton.active {
+  font-weight: 600;
+  color: #bb931b;
+  border: 2px solid rgba(216, 181, 63, 0.782);
+  box-shadow: 0 0 5px rgba(216, 181, 63, 0.782);
+}
+.seasonButton:active,
+.monthButton:active {
+  border-color: rgba(216, 181, 63, 0.782);
+  box-shadow: 0 0 5px rgba(216, 181, 63, 0.782);
+}
+
+.seasonButton.selected,
+.monthButton.selected {
+  background-color: rgba(234, 179, 8, 0.2);
+  border:5px solid #eab308 ;
+  /* border-color: #eab308; */
+  color: #bb931b;
+  font-weight: 600;
+  box-shadow: 0 0 12px rgba(216, 181, 63, 0.782);
+}
+
 /* Navigation Button Styles */
 .buttonContainer {
   display: flex;
@@ -298,6 +359,9 @@
   .monthButton {
     padding: 0.4rem 0.8rem;
     font-size: 0.8rem;
+  }
+  .monthButtons {
+    grid-template-columns: repeat(auto-fill, minmax(80px, 1fr));
   }
 }
 
