@@ -1,64 +1,79 @@
 import ContactUsButton from '@/components/contactButton';
-import { Gauge, MessageCircle, Phone } from 'lucide-react';
+import { Gauge, MessageCircle, MessageSquare, Phone } from 'lucide-react';
 import type { NextPage } from 'next';
 import Image from "next/image";
 import styles from '../styles/contactUs.module.css';
 
-const Desktop:NextPage = () => {
-  
-  	return (
-    		<div className={styles.desktop1}>
-        
-          <div className={styles.imageside}>
-      			 
-                <div className={styles.imageContainer}>
-
-        			 <Image className={styles.imagelayerIcon} width={720} height={800} alt="" src="goldenglitterblackshadow.png" /> 
-
-               <div className={styles.contactUsContainer}>
-
-
-                <b className={styles.contactUs}>Contact Us</b>
-           
-        				<b className={styles.wedLoveTo}>{` We'd love to hear from you! Whether you have a question, feedback, or just want to say hello, feel free to reach out. Our team is here to assist you and ensure you have the best experience possible. .  Thank you for reaching out to us – we value your input and look forward to connecting with you! `}</b>
-                
-                <div className={styles.socialMediaContainer}>
-        				<Image width={86} height={63} alt="" src="facebook_svgrepo.com.svg" />
-        				<Image width={86} height={63} alt="" src="instagram_svgrepo.com.svg" />
-                </div>
-                </div>
-           
-
-               </div>
-          
-
-
-        			
-                  
-        				
-        		
-               
-        			
-      			  
-      			
-      		
+const Desktop: NextPage = () => {
+  return (
+    <div className={styles.pageContainer}>
+      {/* Hero Section with Parallax Effect */}
+      <div className={styles.heroSection}>
+        <div className={styles.parallaxOverlay}>
+          <Image 
+            src="/luxury-background.jpg" 
+            alt="Luxury Background"
+            fill
+            style={{ objectFit: 'cover' }}
+            priority
+          />
+          <div className={styles.heroContent}>
+            <h1 className={styles.title}>Contact Us</h1>
+            <p className={styles.subtitle}>Elevate Your Experience</p>
           </div>
-
-          <div className={styles.buttonside}>
-      			<div className={styles.contactUsButtonContainer}>
-              <ContactUsButton label="Start Here" body="Easiest way" icon={Gauge} />
-              <ContactUsButton label="Email" body="eventAgent@DenBar.online" />
-              <ContactUsButton label="Text Us" body="786 123456789" icon={MessageCircle} />
-              <ContactUsButton label="Call Us" body="786 123456789" icon={Phone} />	
-      			</div>
-
-
-
-
-          </div>
-        
         </div>
-        );
+      </div>
+
+      {/* Main Content Section */}
+      <div className={styles.contentSection}>
+        <div className={styles.leftColumn}>
+          <div className={styles.messageCard}>
+            <p className={styles.welcomeMessage}>
+              We&apos;d love to hear from you! Our dedicated team is ready to assist you
+            </p>
+            <div className={styles.socialLinks}>
+              <a href="#" className={styles.socialIcon}>
+                <Image width={30} height={30} alt="Facebook" src="/facebook_svgrepo.com.svg" />
+              </a>
+              <a href="#" className={styles.socialIcon}>
+                <Image width={30} height={30} alt="Instagram" src="/instagram_svgrepo.com.svg" />
+              </a>
+             
+            </div>
+          </div>
+        </div>
+
+        <div className={styles.rightColumn}>
+          <div className={styles.contactButtons}>
+            <ContactUsButton 
+              label="Begin Your Journey" 
+              body="Get Started" 
+              icon={Gauge}
+            
+            />
+            <ContactUsButton 
+              label="Email" 
+              body="eventAgent@DenBar.online"
+              icon={MessageSquare}
+             
+            />
+            <ContactUsButton 
+              label="Text Us" 
+              body="786 123456789" 
+              icon={MessageCircle}
+            
+            />
+            <ContactUsButton 
+              label="Call Us" 
+              body="786 123456789" 
+              icon={Phone}
+             
+            />
+          </div>
+        </div>
+      </div>
+    </div>
+  );
 };
 
 export default Desktop;
