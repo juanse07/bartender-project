@@ -1,0 +1,149 @@
+.desktop1 {
+  position: relative;
+    width: 100vw;
+    height: 100vw; /* Full viewport height */
+    display: flex;
+    flex-direction: row;
+    align-items: center; /* Center content vertically */
+    justify-content: center; /* Center content horizontally */
+    background-color: #000000; /* Optional background color */
+
+
+    box-sizing: border-box; /*Full viewport height */
+
+    @media (max-width: 768px) {
+        flex-direction: column;
+    }
+}
+
+
+
+.imageContainer {
+    position: relative;
+    display: flex;
+  
+    justify-content: center;
+    align-items: center;
+    height: 100vh; /* Full viewport height */
+    overflow: hidden; /* Ensures the image doesn't overflow */
+}
+
+  .contactUsButtonContainer {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+  
+    justify-content: center;
+    align-items: center;
+    height: 100vh; /* Full viewport height */
+    overflow: hidden; /* Ensures the image doesn't overflow */
+}
+  
+  
+  .imagelayerIcon {
+    height: 100%; /* Takes full height of the container */
+    width: auto; /* Maintains the aspect ratio */
+    object-fit: cover; /* Adjusts how the image fits inside the container */
+    opacity: 0.1;
+    z-index: 1;
+}
+
+.imageside {
+position: relative;
+    justify-content: center;
+    align-items: center;
+  padding: 20px;
+    height: 100vw;
+    width: 50vw;
+}
+
+ .buttonside {
+    position: relative;
+    
+    
+    
+  
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+    
+    height:100vw; 
+    width: 50vw;
+}
+
+
+
+
+
+.contactUsContainer {
+    position: absolute;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    height: 90%; /* Ensure it takes the full height of its parent */
+    padding: 20px; /* Optional: Add some padding for spacing */
+    z-index: 1;
+}
+
+.wedLoveTo {
+   
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%; /* Full width */
+    height: 100%; /* Full height */
+    color: #f2f2f2; /* Text color */
+ 
+    text-align: center; /* Center text */
+    padding: 20px; /* Add padding for better readability */
+    box-sizing: border-box; /* Include padding in width/height */
+   
+   
+    font-size: 1.5rem;
+    font-weight: 300;
+    letter-spacing: 0.03em;
+    line-height: 2.25rem;
+    font-family: 'Poppins', sans-serif;
+    z-index: 2;
+    @media (max-width: 1024px) {
+        font-size: 1.2rem;
+        line-height: 1.8rem;
+    }
+    @media (max-width: 768px) {
+        font-size: 1rem;
+        line-height: 1.5rem;
+    }
+}
+
+.contactUs {
+   
+ 
+    font-size: 3.75rem;
+    letter-spacing: 0.03em;
+    line-height: 2.25rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%; /* Center horizontally */
+    color: #c0c0c0;
+    z-index: 2;
+    @media (max-width: 1024px) {
+        font-size: 2rem;
+        line-height: 2.5rem;
+    }
+    @media (max-width: 768px) {
+        font-size: 1.5rem;
+        line-height: 2rem;
+    }
+}
+
+.socialMediaContainer {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    z-index: 2;
+}
+
+
+
