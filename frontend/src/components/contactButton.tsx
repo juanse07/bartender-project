@@ -26,14 +26,7 @@ const ContactUsButton = ({ label, body, icon: Icon = MessageSquare }: ContactUsB
    <Icon className="w-6 h-6" />
    <span style={{ margin: '0 auto' }}>{label} {body}</span>
  </Button>
- <Copy style={{ 
-   width: '1.25rem', 
-   height: '1.25rem',
-   position: 'absolute',
-   right: '-30px',
-   top: '50%',
-   transform: 'translateY(-50%)'
- }} />
+ <Copy className={styles.copyIcon} />
 </div>
     );
 };
