@@ -40,8 +40,8 @@ export default function NavBar() {
                     <Nav.Link as={Link}href='/' active={router.pathname==="/"}>Home</Nav.Link>
                     {/* <Nav.Link as={Link} href='/blog' active={router.pathname==="/blog"}>About</Nav.Link> */}
                     
-                    <Nav.Link as={Link} href='/BarService/new-quotation' active={router.pathname==="/BarService/new-quotation"}>
-                                Contact with us</Nav.Link>
+                    <Nav.Link as={Link} href='/contactUs' active={router.pathname==="/BarService/new-quotation"}>
+                                Contact us</Nav.Link>
                 </Nav>
                
               
