@@ -11,7 +11,7 @@ const Desktop: NextPage = () => {
       <div className={styles.heroSection}>
         <div className={styles.parallaxOverlay}>
           <Image 
-            src="/luxury-background.jpg" 
+            src="/23779.jpg" 
             alt="Luxury Background"
             fill
             style={{ objectFit: 'cover' }}
@@ -41,6 +41,8 @@ const Desktop: NextPage = () => {
              
             </div>
           </div>
+          
+          
         </div>
 
         <div className={styles.rightColumn}>
