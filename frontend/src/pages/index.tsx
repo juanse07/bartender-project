@@ -46,7 +46,6 @@ export default function Home({
 }: HomeProps) {
   const router = useRouter();
   const [isMobile, setIsMobile] = useState(false);
-
   const mobileContent = [
     {
       type: 'video',
@@ -68,6 +67,7 @@ export default function Home({
     }
   ];
 
+  
   useEffect(() => {
     const handleResize = () => {
       setIsMobile(window.innerWidth < 1090);
@@ -170,7 +170,7 @@ export default function Home({
       ))}
 
       <LastSection
-        backgroundImage="/hand2.jpeg"
+        backgroundImage="/hand2.webp"
       />
     </div>
   );
@@ -198,6 +198,7 @@ export const getStaticProps = async () => {
         subheading: 'Memorable Experiences'
       },
     ];
+  
 
     const services: Service[] = [
       {
@@ -288,7 +289,7 @@ export const getStaticProps = async () => {
     return {
       props: {
         services,
-        heroContent: desktopContent,
+        heroContent:desktopContent,
       },
       revalidate: 86400,
     };

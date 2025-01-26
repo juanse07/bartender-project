@@ -5,7 +5,7 @@ const ThankYouPage = () => {
         <section
             className={styles.thankYou}
             style={{
-                backgroundImage: `url('/hand3.jpeg')`, // Set the background image directly
+                backgroundImage: `url('/hand3.webp')`, // Set the background image directly
                 backgroundSize: 'cover', // Ensure the image covers the section
                 backgroundPosition: 'left', // Center the image
                 backgroundRepeat: 'no-repeat', // Prevent tiling
