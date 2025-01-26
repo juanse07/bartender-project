@@ -46,6 +46,7 @@ export default function Home({
 }: HomeProps) {
   const router = useRouter();
   const [isMobile, setIsMobile] = useState(false);
+  const [activeIndex, setActiveIndex] = useState(0);
   const mobileContent = [
     {
       type: 'video',
@@ -79,6 +80,9 @@ export default function Home({
   }, []);
 
   const heroContent = isMobile ? mobileContent : desktopContent;
+  const handleSlideChange = (selectedIndex: number) => {
+    setActiveIndex(selectedIndex);
+  };
 
   if (!services || !heroContent) {
     return <div>Loading...</div>;
@@ -86,13 +90,13 @@ export default function Home({
 
   return (
     <div className={styles.container}>
-      <Carousel fade interval={5000} className={styles.carousel}>
+      <Carousel fade interval={5000} className={styles.carousel} onSlide={handleSlideChange}>
         {heroContent.map((content, index) => (
           <Carousel.Item key={index} className={styles.carouselItem}>
-            {content.type === 'video' ? (
+            {index === activeIndex && content.type === 'video' ? (
               <div className={styles.videoWrapper}>
                 <video
-                  autoPlay
+                  autoPlay= {index === 0}
                   muted
                   loop
                   playsInline
@@ -108,7 +112,8 @@ export default function Home({
                   alt={content.heading}
                   layout="fill"
                   objectFit="cover"
-                  priority={index === 0}
+                  // priority={index === 0}
+                  loading="lazy"
                 />
               </div>
             )}
