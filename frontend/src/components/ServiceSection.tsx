@@ -117,7 +117,8 @@ const ServiceSection: React.FC<ServiceSectionProps> = ({
   alt="Responsive Image"
   width={500}
   height={400}
-  className={styles.serviceImage}
+  className={styles.serviceImage} 
+
   style={{
     borderRadius: '8px',
     boxShadow: '4px 8px 12px rgba(0, 0, 0, 0.5), 2px 4px 6px rgba(255, 255, 255, 0.1)',

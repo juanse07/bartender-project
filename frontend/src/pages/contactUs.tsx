@@ -11,9 +11,10 @@ const Desktop: NextPage = () => {
       <div className={styles.heroSection}>
         <div className={styles.parallaxOverlay}>
           <Image 
-            src="/23779.jpg" 
+            src="/23779.webp" 
             alt="Luxury Background"
-            fill
+           
+             fill
             style={{ objectFit: 'cover' }}
             priority
           />
