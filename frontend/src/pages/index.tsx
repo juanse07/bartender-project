@@ -140,7 +140,7 @@ export default function Home({
                   (e.target as HTMLButtonElement).style.backgroundColor = 'rgba(255, 255, 255, 0.2)';
                   (e.target as HTMLButtonElement).style.color = 'white';
                 }}
-                onClick={() => router.push('/estimate-event')}
+                onClick={() => router.push('/estimate')}
               >
                 Start here
               </button>
@@ -246,7 +246,7 @@ export const getStaticProps = async () => {
         highLightBody1: "Need exceptional service? Our bartenders will craft perfect cocktails every time.",
         highLightBody2: "Custom drink menus, signature cocktails, and more! We'll design it for you.",
         highLightBody3: "We'll handle your entire bar service so you can enjoy your event worry-free.",
-        onClickNavPath: '/estimate-event',
+        onClickNavPath: '/estimate',
       },
       {
         category: "MOBILE BARS",
@@ -287,7 +287,7 @@ export const getStaticProps = async () => {
         highLightBody1: "We'll load and unload your belongings with care and precision.",
         highLightBody2: "We'll pack your belongings safely and securely for your move.",
         highLightBody3: "We'll disassemble your furniture so it's ready for moving day.",
-        onClickNavPath: '/estimate-event',
+        onClickNavPath: '/estimate',
       },
     ];
 

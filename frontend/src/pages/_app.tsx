@@ -29,10 +29,10 @@ export default function App({ Component, pageProps }: AppProps) {
     <>
      
       <Head>
-        <title>Bartender App</title>
-        <meta name="description" content="Upscale Bartender app under contruction" />
+        <title>DenverBartenders </title>
+        <meta name="description" content="DenverBartenders is a professional bartender service that provides bartending services for events and parties." />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
-        <link rel="icon" href="/favicon.ico" />
+        <link rel="icon" href="/Icon-App32x32.ico" />
       </Head>
       <NextNProgress
           color="#29D"

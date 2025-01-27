@@ -69,7 +69,7 @@ const EventQuestionnaire = () => {
       await newEstimateApi.createNewEstimate(formDataToSend);
       console.log("API call successful");
             //  alert("Quotation successfully created!");
-         router.push("/BarService/thankyou");
+         router.push("/thankyou");
     } catch (error) {
       console.error("Error during API call:", error);
                  const errorMessage = error instanceof Error ? error.message : "Unknown error";
@@ -195,7 +195,7 @@ const EventQuestionnaire = () => {
 
   const handleNext = () => {
     if (currentSlide === questions.length - 1) {
-      router.push('/estimate-event', undefined, { shallow: true });
+      router.push('/estimate', undefined, { shallow: true });
     } else {
       setCurrentSlide(prev => Math.min(questions.length - 1, prev + 1));
       scrollToTop();

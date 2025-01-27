@@ -2,7 +2,7 @@ import Image from 'next/image';
 import Link from 'next/link';
 import { useRouter } from 'next/router';
 import { Nav, Navbar } from 'react-bootstrap';
-import Sign from "../assets/images/denverbartendersSign.png";
+
 
 
 
@@ -18,7 +18,7 @@ export default function NavBar() {
     
 
             <Image
-      src={Sign}
+      src="/denverbartendersSign.png"
       alt="DenverBartenders"
       width={250} // Original size for larger screens
       height={70}
