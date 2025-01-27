@@ -7,12 +7,11 @@ interface ContactUsButtonProps {
     body: string;
     label: string;
     iconType?: string;
-  
 }
-
 
 const ContactUsButton = ({ label, body, iconType = "messageSquare" }: ContactUsButtonProps) => {
     const [isCopied, setIsCopied] = useState(false);
+    const [showTag, setShowTag] = useState(false);
     const getIcon = (type: string) => {
         switch (type) {
             case "gauge":
@@ -28,14 +27,14 @@ const ContactUsButton = ({ label, body, iconType = "messageSquare" }: ContactUsB
         }
     };
 
-
     const handleCopy = () => {
-         
-            navigator.clipboard.writeText(body);
-            setIsCopied(true);
-            setTimeout(() => {
-                setIsCopied(false);
-            }, 2000);
+        navigator.clipboard.writeText(body);
+        setIsCopied(true);
+        setShowTag(true);
+        setTimeout(() => {
+            setIsCopied(false);
+            setShowTag(false);
+        }, 2000);
     }
 
     return (
@@ -47,20 +46,25 @@ const ContactUsButton = ({ label, body, iconType = "messageSquare" }: ContactUsB
                 {getIcon(iconType)}
                 <span style={{ margin: '0 auto' }}>{label} {body}</span>
             </Button>
-            {isCopied ? (
-                <Check
-                 className={styles.copyIcon}
-                 style={{cursor: 'default', color: 'green' }}/>
-                // /> && <span
-                // className={styles.copyText}
-                // >
-                //     Copied to the clipboard
-                //     </span>
-            ) : (
-                <Copy className={styles.copyIcon}
-                    onClick={() => handleCopy()}
-                style={{ cursor: 'pointer' }}
-            />
+            
+            {iconType !== "gauge" && (
+                isCopied ? (
+                    <Check
+                        className={styles.copyIcon}
+                        style={{cursor: 'default', color: 'green' }}
+                    />
+                ) : (
+                    <Copy 
+                        className={styles.copyIcon}
+                        onClick={() => handleCopy()}
+                        style={{ cursor: 'pointer' }}
+                    />
+                )
+            )}
+            {showTag && (
+                <div className={styles.copyTag}>
+                    Copied to clipboard
+                </div>
             )}
         </div>
     );
