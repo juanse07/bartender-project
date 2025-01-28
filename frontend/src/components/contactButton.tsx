@@ -39,25 +39,35 @@ const ContactUsButton = ({ label, body, iconType = "messageSquare" }: ContactUsB
         }, 2000);
     }
     const handleClick = () => {
-        const isMobile = /iPhone|iPad|iPod|Android/i.test(navigator.userAgent);
+        // More reliable mobile detection
+        const isMobile = () => {
+            return (
+                /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent) ||
+                (navigator.maxTouchPoints && navigator.maxTouchPoints > 2)
+            );
+        };
         
         if (iconType === "phone") {
-            if (isMobile) {
-                window.open(`tel:${body}`, '_blank');
+            if (isMobile()) {
+                // Use standard tel: protocol with no _blank
+                window.location.href = `tel:${body}`;
             } else {
-                handleCopy(); // On desktop, just copy the number
+                handleCopy();
             }
         } else if (iconType === "messageCircle") {
-            if (isMobile) {
-                window.open(`mailto:${body}`, '_blank');
+            if (isMobile()) {
+                // Use standard mailto: protocol with no _blank
+                window.location.href = `mailto:${body}`;
             } else {
-                handleCopy(); // On desktop, just copy the email
+                handleCopy();
             }
         } else if (iconType === "messageSquare") {
-            if (isMobile) {
-                window.open(`sms:${body}`, '_blank');
+            if (isMobile()) {
+                // Use standard sms: protocol with no _blank
+                // Add body parameter for better compatibility
+                window.location.href = `sms:${body}?body=`;
             } else {
-                handleCopy(); // On desktop, just copy the number
+                handleCopy();
             }
         } else {
             router.push(`/estimate`);
