@@ -10,7 +10,7 @@ interface ContactUsButtonProps {
     iconType?: string;
 }
 
-const ContactUsButton = ({ label, body, iconType = "messageSquare" }: ContactUsButtonProps) => {
+const ContactUsButton = ({ label, body, iconType = "mail" }: ContactUsButtonProps) => {
     const [isCopied, setIsCopied] = useState(false);
     const [showTag, setShowTag] = useState(false);
     const router = useRouter();
@@ -53,11 +53,17 @@ const ContactUsButton = ({ label, body, iconType = "messageSquare" }: ContactUsB
                 window.open(`tel:${body}`, '_blank');
                 handleCopy();
             }
-        } else if (iconType === "mail") {
-            if (isMobile()) {
-                window.location.href = `mailto:${body}`;
-            } else {
-                window.open(`mailto:${body}`, '_blank');
+        } else if (iconType === "mail" || iconType === "messageSquare") {
+            try {
+                if (isMobile()) {
+                    window.location.href = `mailto:${encodeURIComponent(body)}`;
+                } else {
+                    const mailtoLink = `mailto:${encodeURIComponent(body)}`;
+                    window.open(mailtoLink, '_blank');
+                    handleCopy();
+                }
+            } catch (error) {
+                console.error('Error opening email:', error);
                 handleCopy();
             }
         } else if (iconType === "messageCircle") {
