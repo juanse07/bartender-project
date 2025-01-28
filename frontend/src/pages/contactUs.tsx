@@ -114,7 +114,7 @@ export const getStaticProps = async () => {
         {
           label: "Email",
           body: "eventAgent@DenBar.online",
-          iconType: "messageSquare"
+          iconType: "mail"
         },
         {
           label: "Text Us",
