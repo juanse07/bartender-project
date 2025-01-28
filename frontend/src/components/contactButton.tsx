@@ -1,5 +1,5 @@
 import styles from '@/styles/contactButton.module.css';
-import { Check, Copy, Gauge, MessageCircle, MessageSquare, Phone } from 'lucide-react';
+import { Check, Copy, Gauge, Mail, MessageCircle, Phone } from 'lucide-react';
 import { useRouter } from 'next/router';
 import { useState } from 'react';
 import { Button } from 'react-bootstrap';
@@ -18,14 +18,14 @@ const ContactUsButton = ({ label, body, iconType = "messageSquare" }: ContactUsB
         switch (type) {
             case "gauge":
                 return <Gauge className="w-6 h-6" />;
-            case "messageSquare":
-                return <MessageSquare className="w-6 h-6" />;
+            case "mail":
+                return <Mail className="w-6 h-6" />;
             case "messageCircle":
                 return <MessageCircle className="w-6 h-6" />;
             case "phone":
                 return <Phone className="w-6 h-6" />;
             default:
-                return <MessageSquare className="w-6 h-6" />;
+                return <Mail className="w-6 h-6" />;
         }
     };
 
@@ -39,7 +39,6 @@ const ContactUsButton = ({ label, body, iconType = "messageSquare" }: ContactUsB
         }, 2000);
     }
     const handleClick = () => {
-        // More reliable mobile detection
         const isMobile = () => {
             return (
                 /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent) ||
@@ -49,24 +48,23 @@ const ContactUsButton = ({ label, body, iconType = "messageSquare" }: ContactUsB
         
         if (iconType === "phone") {
             if (isMobile()) {
-                // Use standard tel: protocol with no _blank
                 window.location.href = `tel:${body}`;
             } else {
+                window.open(`tel:${body}`, '_blank');
+                handleCopy();
+            }
+        } else if (iconType === "mail") {
+            if (isMobile()) {
+                window.location.href = `mailto:${body}`;
+            } else {
+                window.open(`mailto:${body}`, '_blank');
                 handleCopy();
             }
         } else if (iconType === "messageCircle") {
             if (isMobile()) {
-                // Use standard mailto: protocol with no _blank
-                window.location.href = `mailto:${body}`;
-            } else {
-                handleCopy();
-            }
-        } else if (iconType === "messageSquare") {
-            if (isMobile()) {
-                // Use standard sms: protocol with no _blank
-                // Add body parameter for better compatibility
                 window.location.href = `sms:${body}?body=`;
             } else {
+                window.open(`sms:${body}?body=`, '_blank');
                 handleCopy();
             }
         } else {
