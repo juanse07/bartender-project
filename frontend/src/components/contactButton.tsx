@@ -1,5 +1,6 @@
 import styles from '@/styles/contactButton.module.css';
 import { Check, Copy, Gauge, MessageCircle, MessageSquare, Phone } from 'lucide-react';
+import { useRouter } from 'next/router';
 import { useState } from 'react';
 import { Button } from 'react-bootstrap';
 
@@ -12,6 +13,7 @@ interface ContactUsButtonProps {
 const ContactUsButton = ({ label, body, iconType = "messageSquare" }: ContactUsButtonProps) => {
     const [isCopied, setIsCopied] = useState(false);
     const [showTag, setShowTag] = useState(false);
+    const router = useRouter();
     const getIcon = (type: string) => {
         switch (type) {
             case "gauge":
@@ -36,11 +38,36 @@ const ContactUsButton = ({ label, body, iconType = "messageSquare" }: ContactUsB
             setShowTag(false);
         }, 2000);
     }
+    const handleClick = () => {
+        const isMobile = /iPhone|iPad|iPod|Android/i.test(navigator.userAgent);
+        
+        if (iconType === "phone") {
+            if (isMobile) {
+                window.open(`tel:${body}`, '_blank');
+            } else {
+                handleCopy(); // On desktop, just copy the number
+            }
+        } else if (iconType === "messageCircle") {
+            if (isMobile) {
+                window.open(`mailto:${body}`, '_blank');
+            } else {
+                handleCopy(); // On desktop, just copy the email
+            }
+        } else if (iconType === "messageSquare") {
+            if (isMobile) {
+                window.open(`sms:${body}`, '_blank');
+            } else {
+                handleCopy(); // On desktop, just copy the number
+            }
+        } else {
+            router.push(`/estimate`);
+        }
+    }
 
     return (
         <div style={{ display: 'flex', alignItems: 'center', position: 'relative' }}>
             <Button 
-                onClick={() => handleCopy()}
+                onClick={() => handleClick()}
                 className={styles.responsiveButton}
             >
                 {getIcon(iconType)}

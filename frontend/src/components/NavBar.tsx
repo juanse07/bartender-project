@@ -30,18 +30,15 @@ export default function NavBar() {
       }}
     />
             
-            {/* <span className={styles.brandText}>
-            DenverBartenders
-            </span> */}
+       
             </Navbar.Brand>
             <Navbar.Toggle aria-controls='main-navbar'/>
             <Navbar.Collapse id='main-navbar'>
                 <Nav>
                     <Nav.Link as={Link}href='/' active={router.pathname==="/"}>Home</Nav.Link>
-                    {/* <Nav.Link as={Link} href='/blog' active={router.pathname==="/blog"}>About</Nav.Link> */}
+                    <Nav.Link as={Link}href='/contactUs' active={router.pathname==="/contactUs"}>Contact Us</Nav.Link>
+                
                     
-                    <Nav.Link as={Link} href='/contactUs' active={router.pathname==="/BarService/new-quotation"}>
-                                Contact us</Nav.Link>
                 </Nav>
                
               
