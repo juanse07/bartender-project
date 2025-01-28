@@ -4,11 +4,26 @@ import { ArrowLeft, ArrowRight, Wine } from 'lucide-react';
 import { useRouter } from 'next/router';
 import { useEffect, useRef, useState } from 'react';
 import { Button, Form } from 'react-bootstrap';
+import * as yup from 'yup';
 import * as newEstimateApi from '../../../network/api/new-estimate';
 import styles from '../../../styles/EventQuestionnaire.module.css';
+import { emailSchema, nameSchema, phoneSchema } from '../../../utils/validation';
 import CustomGoldDatePicker from '../../DatePickerComponent';
 import TimePicker from '../../timepicker';
 import { FormData, Question } from './types';
+
+const EventQuestionnaireSchema = yup.object().shape({
+  eventType: yup.string().required('Event type is required'),
+  guestCount: yup.string().required('Guest count is required'),
+  eventDate: yup.string().optional(),
+  eventTime: yup.string().optional(),
+  contactName: nameSchema,
+  contactEmail: emailSchema,
+  contactPhone: phoneSchema,
+  eventLocation: yup.string().optional(),
+  notes: yup.string().optional()
+});
+type EventQuestionnaireSchema = yup.InferType<typeof EventQuestionnaireSchema>;
 
 
 const EventQuestionnaire = () => {
@@ -17,6 +32,8 @@ const EventQuestionnaire = () => {
   const wrapperRef = useRef<HTMLDivElement>(null);
   const[isMobile, setIsMobile] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
+  const [validationErrors, setValidationErrors] = useState<Partial<Record<keyof FormData, string>>>({});
+
   const [formData, setFormData] = useState<FormData>({
     eventType: '',
     eventTypeOther: '',
@@ -183,7 +200,20 @@ const EventQuestionnaire = () => {
   
   ];
 
-  const handleInputChange = (
+  const validateField = async (field: keyof FormData, value: string | { start: string; end: string }) => {
+    try {
+      await EventQuestionnaireSchema.validateAt(field.toString(), { [field]: value });
+      setValidationErrors(prev => ({ ...prev, [field]: undefined }));
+      return true;
+    } catch (error) {
+      if (error instanceof yup.ValidationError) {
+        setValidationErrors(prev => ({ ...prev, [field]: error.message }));
+      }
+      return false;
+    }
+  };
+
+  const handleInputChange = async (
     questionId: keyof FormData,
     value: string | { start: string; end: string }
   ) => {
@@ -191,9 +221,35 @@ const EventQuestionnaire = () => {
       ...prev,
       [questionId]: value
     }));
+    
+    await validateField(questionId, value);
   };
 
-  const handleNext = () => {
+  const validateCurrentSlide = async () => {
+    const currentQuestion = questions[currentSlide];
+    
+    // If it's the email field
+    if (currentQuestion.id === 'contactEmail') {
+      const isValid = await validateField('contactEmail', formData.contactEmail);
+      return isValid;
+    }
+    
+    // For required fields
+    if (currentQuestion.id === 'eventType' || currentQuestion.id === 'guestCount' || currentQuestion.id === 'contactName') {
+      const isValid = await validateField(currentQuestion.id, formData[currentQuestion.id]);
+      return isValid;
+    }
+    
+    return true;
+  };
+
+  const handleNext = async () => {
+    const isValid = await validateCurrentSlide();
+    
+    if (!isValid) {
+      return; // Don't proceed if validation fails
+    }
+
     if (currentSlide === questions.length - 1) {
       router.push('/estimate', undefined, { shallow: true });
     } else {
@@ -211,44 +267,44 @@ const EventQuestionnaire = () => {
     switch (question.type) {
       case 'select':
         return (
-        
           <>
-          <div className={styles.optionsContainer}>
-            <div className={styles.optionsWrapper}>
-              {question.options?.map((option: string) => (
-                <div key={option} className={styles.optionItem}>
-                  <Button
-                    onClick={() => handleInputChange(question.id, option)}
-                    className={
-                      formData[question.id] === option
-                        ? styles.optionButtonSelected
-                        : styles.optionButton
-                    }
-                  >
-                    {option}
-                  </Button >
-                  {option === 'Other' && formData[question.id] === 'Other' && (
-                    <div className={styles.inputContainer}>
-                      <input
-                        type="text"
-                        placeholder={
-                          question.id === 'eventType' 
-                            ? "Please specify your event type" 
-                            : "Please specify number of guests"
-                        }
-                        className={styles.otherInput}
-                        value={formData[`${question.id}Other`] as string}
-                        onChange={(e) => handleInputChange(`${question.id}Other` as keyof FormData, e.target.value)}
-                     
-                      />
-                    </div>
-                  )}
-                </div>
-              ))}
+            <div className={styles.optionsContainer}>
+              <div className={styles.optionsWrapper}>
+                {question.options?.map((option: string) => (
+                  <div key={option} className={styles.optionItem}>
+                    <Button
+                      onClick={() => handleInputChange(question.id, option)}
+                      className={
+                        `${formData[question.id] === option
+                          ? styles.optionButtonSelected
+                          : styles.optionButton} ${validationErrors[question.id] ? styles.inputError : ''}`
+                      }
+                    >
+                      {option}
+                    </Button>
+                    {option === 'Other' && formData[question.id] === 'Other' && (
+                      <div className={styles.inputContainer}>
+                        <input
+                          type="text"
+                          placeholder={
+                            question.id === 'eventType' 
+                              ? "Please specify your event type" 
+                              : "Please specify number of guests"
+                          }
+                          className={styles.otherInput}
+                          value={formData[`${question.id}Other`] as string}
+                          onChange={(e) => handleInputChange(`${question.id}Other` as keyof FormData, e.target.value)}
+                        />
+                      </div>
+                    )}
+                  </div>
+                ))}
+              </div>
             </div>
-          </div>
+            {validationErrors[question.id] && (
+              <div className={styles.errorMessage}>{validationErrors[question.id]}</div>
+            )}
           </>
-         
         );
 
         case 'date':
@@ -263,7 +319,7 @@ const EventQuestionnaire = () => {
                 <input
                   type="date"
                   placeholder="Select event date"
-                  className={styles.input}
+                  className={`${styles.input} ${validationErrors.eventDate ? styles.inputError : ''}`}
                   value={formData[question.id] as string}
                   onChange={(e) => handleInputChange(question.id, e.target.value)}
                 />
@@ -358,39 +414,48 @@ const EventQuestionnaire = () => {
             );
       case 'name':
         return (
-       
-          <input
-            type="text"
-            placeholder="Enter your name"
-            className={styles.input}
-            value={formData[question.id] as string}
-            onChange={(e) => handleInputChange(question.id, e.target.value)}
-          />
-      
+          <div>
+            <input
+              type="text"
+              placeholder="Enter your name"
+              className={`${styles.input} ${validationErrors.contactName ? styles.inputError : ''}`}
+              value={formData[question.id] as string}
+              onChange={(e) => handleInputChange(question.id, e.target.value)}
+            />
+            {validationErrors.contactName && (
+              <div className={styles.errorMessage}>{validationErrors.contactName}</div>
+            )}
+          </div>
         );
       case 'email':
         return (
-        
-          <input
-            type="email"
-            className={styles.input}
-            placeholder="Enter your email"
-            value={formData[question.id] as string}
-            onChange={(e) => handleInputChange(question.id, e.target.value)}
-          />
-        
+          <div>
+            <input
+              type="email"
+              className={`${styles.input} ${validationErrors.contactEmail ? styles.inputError : ''}`}
+              placeholder="Enter your email"
+              value={formData[question.id] as string}
+              onChange={(e) => handleInputChange(question.id, e.target.value)}
+            />
+            {validationErrors.contactEmail && (
+              <div className={styles.errorMessage}>{validationErrors.contactEmail}</div>
+            )}
+          </div>
         );
       case 'phone':
         return (
-         
-          <input
-            type="tel"
-            className={styles.input}
-            placeholder="Enter your phone number"
-            value={formData[question.id] as string}
-            onChange={(e) => handleInputChange(question.id, e.target.value)}
-          />
-        
+          <div>
+            <input
+              type="tel"
+              className={`${styles.input} ${validationErrors.contactPhone ? styles.inputError : ''}`}
+              placeholder="(XXX) XXX-XXXX"
+              value={formData[question.id] as string}
+              onChange={(e) => handleInputChange(question.id, e.target.value)}
+            />
+            {validationErrors.contactPhone && (
+              <div className={styles.errorMessage}>{validationErrors.contactPhone}</div>
+            )}
+          </div>
         );
       case 'location':
         return(
@@ -405,7 +470,7 @@ const EventQuestionnaire = () => {
         return (
          
           <textarea
-            className={styles.textarea}
+            className={`${styles.textarea} ${validationErrors.notes ? styles.inputError : ''}`}
             value={formData[question.id] as string}
             onChange={(e) => handleInputChange(question.id, e.target.value)}
             placeholder="Share any specific requirements or preferences..."

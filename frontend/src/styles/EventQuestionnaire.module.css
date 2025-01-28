@@ -413,3 +413,14 @@
     opacity: 1;
   }
 }
+.inputError {
+  border: 1px solid #dc3545;
+}
+
+.errorMessage {
+ 
+  color: #dc3545;
+  font-size: 0.875rem;
+  margin-top: 0.5rem;
+  text-align: center;
+}
