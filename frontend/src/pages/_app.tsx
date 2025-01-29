@@ -6,7 +6,7 @@ import "@/styles/globals.scss";
 
 import NavBar from '@/components/NavBar';
 import type { AppProps } from "next/app";
-import { Lato } from "next/font/google";
+import { Poppins } from "next/font/google";
 import Head from "next/head";
 import NextNProgress from "nextjs-progressbar";
 import { useEffect } from "react";
@@ -15,7 +15,7 @@ import { useEffect } from "react";
 // Correct initialization
 
 
-const latoFont = Lato({
+const poppinsFont = Poppins({
   subsets: ["latin"],
   weight: ["400", "700"], // Add desired font weights here
 });
@@ -25,6 +25,7 @@ export default function App({ Component, pageProps }: AppProps) {
   
   useEffect(() => {
     window.scrollTo({ top: 0, behavior: 'instant' });
+    
   }, []);
   return (
     <>
@@ -44,7 +45,7 @@ export default function App({ Component, pageProps }: AppProps) {
          />
       <SpeedInsights />
     
-      <div className={` ${latoFont.className}`}
+      <div className={` ${poppinsFont.className}`}
       style={{minHeight: '100vh', position: 'relative'}}>
         <NavBar />
 
