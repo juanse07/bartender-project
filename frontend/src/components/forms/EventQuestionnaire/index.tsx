@@ -33,6 +33,7 @@ const EventQuestionnaire = () => {
   const[isMobile, setIsMobile] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
   const [validationErrors, setValidationErrors] = useState<Partial<Record<keyof FormData, string>>>({});
+  const [slideDirection, setSlideDirection] = useState<'right' | 'left' | 'current'>('current');
 
   const [formData, setFormData] = useState<FormData>({
     eventType: '',
@@ -245,11 +246,9 @@ const EventQuestionnaire = () => {
 
   const handleNext = async () => {
     const isValid = await validateCurrentSlide();
-    
-    if (!isValid) {
-      return; // Don't proceed if validation fails
-    }
+    if (!isValid) return;
 
+    setSlideDirection('right');
     if (currentSlide === questions.length - 1) {
       router.push('/estimate', undefined, { shallow: true });
     } else {
@@ -259,6 +258,7 @@ const EventQuestionnaire = () => {
   };
 
   const handlePrevious = () => {
+    setSlideDirection('left'); 
     setCurrentSlide(prev => Math.max(0, prev - 1));
     scrollToTop();
   };
@@ -496,11 +496,15 @@ const EventQuestionnaire = () => {
         </div>
 
         <div className={styles.contentWrapper}>
-          <h2 className={styles.title}>
-            {questions[currentSlide].title}
-          </h2>
-
-          {renderQuestion(questions[currentSlide])}
+          <div 
+            className={`${styles.slideContent} ${styles[`slide${slideDirection}`]}`}
+            key={currentSlide}
+          >
+            <h2 className={styles.title}>
+              {questions[currentSlide].title}
+            </h2>
+            {renderQuestion(questions[currentSlide])}
+          </div>
         </div>
 
               <div className={styles.buttonContainer}>
