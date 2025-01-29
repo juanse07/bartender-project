@@ -1,3 +1,4 @@
+import { SpeedInsights } from "@vercel/speed-insights/next";
 import 'bootstrap/dist/css/bootstrap.min.css';
 
 import "@/styles/globals.scss";
@@ -41,6 +42,7 @@ export default function App({ Component, pageProps }: AppProps) {
           height={3}
           showOnShallow={true}    
          />
+      <SpeedInsights />
     
       <div className={` ${latoFont.className}`}
       style={{minHeight: '100vh', position: 'relative'}}>
