@@ -1,6 +1,6 @@
-import ContactUsButton from '@/components/contactButton';
+import ContactContent from '@/components/ContactContent';
+import HeroSection from '@/components/HeroSection';
 import type { NextPage } from 'next';
-import Image from "next/image";
 import styles from '../styles/contactUs.module.css';
 
 interface ContactPageProps {
@@ -27,58 +27,12 @@ interface ContactPageProps {
 const Desktop: NextPage<ContactPageProps> = ({ heroContent, contactInfo }) => {
   return (
     <div className={styles.pageContainer}>
-      {/* Hero Section with Parallax Effect */}
-      <div className={styles.heroSection}>
-        <div className={styles.parallaxOverlay}>
-          <Image 
-            src={heroContent.image}
-            alt="Luxury Background"
-            fill
-            style={{ objectFit: 'cover' }}
-            priority
-          />
-          <div className={styles.heroContent}>
-            <h1 className={styles.title}>{heroContent.title}</h1>
-            <p className={styles.subtitle}>{heroContent.subtitle}</p>
-          </div>
-        </div>
-      </div>
-
-      {/* Main Content Section */}
-      <div className={styles.contentSection}>
-        <div className={styles.leftColumn}>
-          <div className={styles.messageCard}>
-            <p className={styles.welcomeMessage}>
-              {contactInfo.welcomeMessage}
-            </p>
-            <div className={styles.socialLinks}>
-              {contactInfo.socialLinks.map((link, index) => (
-                <a key={index} href={link.url} className={styles.socialIcon}>
-                  <Image 
-                    width={30} 
-                    height={30} 
-                    alt={link.platform} 
-                    src={link.icon} 
-                  />
-                </a>
-              ))}
-            </div>
-          </div>
-        </div>
-
-        <div className={styles.rightColumn}>
-          <div className={styles.contactButtons}>
-            {contactInfo.buttons.map((button, index) => (
-              <ContactUsButton 
-                key={index}
-                label={button.label}
-                body={button.body}
-                iconType={button.iconType}
-              />
-            ))}
-          </div>
-        </div>
-      </div>
+      <HeroSection 
+        image={heroContent.image}
+        title={heroContent.title}
+        subtitle={heroContent.subtitle}
+      />
+      <ContactContent contactInfo={contactInfo} />
     </div>
   );
 };

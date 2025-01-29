@@ -1,3 +1,4 @@
+
 import LastSection from '@/components/LastSection';
 import ServiceSection from '@/components/ServiceSection';
 import styles from '@/styles/facepage.module.css';
@@ -28,6 +29,7 @@ interface Service {
   buttonText?: string;
   onClick?: () => void;
   onClickNavPath?: string;
+  
 }
 
 interface HomeProps {
@@ -39,6 +41,7 @@ interface HomeProps {
     subheading: string;
   }>;
 }
+
 
 export default function Home({ 
   services = [], 
@@ -173,7 +176,16 @@ export default function Home({
           onClickNavPath={service.onClickNavPath}
         />
       ))}
-
+     {/* <ContactUsButton
+        label="Contact Us"
+        body="booking@denvebartenders.online"
+        iconType="mail"
+      />
+      <ContactUsButton
+        label="phone"
+        body="78690"
+        iconType="phone"
+      /> */}
       <LastSection
         backgroundImage="/hand2.webp"
       />
