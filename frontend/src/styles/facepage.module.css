@@ -87,8 +87,9 @@
   
   .carouselCaption h1 {
     font-size: 3.5rem;
+    color: #c3a602c3 !important;
     margin-bottom: 0.75rem;
-    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+    text-shadow: 4px 4px 8px rgba(0, 0, 0, 0.6);
   }
   
   .carouselCaption p {

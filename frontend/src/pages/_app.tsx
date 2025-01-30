@@ -3,7 +3,6 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 
 import "@/styles/globals.scss";
 
-
 import NavBar from '@/components/NavBar';
 import type { AppProps } from "next/app";
 import { Poppins } from "next/font/google";

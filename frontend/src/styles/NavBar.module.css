@@ -40,3 +40,83 @@
     object-fit: contain; /* Ensures it scales properly within its container */
     margin: 0 auto; /* Centers the logo in its container */
 }
+
+.navbar {
+    background: rgba(0, 0, 0, 0.9) !important;
+    padding: 0.5rem 1rem;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.contactButton {
+    transition: all 0.3s ease;
+    border: 1px solid rgba(255, 215, 0, 0.3);
+    color: #ffd700;
+}
+
+.contactButton:hover {
+    background: rgba(255, 215, 0, 0.1);
+    border-color: #ffd700;
+    transform: translateY(-2px);
+}
+
+@media (max-width: 768px) {
+    .navbar {
+        padding: 0.3rem 0.5rem;
+    }
+}
+
+.mobileButton {
+    margin-top: 1rem;
+    width: 100%;
+    padding: 0.5rem;
+    border: 1px solid rgba(255, 215, 0, 0.3);
+    background-color: transparent;
+    color: #ffd700;
+    transition: all 0.3s ease;
+}
+
+.mobileButton:hover {
+    background-color: rgba(255, 215, 0, 0.1);
+    border-color: #ffd700;
+}
+
+/* Add these new styles */
+.navbar :global(.navbar-collapse) {
+  transition: all 0.3s ease-in-out;
+  transform-origin: top;
+}
+
+.navbar :global(.navbar-collapse.collapse) {
+  opacity: 1;
+  transform: scaleY(1);
+}
+
+.navbar :global(.navbar-collapse.collapse.show) {
+  animation: slideDown 0.3s ease forwards;
+}
+
+.navbar :global(.navbar-collapse.collapsing) {
+  animation: slideUp 0.3s ease forwards;
+}
+
+@keyframes slideDown {
+  0% {
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes slideUp {
+  0% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+  100% {
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+}
