@@ -54,8 +54,8 @@ export default function Home({
     {
       type: 'video',
       src: '/videos/barfilmnoir.mp4',
-      heading: 'DenverBartenders',
-      subheading: 'Unforgettable Moments'
+      heading: 'Bar Catering, Mobile Bars, and More!',
+      subheading: 'We have the right tools for your next event.'
     },
     {
       type: 'image',
@@ -122,11 +122,12 @@ export default function Home({
             {index === activeIndex && content.type === 'video' ? (
               <div className={styles.videoWrapper}>
                 <video
-                  autoPlay= {index === 0}
+                  autoPlay={index === 0}
                   muted
                   loop
                   playsInline
                   className={styles.video}
+                  poster="/hand3.webp"
                 >
                   <source src={content.src} type="video/mp4" />
                 </video>
@@ -201,8 +202,8 @@ export const getStaticProps = async () => {
       {
         type: 'video',
         src: '/barfilmnoir.mp4',
-        heading: 'DenverBartenders',
-        subheading: 'Unforgettable Moments'
+        heading: 'Bar Catering, Mobile Bars, and More!',
+        subheading: 'We have the right tools for your next event.'
       },
       {
         type: 'image',
