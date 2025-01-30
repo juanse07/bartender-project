@@ -1,5 +1,5 @@
 
-import ContactUsButton from '@/components/contactButton';
+import ContactSection from '@/components/ContactSection';
 import LastSection from '@/components/LastSection';
 import ServiceSection from '@/components/ServiceSection';
 import styles from '@/styles/facepage.module.css';
@@ -87,6 +87,29 @@ export default function Home({
   const handleSlideChange = (selectedIndex: number) => {
     setActiveIndex(selectedIndex);
   };
+
+  const contactButtons = [
+    {
+      body: "Get an estimate",
+      iconType: "gauge" as const,
+      label: ""
+    },
+    {
+      body: "booking@denbar.online",
+      iconType: "mail" as const,
+      label: ""
+    },
+    {
+      body: "7201234567",
+      iconType: "phone" as const,
+      label: "phone"
+    },
+    {
+      body: "7201234567",
+      iconType: "messageCircle" as const,
+      label: "text"
+    }
+  ];
 
   if (!services || !heroContent) {
     return <div>Loading...</div>;
@@ -177,32 +200,7 @@ export default function Home({
           onClickNavPath={service.onClickNavPath}
         />
       ))}
-      <div className={styles.contactUsHome} 
-   
-      >
-
-      <ContactUsButton
-        body="Get an estimate"
-        iconType="gauge"
-        label=""
-      />
-      <ContactUsButton
-        body="booking@denbar.online"
-        iconType="mail"
-        label=""
-      />
-      <ContactUsButton
-        label="phone"
-        body="7201234567"
-        iconType="phone"
-      />
-      <ContactUsButton
-        label="text"
-        body="7201234567"
-        iconType="messageCircle"
-      />
-
-      </div>
+      <ContactSection contactButtons={contactButtons} />
       <LastSection
         backgroundImage="/hand2.webp"
       />
