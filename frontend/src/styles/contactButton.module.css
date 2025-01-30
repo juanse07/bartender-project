@@ -35,6 +35,18 @@
         width: 95%;
         font-size: 22px;
     }
+    @media (max-width: 2700px) {
+        width: 90%;
+        font-size: 22px;
+    }
+    @media (max-width: 1900px) {
+        width: 80%;
+        font-size: 20px;
+    }
+    @media (max-width: 1600px) {
+        width: 70%;
+        font-size: 18px;
+    }
     @media (max-width: 1024px) {
         width: 90%;
         font-size: 20px;

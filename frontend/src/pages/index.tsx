@@ -1,4 +1,5 @@
 
+import ContactUsButton from '@/components/contactButton';
 import LastSection from '@/components/LastSection';
 import ServiceSection from '@/components/ServiceSection';
 import styles from '@/styles/facepage.module.css';
@@ -176,16 +177,32 @@ export default function Home({
           onClickNavPath={service.onClickNavPath}
         />
       ))}
-     {/* <ContactUsButton
-        label="Contact Us"
-        body="booking@denvebartenders.online"
+      <div className={styles.contactUsHome} 
+   
+      >
+
+      <ContactUsButton
+        body="journey begins here"
+        iconType="gauge"
+        label="Start Here"
+      />
+      <ContactUsButton
+        body="booking@denbar.online"
         iconType="mail"
+        label="email"
       />
       <ContactUsButton
         label="phone"
         body="78690"
         iconType="phone"
-      /> */}
+      />
+      <ContactUsButton
+        label="text"
+        body="78690"
+        iconType="MessageCircle"
+      />
+
+      </div>
       <LastSection
         backgroundImage="/hand2.webp"
       />
