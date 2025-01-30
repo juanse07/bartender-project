@@ -14,6 +14,7 @@ const ContactUsButton = ({ label, body, iconType = "mail" }: ContactUsButtonProp
     const [isCopied, setIsCopied] = useState(false);
     const [showTag, setShowTag] = useState(false);
     const router = useRouter();
+
     const getIcon = (type: string) => {
         switch (type) {
             case "gauge":
@@ -79,7 +80,10 @@ const ContactUsButton = ({ label, body, iconType = "mail" }: ContactUsButtonProp
     }
 
     return (
-        <div style={{ display: 'flex', alignItems: 'center', position: 'relative' }}>
+        <div 
+            className={styles.contactButtonContainer}
+            style={{ display: 'flex', alignItems: 'center', position: 'relative' }}
+        >
             <Button 
                 onClick={() => handleClick()}
                 className={styles.responsiveButton}

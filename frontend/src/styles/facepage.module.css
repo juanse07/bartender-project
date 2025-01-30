@@ -117,8 +117,8 @@
     background-color: #000;
     display: grid;
     grid-template-columns: 1fr 1fr 1fr 1fr;
-    gap: 16px;
-    padding: 16px;
+    gap: 10px;
+    padding: 10px;
 
   }
   @media (max-width: 2700px) {
@@ -153,7 +153,10 @@
 
   @media (max-width: 480px) {
     .contactUsHome{
-      grid-template-columns: 1fr 1fr;
+
+      grid-template-columns: 1fr ;
+      gap: 1px;
+      padding: 1px;
       
     }
    
