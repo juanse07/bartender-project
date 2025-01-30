@@ -18,7 +18,7 @@ const ContactUsButton = ({ label, body, iconType = "mail" }: ContactUsButtonProp
     const getIcon = (type: string) => {
         switch (type) {
             case "gauge":
-                return <Gauge className={styles.copyIcon} />;
+                return <Gauge className="w-6 h-6" />;
             case "mail":
                 return <Mail className="w-6 h-6" />;
             case "messageCircle":
