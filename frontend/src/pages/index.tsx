@@ -1,4 +1,3 @@
-
 import ContactSection from '@/components/ContactSection';
 import LastSection from '@/components/LastSection';
 import ServiceSection from '@/components/ServiceSection';
@@ -148,24 +147,12 @@ export default function Home({
               <h1>{content.heading}</h1>
               <p>{content.subheading}</p>
               <button
-                style={{
-                  backgroundColor: 'rgba(255, 255, 255, 0.2)',
-                  border: '2px solid white',
-                  borderRadius: '5px',
-                  padding: '15px 30px',
-                  color: 'white',
-                  fontSize: '18px',
-                  cursor: 'pointer',
-                  transition: 'all 0.3s ease',
-                }}
+                className={styles.carouselButton}
                 onMouseOver={(e) => {
-                  (e.target as HTMLButtonElement).style.backgroundColor = 'rgba(255, 255, 255, 0.5)';
-                  (e.target as HTMLButtonElement).style.color = 'black';
-                  (e.target as HTMLButtonElement).style.fontWeight = '600';
+                  e.currentTarget.classList.add(styles.carouselButtonHover);
                 }}
                 onMouseOut={(e) => {
-                  (e.target as HTMLButtonElement).style.backgroundColor = 'rgba(255, 255, 255, 0.2)';
-                  (e.target as HTMLButtonElement).style.color = 'white';
+                  e.currentTarget.classList.remove(styles.carouselButtonHover);
                 }}
                 onClick={() => router.push('/estimate')}
               >

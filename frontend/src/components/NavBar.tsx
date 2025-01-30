@@ -46,7 +46,7 @@ export default function NavBar() {
                             Contact Us
                         </Nav.Link>
                         {/* Mobile-only button */}
-                        <div className="d-md-none mt-3">
+                        <div className="d-md-none mt-3 me-3 ">
                             <Button
                                 onClick={handleContactClick}
                                 variant="outline-warning"
