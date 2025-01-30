@@ -182,24 +182,24 @@ export default function Home({
       >
 
       <ContactUsButton
-        body="journey begins here"
+        body="Get an estimate"
         iconType="gauge"
-        label="Start Here"
+        label=""
       />
       <ContactUsButton
         body="booking@denbar.online"
         iconType="mail"
-        label="email"
+        label=""
       />
       <ContactUsButton
         label="phone"
-        body="78690"
+        body="7201234567"
         iconType="phone"
       />
       <ContactUsButton
         label="text"
-        body="78690"
-        iconType="MessageCircle"
+        body="7201234567"
+        iconType="messageCircle"
       />
 
       </div>

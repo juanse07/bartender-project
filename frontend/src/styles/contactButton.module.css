@@ -60,9 +60,9 @@
   
     @media (max-width: 480px) {
       margin: 5px;
-      font-size: 18px;
+      font-size: 11px;
       min-height: 50px;
-      width: 70%;
+      width: 60%;
     }
   }
   .copyIcon {
@@ -79,7 +79,10 @@
     margin-left: 20px;
     }
     @media (max-width: 480px) {
-        margin-left: 60px;
+        margin-left: 40px;
+        width: 0.9rem;
+        height: 0.9rem;
+       
     }
   }
 .copyTag {
