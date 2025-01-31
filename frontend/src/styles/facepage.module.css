@@ -206,3 +206,10 @@
     transform: scale(1.05); /* Slight enlarge on hover */
     box-shadow: 0 6px 10px rgba(0, 0, 0, 0.15); /* Increase shadow on hover */
   }
+
+  .captionOverlay {
+    background-color: rgba(0, 0, 0, 0.5); /* Adjust opacity as needed */
+    padding: 20px;
+    border-radius: 8px;
+    backdrop-filter: blur(2px); /* Optional: adds a slight blur effect */
+  }

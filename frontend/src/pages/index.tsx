@@ -145,20 +145,22 @@ export default function Home({
               </div>
             )}
             <Carousel.Caption className={styles.carouselCaption}>
-              <h1>{content.heading}</h1>
-              <p>{content.subheading}</p>
-              <button
-                className={styles.carouselButton}
-                onMouseOver={(e) => {
-                  e.currentTarget.classList.add(styles.carouselButtonHover);
-                }}
-                onMouseOut={(e) => {
-                  e.currentTarget.classList.remove(styles.carouselButtonHover);
-                }}
-                onClick={() => router.push('/estimate')}
-              >
-                Start here
-              </button>
+              <div className={styles.captionOverlay}>
+                <h1>{content.heading}</h1>
+                <p>{content.subheading}</p>
+                <button
+                  className={styles.carouselButton}
+                  onMouseOver={(e) => {
+                    e.currentTarget.classList.add(styles.carouselButtonHover);
+                  }}
+                  onMouseOut={(e) => {
+                    e.currentTarget.classList.remove(styles.carouselButtonHover);
+                  }}
+                  onClick={() => router.push('/estimate')}
+                >
+                  Start here
+                </button>
+              </div>
             </Carousel.Caption>
           </Carousel.Item>
         ))}
