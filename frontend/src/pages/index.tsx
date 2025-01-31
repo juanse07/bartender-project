@@ -116,7 +116,7 @@ export default function Home({
 
   return (
     <div className={styles.container}>
-      <Carousel fade interval={5000} className={styles.carousel} onSlide={handleSlideChange}>
+      <Carousel interval={5000} className={styles.carousel} onSlide={handleSlideChange}>
         {heroContent.map((content, index) => (
           <Carousel.Item key={index} className={styles.carouselItem}>
             {index === activeIndex && content.type === 'video' ? (
