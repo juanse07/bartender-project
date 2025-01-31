@@ -1,8 +1,10 @@
+'use client';
+
 import AddressInput from '@/components/AddressInput';
 import LoadingButton from '@/components/LoadingButton';
 import { ArrowLeft, ArrowRight, Wine } from 'lucide-react';
 import { useRouter } from 'next/router';
-import { useEffect, useRef, useState } from 'react';
+import { useCallback, useEffect, useMemo, useRef, useState } from 'react';
 import { Button, Form } from 'react-bootstrap';
 import * as yup from 'yup';
 import * as newEstimateApi from '../../../network/api/new-estimate';
@@ -12,19 +14,81 @@ import CustomGoldDatePicker from '../../DatePickerComponent';
 import TimePicker from '../../timepicker';
 import { FormData, Question } from './types';
 
-const EventQuestionnaireSchema = yup.object().shape({
-  eventType: yup.string().required('Event type is required'),
-  guestCount: yup.string().required('Guest count is required'),
-  eventDate: yup.string().optional(),
-  eventTime: yup.string().optional(),
-  contactName: nameSchema,
-  contactEmail: emailSchema,
-  contactPhone: phoneSchema,
-  eventLocation: yup.string().optional(),
-  notes: yup.string().optional()
-});
-type EventQuestionnaireSchema = yup.InferType<typeof EventQuestionnaireSchema>;
-
+const QUESTIONNAIRE_QUESTIONS: Question[] = [
+  {
+    id: 'eventType',
+    title: 'What type of event are you planning?',
+    type: 'select',
+    options: [
+      'Wedding',
+      'Holiday Party',
+      'Corporate Event',
+      'Birthday Party',
+      'Engagement Party',
+      'Charity Gala or Fundraiser',
+      'Community Event',
+      'Retirement Party',
+      'Private Dinner Party',
+      'Graduation Party',
+      'Other'
+    ]
+  },
+  {
+    id: 'guestCount',
+    title: 'How many guests are you expecting?',
+    type: 'select',
+    options: [
+      '1-10',
+      '11-25',
+      '26-40',
+      '41-60',
+      '61-75',
+      '75-100',
+      '101-125',
+      '125-150',
+      '150-200',
+      '200-300',
+      '300-500',
+      '500+',
+      'Other'
+    ]
+  },
+  {
+    id: 'eventDate',
+    title: 'When is your event?',
+    type: 'date'
+  },
+  {
+    id: 'eventTime',
+    title: 'What time will your event start and end?',
+    type: 'time'
+  },
+  {
+    id: 'contactName',
+    title: 'Please provide a contact name',
+    type: 'name'
+  },
+  {
+    id: 'contactEmail',
+    title: 'please provide a contact email',
+    type: 'email'
+  },
+  {
+    id: 'contactPhone',
+    title: 'and a phone number',
+    type: 'phone'
+  },
+  {
+    id: 'eventLocation',
+    title: 'Where will your event take place?',
+    type: 'location'
+  },
+  {
+    id: 'notes',
+    title: 'Any additional details we should know?',
+    type: 'textarea'
+  },
+];
 
 const EventQuestionnaire = () => {
   const router = useRouter();
@@ -52,6 +116,19 @@ const EventQuestionnaire = () => {
     notes: ''
   });
 
+  const questions = useMemo(() => QUESTIONNAIRE_QUESTIONS, []);
+  const EventQuestionnaireSchema = useMemo(() => yup.object().shape({
+    eventType: yup.string().required('Event type is required'),
+    guestCount: yup.string().required('Guest count is required'),
+    eventDate: yup.string().optional(),
+    eventTime: yup.string().optional(),
+    contactName: nameSchema,
+    contactEmail: emailSchema,
+    contactPhone: phoneSchema,
+    eventLocation: yup.string().optional(),
+    notes: yup.string().optional()
+  }), []);
+
   const scrollToTop = () => {
     console.log('Wrapper ref:', wrapperRef.current);
     if (wrapperRef.current) {
@@ -64,7 +141,7 @@ const EventQuestionnaire = () => {
   };
 
   
-  const handleSubmit = async (event: React.FormEvent) => {
+  const handleSubmit = useCallback(async (event: React.FormEvent) => {
     event.preventDefault();
     if (currentSlide !== questions.length - 1) {
       return;
@@ -98,7 +175,7 @@ const EventQuestionnaire = () => {
   }
     // console.log('Form submitted:', formData);
     // await router.push('/estimate-event', undefined, { shallow: true });
-  };
+  }, [currentSlide, formData, router, questions.length]);
 
   useEffect(() => {
     const checkMobile = () => {
@@ -122,86 +199,8 @@ const EventQuestionnaire = () => {
       router.events.off('routeChangeComplete', handleRouteChange);
     };
   }, [router.events]);
-  const questions: Question[] = [
-    {
-      id: 'eventType',
-      title: 'What type of event are you planning?',
-      type: 'select',
-      options: [
-        'Wedding',
-        'Holiday Party',
-        'Corporate Event',
-        'Birthday Party',
-        'Engagement Party',
-        'Charity Gala or Fundraiser',
-        'Community Event',
-        'Retirement Party',
-        'Private Dinner Party',
-        'Graduation Party',
-        'Other'
-      ]
-    },
-    {
-      id: 'guestCount',
-      title: 'How many guests are you expecting?',
-      type: 'select',
-      options: [
-        '1-10',
-        '11-25',
-        '26-40',
-        '41-60',
-        '61-75',
-        '75-100',
-        '101-125',
-        '125-150',
-        '150-200',
-        '200-300',
-        '300-500',
-        '500+',
-        'Other'
-      ]
-    },
-    {
-      id: 'eventDate',
-      title: 'When is your event?',
-      type: 'date'
-    },
-    {
-      id: 'eventTime',
-      title: 'What time will your event start and end?',
-      type: 'time'
-    },
-    {
-      id: 'contactName',
-      title: 'Please provide a contact name',
-      type: 'name'
-    },
-    {
-      id: 'contactEmail',
-      title: 'please provide a contact email',
-      type: 'email'
-    },
-    {
-      id: 'contactPhone',
-      title: 'and a phone number',
-      type: 'phone'
-    },
-    {
-      id: 'eventLocation',
-      title: 'Where will your event take place?',
-      type: 'location'
-    },
-    {
-      id: 'notes',
-      title: 'Any additional details we should know?',
-      type: 'textarea'
-    },
-   
 
-  
-  ];
-
-  const validateField = async (field: keyof FormData, value: string | { start: string; end: string }) => {
+  const validateField = useCallback(async (field: keyof FormData, value: string | { start: string; end: string }) => {
     try {
       await EventQuestionnaireSchema.validateAt(field.toString(), { [field]: value });
       setValidationErrors(prev => ({ ...prev, [field]: undefined }));
@@ -212,9 +211,9 @@ const EventQuestionnaire = () => {
       }
       return false;
     }
-  };
+  }, [EventQuestionnaireSchema]);
 
-  const handleInputChange = async (
+  const handleInputChange = useCallback(async (
     questionId: keyof FormData,
     value: string | { start: string; end: string }
   ) => {
@@ -224,27 +223,25 @@ const EventQuestionnaire = () => {
     }));
     
     await validateField(questionId, value);
-  };
+  }, [validateField]);
 
-  const validateCurrentSlide = async () => {
+  const validateCurrentSlide = useCallback(async () => {
     const currentQuestion = questions[currentSlide];
     
-    // If it's the email field
     if (currentQuestion.id === 'contactEmail') {
       const isValid = await validateField('contactEmail', formData.contactEmail);
       return isValid;
     }
     
-    // For required fields
     if (currentQuestion.id === 'eventType' || currentQuestion.id === 'guestCount' || currentQuestion.id === 'contactName') {
       const isValid = await validateField(currentQuestion.id, formData[currentQuestion.id]);
       return isValid;
     }
     
     return true;
-  };
+  }, [currentSlide, questions, validateField, formData]);
 
-  const handleNext = async () => {
+  const handleNext = useCallback(async () => {
     const isValid = await validateCurrentSlide();
     if (!isValid) return;
 
@@ -255,7 +252,7 @@ const EventQuestionnaire = () => {
       setCurrentSlide(prev => Math.min(questions.length - 1, prev + 1));
       scrollToTop();
     }
-  };
+  }, [currentSlide, validateCurrentSlide, router, questions.length]);
 
   const handlePrevious = () => {
     setSlideDirection('left'); 

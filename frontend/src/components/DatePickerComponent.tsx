@@ -1,6 +1,5 @@
 import styles from '@/styles/DatePicker.module.css';
 import { Calendar } from 'lucide-react';
-import React from 'react';
 import DatePicker from 'react-datepicker';
 import "react-datepicker/dist/react-datepicker.css";
 
@@ -10,7 +9,7 @@ interface DatePickerInputProps {
   label?: string;
 }
 
-const CustomGoldDatePicker: React.FC<DatePickerInputProps> = ({ value, onChange, label }) => {
+export default function CustomGoldDatePicker({ value, onChange, label }: DatePickerInputProps) {
   return (
     <div className={styles.wrapper}>
       {label && (
@@ -37,6 +36,4 @@ const CustomGoldDatePicker: React.FC<DatePickerInputProps> = ({ value, onChange,
       </div>
     </div>
   );
-};
-
-export default CustomGoldDatePicker;
+}

@@ -7,6 +7,19 @@
 !.yarn/plugins
 !.yarn/releases
 !.yarn/versions
+# Dependencies
+/node_modules
+/frontend/node_modules
+/backend/node_modules
+/.pnp
+.pnp.*
+
+# Next.js
+/.next/
+/frontend/.next/
+/out/
+
+# Rest of your existing .gitignore remains the same...
 
 # Testing
 /coverage
@@ -106,3 +119,6 @@ next-env.d.ts
 .env.local
 
 backend/dist/
+
+
+# Rest of your existing .gitignore remains the same...

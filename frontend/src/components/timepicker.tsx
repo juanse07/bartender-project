@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
 import styles from './../styles/TimePicker.module.css';
 
 interface TimePickerProps {
@@ -6,7 +6,7 @@ interface TimePickerProps {
   onChange: (time: string) => void;
 }
 
-const TimePicker: React.FC<TimePickerProps> = ({ value, onChange }) => {
+export default function TimePicker({ value, onChange }: TimePickerProps) {
   const [isOpen, setIsOpen] = useState(false);
   const [selectedHour, setSelectedHour] = useState('12');
   const [selectedMinute, setSelectedMinute] = useState('00');
@@ -80,6 +80,4 @@ const TimePicker: React.FC<TimePickerProps> = ({ value, onChange }) => {
       )}
     </div>
   );
-};
-
-export default TimePicker;
+}

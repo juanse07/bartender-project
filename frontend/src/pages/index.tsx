@@ -53,7 +53,7 @@ export default function Home({
   const mobileContent = [
     {
       type: 'video',
-      src: '/videos/barfilmnoir.mp4',
+      src: '/barwithpeople.mp4',
       heading: 'Bar Catering, Mobile Bars, and More!',
       subheading: 'We have the right tools for your next event.'
     },
@@ -203,7 +203,7 @@ export const getStaticProps = async () => {
     const desktopContent = [
       {
         type: 'video',
-        src: '/barfilmnoir.mp4',
+        src: '/barwithpeople.mp4',
         heading: 'Bar Catering, Mobile Bars, and More!',
         subheading: 'We have the right tools for your next event.'
       },

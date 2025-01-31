@@ -52,7 +52,7 @@ export default function NavBar() {
                                 variant="outline-warning"
                                 className="w-100"
                             >
-                                Get Started
+                                Get an Estimate
                             </Button>
                         </div>
                     </Nav>
@@ -64,7 +64,7 @@ export default function NavBar() {
                             variant="outline-warning"
                             className="px-4"
                         >
-                            Get Started
+                            Get an Estimate
                         </Button>
                     </div>
                 </Navbar.Collapse>

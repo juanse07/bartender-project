@@ -2,17 +2,7 @@ import styles from '@/styles/Thankyou.module.css';
 
 const ThankYouPage = () => {
     return (
-        <section
-            className={styles.thankYou}
-            style={{
-                backgroundImage: `url('/hand3.webp')`, // Set the background image directly
-                backgroundSize: 'cover', // Ensure the image covers the section
-                backgroundPosition: 'left', // Center the image
-                backgroundRepeat: 'no-repeat', // Prevent tiling
-                height: '100vh', // Full viewport height
-                width: '100%', // Full width
-            }}
-        >
+        <section className={styles.thankYou}>
             <div className={styles.content}>
                 <h1>Thank you for choosing DenverBartenders!</h1>
                 <p>We look forward to serving you soon</p>
