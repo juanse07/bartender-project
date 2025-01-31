@@ -127,7 +127,7 @@ export default function Home({
                   loop
                   playsInline
                   className={styles.video}
-                  poster="/hand3.webp"
+                  poster="patiolights.webp"
                 >
                   <source src={content.src} type="video/mp4" />
                 </video>
