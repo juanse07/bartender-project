@@ -336,3 +336,72 @@
     margin: 0.1rem;
   }
 }
+
+/* Adjust the mobile styles for the date picker */
+@media (max-width: 768px) {
+  .wrapper {
+    max-width: 400px;
+  }
+
+  .container {
+    padding: 16px 20px;
+  }
+
+  .datePicker {
+    font-size: 1.2rem;
+    padding: 10px 0;
+  }
+
+  .icon {
+    width: 28px;
+    height: 28px;
+  }
+
+  /* Make the calendar popup larger */
+  .modalWrapper :global(.react-datepicker) {
+    transform: scale(1.1);
+  }
+
+  .modalWrapper :global(.react-datepicker__day) {
+    width: 2.8rem;
+    height: 2.8rem;
+    line-height: 2.8rem;
+    margin: 0.2rem;
+    font-size: 1.1rem;
+  }
+}
+
+/* Even larger for smaller screens */
+@media (max-width: 480px) {
+  .wrapper {
+    max-width: 100%;
+    padding: 0 10px;
+  }
+
+  .container {
+    padding: 18px 22px;
+  }
+
+  .datePicker {
+    font-size: 1.3rem;
+    padding: 12px 0;
+  }
+
+  .icon {
+    width: 32px;
+    height: 32px;
+  }
+
+  /* Make the calendar popup even larger */
+  .modalWrapper :global(.react-datepicker) {
+    transform: scale(1.2);
+  }
+
+  .modalWrapper :global(.react-datepicker__day) {
+    width: 3rem;
+    height: 3rem;
+    line-height: 3rem;
+    margin: 0.25rem;
+    font-size: 1.2rem;
+  }
+}
