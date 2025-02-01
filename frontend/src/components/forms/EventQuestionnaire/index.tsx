@@ -94,7 +94,7 @@ const EventQuestionnaire = () => {
   const router = useRouter();
   const [currentSlide, setCurrentSlide] = useState(0);
   const wrapperRef = useRef<HTMLDivElement>(null);
-  const[isMobile, setIsMobile] = useState(false);
+  // const[isMobile, setIsMobile] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
   const [validationErrors, setValidationErrors] = useState<Partial<Record<keyof FormData, string>>>({});
   const [slideDirection, setSlideDirection] = useState<'right' | 'left' | 'current'>('current');
@@ -177,15 +177,15 @@ const EventQuestionnaire = () => {
     // await router.push('/estimate-event', undefined, { shallow: true });
   }, [currentSlide, formData, router, questions.length]);
 
-  useEffect(() => {
-    const checkMobile = () => {
-      setIsMobile(window.innerWidth <= 768);
-    };
+  // useEffect(() => {
+  //   const checkMobile = () => {
+  //     setIsMobile(window.innerWidth <= 768);
+  //   };
 
-    checkMobile();
-    window.addEventListener('resize', checkMobile);
-    return () => window.removeEventListener('resize', checkMobile);
-  }, []);
+  //   checkMobile();
+  //   window.addEventListener('resize', checkMobile);
+  //   return () => window.removeEventListener('resize', checkMobile);
+  // }, []);
 
   // Listen for route changes to scroll to top
   useEffect(() => {
@@ -311,7 +311,7 @@ const EventQuestionnaire = () => {
             <div className={styles.dateContainer}>
             <div className={styles.datePickerWrapper}>
             <label className={styles.seasonLabel}>Select event date</label>
-              {isMobile ? (
+              {/* {isMobile ? (
               
                 <input
                   type="date"
@@ -320,7 +320,7 @@ const EventQuestionnaire = () => {
                   value={formData[question.id] as string}
                   onChange={(e) => handleInputChange(question.id, e.target.value)}
                 />
-              ) : (
+              ) : ( */}
                 <CustomGoldDatePicker
                   value={formData[question.id] ? new Date(formData[question.id] as string) : null}
                   onChange={(date: Date | null) => {
@@ -330,7 +330,7 @@ const EventQuestionnaire = () => {
                   }}
                   label=""
                 />
-              )}
+              {/* )} */}
             </div>
             
             <div className={styles.seasonSelector}>

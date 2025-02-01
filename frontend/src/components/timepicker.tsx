@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import { Modal } from 'react-bootstrap';
 import styles from './../styles/TimePicker.module.css';
 
 interface TimePickerProps {
@@ -24,60 +25,70 @@ export default function TimePicker({ value, onChange }: TimePickerProps) {
     <div className={styles.timePickerContainer}>
       <button 
         className={styles.timeButton}
-        onClick={() => setIsOpen(!isOpen)}
+        onClick={() => setIsOpen(true)}
       >
         {value || 'Select Time'}
       </button>
 
-      {isOpen && (
-        <div className={styles.dropdown}>
-          <div className={styles.hoursGrid}>
-            {hours.map((hour) => (
+      <Modal 
+        show={isOpen} 
+        onHide={() => setIsOpen(false)}
+        centered
+        className={styles.modalWrapper}
+      >
+        <Modal.Header closeButton>
+          <Modal.Title>Select Time</Modal.Title>
+        </Modal.Header>
+        <Modal.Body>
+          <div className={styles.timePickerContent}>
+            <div className={styles.hoursGrid}>
+              {hours.map((hour) => (
+                <button
+                  key={hour}
+                  className={`${styles.timeOption} ${selectedHour === hour ? styles.selected : ''}`}
+                  onClick={() => setSelectedHour(hour)}
+                >
+                  {hour}
+                </button>
+              ))}
+            </div>
+
+            <div className={styles.minutesContainer}>
               <button
-                key={hour}
-                className={`${styles.timeOption} ${selectedHour === hour ? styles.selected : ''}`}
-                onClick={() => setSelectedHour(hour)}
+                className={`${styles.timeOption} ${selectedMinute === '00' ? styles.selected : ''}`}
+                onClick={() => setSelectedMinute('00')}
               >
-                {hour}
+                00
               </button>
-            ))}
-          </div>
+              <button
+                className={`${styles.timeOption} ${selectedMinute === '30' ? styles.selected : ''}`}
+                onClick={() => setSelectedMinute('30')}
+              >
+                30
+              </button>
+            </div>
 
-          <div className={styles.minutesContainer}>
-            <button
-              className={`${styles.timeOption} ${selectedMinute === '00' ? styles.selected : ''}`}
-              onClick={() => setSelectedMinute('00')}
-            >
-              00
-            </button>
-            <button
-              className={`${styles.timeOption} ${selectedMinute === '30' ? styles.selected : ''}`}
-              onClick={() => setSelectedMinute('30')}
-            >
-              30
-            </button>
-          </div>
+            <div className={styles.periodContainer}>
+              <button
+                className={`${styles.timeOption} ${selectedPeriod === 'AM' ? styles.selected : ''}`}
+                onClick={() => setSelectedPeriod('AM')}
+              >
+                AM
+              </button>
+              <button
+                className={`${styles.timeOption} ${selectedPeriod === 'PM' ? styles.selected : ''}`}
+                onClick={() => setSelectedPeriod('PM')}
+              >
+                PM
+              </button>
+            </div>
 
-          <div className={styles.periodContainer}>
-            <button
-              className={`${styles.timeOption} ${selectedPeriod === 'AM' ? styles.selected : ''}`}
-              onClick={() => setSelectedPeriod('AM')}
-            >
-              AM
-            </button>
-            <button
-              className={`${styles.timeOption} ${selectedPeriod === 'PM' ? styles.selected : ''}`}
-              onClick={() => setSelectedPeriod('PM')}
-            >
-              PM
+            <button className={styles.confirmButton} onClick={handleTimeSelect}>
+              Confirm
             </button>
           </div>
-
-          <button className={styles.confirmButton} onClick={handleTimeSelect}>
-            Confirm
-          </button>
-        </div>
-      )}
+        </Modal.Body>
+      </Modal>
     </div>
   );
 }
