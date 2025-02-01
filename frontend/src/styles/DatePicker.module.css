@@ -191,7 +191,7 @@
 
 .modalWrapper :global(.react-datepicker) {
   background-color: #000000;
-  border: 1px solid #a38c0a;
+  border: 1px solid #000000;
 }
 
 .modalWrapper :global(.react-datepicker__header) {
@@ -206,22 +206,25 @@
 
 .modalWrapper :global(.react-datepicker__day) {
   color: #c0c0c0;
-  font-family: 'Poppins', sans-serif;
+  font-family: 'Playfair Display', sans-serif;
   font-size: 1rem;
 }
 
+
 .modalWrapper :global(.react-datepicker__day:hover) {
-  background-color: rgba(255, 215, 0, 0.2);
+  background: linear-gradient(90deg,  #C5A580, #66500f);
+  color: #ffffff;
 }
 
 .modalWrapper :global(.react-datepicker__day--selected) {
-  background-color: #8d7803;
-  color: #000000;
+  background: linear-gradient(90deg, #66500f, #C5A580);
+  color: #ffffff;
+  font-weight: bold;
 }
 
 .modalWrapper :global(.react-datepicker__day--keyboard-selected) {
-  background-color: rgba(255, 215, 0, 0.5);
-  color: #000000;
+  background: linear-gradient(90deg, #66500f, #C5A580);
+  color: #ffffff;
 }
 
 .modalWrapper :global(.modal-dialog) {
@@ -242,7 +245,7 @@
 }
 
 .modalWrapper :global(.react-datepicker) {
-  transform: scale(1);
+  transform: scale(1.1);
   transform-origin: top center;
   margin: 1rem auto;
 }
@@ -267,12 +270,12 @@
 
 @media (max-width: 768px) {
   .modalWrapper :global(.modal-dialog) {
-    max-width: 400px;
+    max-width: 450px;
     margin: 1rem auto;
   }
   
   .modalWrapper :global(.modal-content) {
-    min-height: 400px;
+    min-height: 450px;
   }
   
 
@@ -301,6 +304,6 @@
     width: 2rem;
     height: 2rem;
     line-height: 1.8rem;
-    margin: 0.1rem;
+    margin: 0.2rem;
   }
 }
