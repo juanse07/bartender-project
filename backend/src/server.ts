@@ -1,6 +1,7 @@
 import http from "http";
 import mongoose from "mongoose";
 import { Server } from "socket.io";
+import { sendPushNotification } from "./apns";
 import app from "./app";
 import env from "./env";
 
@@ -17,6 +18,9 @@ const logToFile = (message: string) => {
   fs.appendFileSync(logFile, logMessage);
 };
 */
+const deviceToken = "<your-device-token-here>"; // Replace with a real device token
+
+sendPushNotification(deviceToken, "Hello from APNs!");
 
 console.log("Initializing Socket.IO server...");
 // logToFile("Initializing Socket.IO server...");

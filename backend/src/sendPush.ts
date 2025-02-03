@@ -7,7 +7,7 @@ const options: apn.ProviderOptions = {
     key: process.env.APNS_KEY_PATH || "./certs/PushCert.pem",
     passphrase: process.env.APNS_PASSPHRASE || "MpGs_24009",
     //production: false,
-    production: process.env.NODE_ENV === 'production'
+     production: process.env.NODE_ENV === 'production'
   };
 
 // 2. Create a provider
