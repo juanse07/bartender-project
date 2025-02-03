@@ -119,6 +119,6 @@ next-env.d.ts
 .env.local
 
 backend/dist/
-
+backend/certs/
 
 # Rest of your existing .gitignore remains the same...
