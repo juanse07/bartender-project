@@ -18,7 +18,7 @@ const logToFile = (message: string) => {
   fs.appendFileSync(logFile, logMessage);
 };
 */
-const deviceToken = "<your-device-token-here>"; // Replace with a real device token
+const deviceToken = "f01e90ddf0dfc359c32dd43e242a80b6c6c00db690593f8b1ad6828e2d9f4564"; // Replace with a real device token
 
 sendPushNotification(deviceToken, "Hello from APNs!");
 
