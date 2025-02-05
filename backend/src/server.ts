@@ -1,9 +1,14 @@
+import bodyParser from 'body-parser';
+import express from 'express';
 import http from "http";
 import mongoose from "mongoose";
 import { Server } from "socket.io";
-import { sendPushNotification } from "./apns";
-import app from "./app";
+import { sendPushNotification } from "./services/apns";
+import { getStoredDeviceToken } from "./controllers/apns";
 import env from "./env";
+
+const app = express();
+app.use(bodyParser.json());
 
 // Initialize HTTP server
 const server = http.createServer(app);
@@ -18,9 +23,11 @@ const logToFile = (message: string) => {
   fs.appendFileSync(logFile, logMessage);
 };
 */
-const deviceToken = "26491a0f7449930cedf0293bbb5b42eedf1d49579a2512af241f8bc38cbe4a51"; // Replace with a real device token
-
-sendPushNotification(deviceToken, "Hello from APNs!");
+const deviceToken = getStoredDeviceToken();
+if (deviceToken) {
+    sendPushNotification(deviceToken, "Hello from APNs!");
+    console.log("Sent push notification to device:", deviceToken);
+}
 
 console.log("Initializing Socket.IO server...");
 // logToFile("Initializing Socket.IO server...");
@@ -117,25 +124,6 @@ mongoose
     // logToFile(`MongoDB connection error: ${error}`);
   });
 
+
+
 export { io };
-
-
-
-
-
-
-
-/////////////
-// import mongoose from "mongoose";
-// import app from "./app";
-// import env from "./env";
-// const port= process.env.PORT;
-
-// mongoose.connect(env.MONGO_CONNECTION_STRING) 
-// .then(() => {
-//     console.log("Connected to MongoDB");
-//     app.listen(port, () => {
-//         console.log(`Server is running on port ${port}`);
-//     });
-// })
-// .catch(console.error);
