@@ -3,6 +3,7 @@ import "dotenv/config";
 import express from "express";
 import env from "./env";
 import BarServicequotationRoutes from "./routes/BarServiceQuotation";
+import apnsRoutes from "./routes/apns";
 
 const app = express();
 
@@ -30,6 +31,8 @@ app.use("/new-estimate", BarServicequotationRoutes);
 app.get('/socket.io/', (req, res) => {
     res.send('Socket.IO endpoint');
 });
+
+app.use("/register-device", apnsRoutes);
 
 // Error handling middleware - should be last
 // eslint-disable-next-line @typescript-eslint/no-explicit-any, @typescript-eslint/no-unused-vars

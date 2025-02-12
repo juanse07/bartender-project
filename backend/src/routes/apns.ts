@@ -1,6 +1,7 @@
-import express from "express";
-import * as apnsController from "../controllers/apns";
+import { Router } from 'express';
+import { registerDevice } from '../controllers/apns';
 
-const router = express.Router();
+const router = Router();
+router.post('/', registerDevice);
 
-router.post("/register-device", apnsController.registerDevice);
+export default router;

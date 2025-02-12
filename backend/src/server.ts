@@ -1,14 +1,10 @@
-import bodyParser from 'body-parser';
-import express from 'express';
 import http from "http";
 import mongoose from "mongoose";
 import { Server } from "socket.io";
-import { sendPushNotification } from "./services/apns";
+import app from "./app"; // Import the app with all routes
 import { getStoredDeviceToken } from "./controllers/apns";
 import env from "./env";
-
-const app = express();
-app.use(bodyParser.json());
+import { sendPushNotification } from "./services/apns";
 
 // Initialize HTTP server
 const server = http.createServer(app);
