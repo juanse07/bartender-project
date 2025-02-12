@@ -19,11 +19,6 @@ const logToFile = (message: string) => {
   fs.appendFileSync(logFile, logMessage);
 };
 */
-const deviceToken = getStoredDeviceToken();
-if (deviceToken) {
-    sendPushNotification(deviceToken, "Hello from APNs!");
-    console.log("Sent push notification to device:", deviceToken);
-}
 
 console.log("Initializing Socket.IO server...");
 // logToFile("Initializing Socket.IO server...");
@@ -109,6 +104,14 @@ mongoose
     console.log("Connected to MongoDB");
     // logToFile("Connected to MongoDB");
 
+    // Initialize device token and send test notification
+    const deviceToken = getStoredDeviceToken();
+    if (deviceToken) {
+        sendPushNotification(deviceToken, "Hello from APNs!")
+            .then(() => console.log("Sent push notification to device:", deviceToken))
+            .catch(error => console.error("Failed to send push notification:", error));
+    }
+
     server.listen(port, () => {
       console.log(`Server is running on port ${port}`);
       console.log(`Socket.IO path: ${io.path()}`);
@@ -119,7 +122,5 @@ mongoose
     console.error("MongoDB connection error:", error);
     // logToFile(`MongoDB connection error: ${error}`);
   });
-
-
 
 export { io };
