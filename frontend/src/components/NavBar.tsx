@@ -22,7 +22,7 @@ export default function NavBar() {
                         sizes="(max-width: 768px) 200px, 250px"
                         style={{
                             width: '100%',
-                            maxWidth: '230px',
+                            maxWidth: '240px',
                             height: 'auto',
                         }}
                         priority
