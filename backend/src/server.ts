@@ -66,13 +66,16 @@ io.engine.on("connection_error", (err) => {
 });
 
 // Add MongoDB Change Streams
+let changeStreamInitialized = false;  // Add this flag
+
 mongoose.connection.once("open", () => {
+  if (changeStreamInitialized) return;  // Skip if already initialized
+  changeStreamInitialized = true;
+
   console.log("MongoDB connection is open, setting up change streams...");
   // logToFile("MongoDB connection is open, setting up change streams...");
 
   const barServiceQuotationCollection = mongoose.connection.collection("newestimates");
-
-  // Watch for changes in the collection
   const changeStream = barServiceQuotationCollection.watch();
 
   changeStream.on("change", async (change) => {
@@ -150,6 +153,7 @@ mongoose.connection.once("open", () => {
   changeStream.on("error", (error) => {
     console.error("Error in change stream:", error);
     // logToFile(`Error in change stream: ${error}`);
+    changeStreamInitialized = false;  // Reset flag on error
   });
 });
 
