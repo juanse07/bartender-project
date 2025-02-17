@@ -3,9 +3,9 @@ import mongoose from "mongoose";
 import { Server } from "socket.io";
 import app from "./app"; // Import the app with all routes
 
-import env from "./env";
 import * as fs from 'fs';
 import * as path from 'path';
+import env from "./env";
 
 // Initialize HTTP server
 const server = http.createServer(app);
@@ -18,8 +18,8 @@ if (!fs.existsSync(logDir)) {
 
 const logStream = fs.createWriteStream(path.join(logDir, 'apns.log'), { flags: 'a' });
 
-// Add this function
-const log = (message: string) => {
+// Export the log function
+export const log = (message: string) => {
     const timestamp = new Date().toISOString();
     const logMessage = `${timestamp}: ${message}\n`;
     console.log(logMessage);
@@ -130,13 +130,3 @@ mongoose
   });
 
 export { io };
-
-export const sendPushNotification = async (deviceToken: string, message: string) => {
-    try {
-        log(`🔄 Preparing to send notification to device: ${deviceToken}`);
-        // ... rest of the code
-    } catch (error) {
-        log(`❌ Error sending push notification: ${error}`);
-        throw error;
-    }
-};

@@ -1,6 +1,7 @@
 import * as apn from "apn";
 import * as dotenv from "dotenv";
 import * as fs from 'fs';
+import { log } from '../server';
 
 dotenv.config();
 
@@ -28,7 +29,7 @@ const apnProvider = new apn.Provider(options);
 // Function to send push notification
 export const sendPushNotification = async (deviceToken: string, message: string) => {
   try {
-    console.log('🔄 Preparing to send notification to device:', deviceToken);
+    log('🔄 Preparing to send notification to device: ' + deviceToken);
     const notification = new apn.Notification();
     
     notification.expiry = Math.floor(Date.now() / 1000) + 3600;
