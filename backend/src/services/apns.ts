@@ -28,35 +28,47 @@ const apnProvider = new apn.Provider(options);
 // Function to send push notification
 export const sendPushNotification = async (deviceToken: string, message: string) => {
   try {
+    console.log('🔄 Preparing to send notification to device:', deviceToken);
     const notification = new apn.Notification();
     
-    notification.expiry = Math.floor(Date.now() / 1000) + 3600; // 1 hour
+    notification.expiry = Math.floor(Date.now() / 1000) + 3600;
     notification.badge = 1;
-    notification.sound = "default";  // Changed from ping.aiff to default
+    notification.sound = "default";
     notification.alert = {
-      title: "Denver Bartenders",  // More descriptive title
+      title: "Denver Bartenders",
       body: message,
-      subtitle: "New Notification"  // Added subtitle
+      subtitle: "New Notification"
     };
     notification.payload = {
       messageFrom: "Denver Bartenders App"
     };
     notification.topic = process.env.APNS_BUNDLE_ID as string;
-    notification.contentAvailable = true;
-    notification.mutableContent = true;  // Changed from 1 to true
-    notification.priority = 10;  // High priority
+    
+    console.log('📝 Notification config:', {
+      topic: notification.topic,
+      alert: notification.alert,
+      env: process.env.NODE_ENV
+    });
 
     const result = await apnProvider.send(notification, deviceToken);
-    console.log("Push Notification Response:", result);
+    console.log("📬 Push Notification Full Response:", JSON.stringify(result, null, 2));
     
     if (result.failed.length > 0) {
-      console.error("Failed to send notification:", result.failed[0].response);
+      console.error("❌ Failed to send notification:", {
+        reason: result.failed[0].response?.reason,
+        status: result.failed[0].status,
+        response: result.failed[0].response
+      });
       throw new Error(result.failed[0].response?.reason || "Unknown error");
     }
 
-    return result;  // Return result for debugging
+    if (result.sent.length > 0) {
+      console.log("✅ Successfully sent notification to device");
+    }
+
+    return result;
   } catch (error) {
-    console.error('Error sending push notification:', error);
+    console.error('❌ Error sending push notification:', error);
     throw error;
   }
 };
