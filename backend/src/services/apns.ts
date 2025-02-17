@@ -1,7 +1,7 @@
 import * as apn from "apn";
 import * as dotenv from "dotenv";
 import * as fs from 'fs';
-import { log } from '../server';
+import { log } from '../utils/logger';
 
 dotenv.config();
 

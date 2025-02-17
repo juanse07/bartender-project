@@ -19,7 +19,7 @@ if (!fs.existsSync(logDir)) {
 const logStream = fs.createWriteStream(path.join(logDir, 'apns.log'), { flags: 'a' });
 
 // Export the log function
-export const log = (message: string) => {
+export const logToFile = (message: string) => {
     const timestamp = new Date().toISOString();
     const logMessage = `${timestamp}: ${message}\n`;
     console.log(logMessage);
