@@ -36,7 +36,7 @@ export const sendPushNotification = async (deviceToken: string, message: string)
     notification.badge = 1;
     notification.sound = "default";
     notification.alert = {
-      title: "Denver Bartenders",
+      title: "DenverBartenders",
       body: message,
       subtitle: "New Notification"
     };
@@ -45,31 +45,31 @@ export const sendPushNotification = async (deviceToken: string, message: string)
     };
     notification.topic = process.env.APNS_BUNDLE_ID as string;
     
-    console.log('📝 Notification config:', {
+    log('📝 Notification config: ' + JSON.stringify({
       topic: notification.topic,
       alert: notification.alert,
       env: process.env.NODE_ENV
-    });
+    }));
 
     const result = await apnProvider.send(notification, deviceToken);
-    console.log("📬 Push Notification Full Response:", JSON.stringify(result, null, 2));
+    log('📬 Push Notification Full Response: ' + JSON.stringify(result, null, 2));
     
     if (result.failed.length > 0) {
-      console.error("❌ Failed to send notification:", {
+      log('❌ Failed to send notification: ' + JSON.stringify({
         reason: result.failed[0].response?.reason,
         status: result.failed[0].status,
         response: result.failed[0].response
-      });
+      }));
       throw new Error(result.failed[0].response?.reason || "Unknown error");
     }
 
     if (result.sent.length > 0) {
-      console.log("✅ Successfully sent notification to device");
+      log('✅ Successfully sent notification to device');
     }
 
     return result;
   } catch (error) {
-    console.error('❌ Error sending push notification:', error);
+    log('❌ Error sending push notification: ' + error);
     throw error;
   }
 };
