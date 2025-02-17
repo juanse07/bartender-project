@@ -6,6 +6,8 @@ import app from "./app"; // Import the app with all routes
 import * as fs from 'fs';
 import * as path from 'path';
 import env from "./env";
+import { ApnsToken } from './models/apnsToken';
+import { sendPushNotification } from './services/apns';
 
 // Initialize HTTP server
 const server = http.createServer(app);
@@ -73,25 +75,64 @@ mongoose.connection.once("open", () => {
   // Watch for changes in the collection
   const changeStream = barServiceQuotationCollection.watch();
 
-  changeStream.on("change", (change) => {
+  changeStream.on("change", async (change) => {
     console.log("Change detected:", change);
 
-    if (change.operationType === "insert") {
-      // Emit new data to clients
-      io.emit("newBarServiceQuotation", change.fullDocument);
-      console.log("Emitted newBarServiceQuotation event via Socket.IO",change.fullDocument);
-    }
+    try {
+      // Get all registered devices
+      const devices = await ApnsToken.find({});
+      
+      if (change.operationType === "insert") {
+        // New quotation created
+        const doc = change.fullDocument;
+        const message = `New quotation received for ${doc.eventType}`;
+        
+        // Send to all registered devices
+        for (const device of devices) {
+          try {
+            await sendPushNotification(device.apnsToken, message);
+            logToFile(`✅ Notification sent to device: ${device.userId}`);
+          } catch (error) {
+            logToFile(`❌ Failed to send notification to device ${device.userId}: ${error}`);
+          }
+        }
 
-    if (change.operationType === "update") {
-      // Emit update details
-      io.emit("updateBarServiceQuotation", change.updateDescription);
-      console.log("Emitted updateBarServiceQuotation event via Socket.IO");
-    }
+        io.emit("newBarServiceQuotation", change.fullDocument);
+      }
 
-    if (change.operationType === "delete") {
-      // Emit deletion notification
-      io.emit("deleteBarServiceQuotation", change.documentKey);
-      console.log("Emitted deleteBarServiceQuotation event via Socket.IO");
+      if (change.operationType === "update") {
+        // Quotation updated
+        const message = "A quotation has been updated";
+        
+        for (const device of devices) {
+          try {
+            await sendPushNotification(device.apnsToken, message);
+            logToFile(`✅ Update notification sent to device: ${device.userId}`);
+          } catch (error) {
+            logToFile(`❌ Failed to send update notification to device ${device.userId}: ${error}`);
+          }
+        }
+
+        io.emit("updateBarServiceQuotation", change.updateDescription);
+      }
+
+      if (change.operationType === "delete") {
+        // Quotation deleted
+        const message = "A quotation has been deleted";
+        
+        for (const device of devices) {
+          try {
+            await sendPushNotification(device.apnsToken, message);
+            logToFile(`✅ Delete notification sent to device: ${device.userId}`);
+          } catch (error) {
+            logToFile(`❌ Failed to send delete notification to device ${device.userId}: ${error}`);
+          }
+        }
+
+        io.emit("deleteBarServiceQuotation", change.documentKey);
+      }
+    } catch (error) {
+      logToFile(`❌ Error processing change stream: ${error}`);
     }
   });
 

@@ -24,10 +24,10 @@ const options = {
 };
 
 log('🔑 APNs Configuration:' + JSON.stringify({
-  keyId: process.env.APNS_KEY_ID,
+  keyId: process.env.APNS_KEY_ID?.substring(0, 4) + '...',  // Only show first 4 chars
   teamId: process.env.APNS_TEAM_ID,
   bundleId: process.env.APNS_BUNDLE_ID,
-  keyLength: keyContent.length,
+  hasKey: !!keyContent,
   production: true
 }));
 
