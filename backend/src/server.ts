@@ -2,9 +2,8 @@ import http from "http";
 import mongoose from "mongoose";
 import { Server } from "socket.io";
 import app from "./app"; // Import the app with all routes
-import { getStoredDeviceToken } from "./controllers/apns";
+
 import env from "./env";
-import { sendPushNotification } from "./services/apns";
 
 // Initialize HTTP server
 const server = http.createServer(app);
@@ -105,12 +104,12 @@ mongoose
     // logToFile("Connected to MongoDB");
 
     // Initialize device token and send test notification
-    const deviceToken = getStoredDeviceToken();
-    if (deviceToken) {
-        sendPushNotification(deviceToken, "Hello from APNs!")
-            .then(() => console.log("Sent push notification to device:", deviceToken))
-            .catch(error => console.error("Failed to send push notification:", error));
-    }
+    // const deviceToken = getStoredDeviceToken();
+    // if (deviceToken) {
+    //     sendPushNotification(deviceToken, "Hello from APNs!")
+    //         .then(() => console.log("Sent push notification to device:", deviceToken))
+    //         .catch(error => console.error("Failed to send push notification:", error));
+    // }
 
     server.listen(port, () => {
       console.log(`Server is running on port ${port}`);

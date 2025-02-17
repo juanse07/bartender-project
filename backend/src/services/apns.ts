@@ -10,7 +10,7 @@ const options = {
     keyId: process.env.APNS_KEY_ID as string, // Your APNs Key ID
     teamId: process.env.APNS_TEAM_ID as string, // Your Apple Team ID
   },
-  production: process.env.APNS_ENV === "production",
+  production: true,
 };
 
 // Initialize APNs provider
@@ -29,3 +29,4 @@ export const sendPushNotification = async (deviceToken: string, message: string)
     console.error("Error Sending Push:", error);
   }
 };
+module.exports = { sendPushNotification };

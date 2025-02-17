@@ -1,8 +1,10 @@
 import { Router } from 'express';
-import { registerDevice, checkStoredToken } from '../controllers/apns';
+import { checkStoredToken, createElement, registerDevice } from '../controllers/apns';
 
 const router = Router();
+
 router.post('/', registerDevice);
-router.get('/check', checkStoredToken);
+router.get('/check/:userId', checkStoredToken);
+router.post('/create-element', createElement);
 
 export default router;
