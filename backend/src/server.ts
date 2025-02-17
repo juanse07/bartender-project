@@ -85,13 +85,18 @@ mongoose.connection.once("open", () => {
       if (change.operationType === "insert") {
         // New quotation created
         const doc = change.fullDocument;
-        const date = new Date(doc.eventDate).toLocaleDateString('en-US', {
+        const eventDate = new Date(doc.eventDate);
+        // Adjust for UTC offset
+        eventDate.setDate(eventDate.getDate());
+        
+        const date = eventDate.toLocaleDateString('en-US', {
           month: 'short',
           day: 'numeric',
-          year: 'numeric'
+          year: 'numeric',
+          timeZone: 'UTC'  // Force UTC timezone
         });
         
-        const message = `New request: ${doc.eventType} on ${date} from ${doc.name}`;
+        const message = `New request: ${doc.eventType} on ${date} from ${doc.contactName}`;
         
         // Send to all registered devices
         for (const device of devices) {
