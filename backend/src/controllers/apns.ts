@@ -58,30 +58,53 @@ export const createElement: RequestHandler = async (req, res, next) => {
             body: string; 
         };
 
-        if (!userId || !title || !body) {
-            res.status(400).json({ message: "Missing userId, title, or body" });
-            return;
-        }
+        console.log('📱 Attempting to send notification for user:', userId);
 
-        // Create the element in DB
-        const newElement = await Element.create({ userId, title, body });
-
-        // Lookup user's device token
+        // Lookup user's device token first
         const userTokenDoc = await ApnsToken.findOne({ userId });
         if (!userTokenDoc) {
+            console.log('❌ No device token found for user:', userId);
             res.status(404).json({ message: "User not found or no token" });
             return;
         }
 
-        // Send push notification
-        await sendPushNotification(userTokenDoc.apnsToken, `${title}: ${body}`);
+        console.log('✅ Found device token:', userTokenDoc.apnsToken);
+
+        // Send push notification before creating element
+        try {
+            const pushResult = await sendPushNotification(userTokenDoc.apnsToken, `${title}: ${body}`);
+            console.log('✅ Push notification result:', pushResult);
+        } catch (pushError) {
+            console.error('❌ Push notification failed:', pushError);
+            // Continue with element creation even if push fails
+        }
+
+        // Create the element in DB
+        const newElement = await Element.create({ userId, title, body });
         
         res.status(201).json({ 
-            message: "Element created & push sent",
+            message: "Element created & push attempted",
             element: newElement 
         });
     } catch (error) {
-        console.error('❌ Error creating element:', error);
+        console.error('❌ Error in createElement:', error);
         next(error);
+    }
+};
+
+export const listRegisteredDevices: RequestHandler = async (req, res) => {
+    try {
+        const devices = await ApnsToken.find({});
+        res.json({ 
+            count: devices.length,
+            devices: devices.map(device => ({
+                userId: device.userId,
+                token: device.apnsToken,
+                registeredAt: device.createdAt
+            }))
+        });
+    } catch (error) {
+        console.error('❌ Error listing devices:', error);
+        res.status(500).json({ message: "Error listing devices" });
     }
 };
