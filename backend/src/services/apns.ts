@@ -16,12 +16,20 @@ const keyContent = fs.readFileSync(keyPath, 'utf8');
 // APNs Configuration
 const options = {
   token: {
-    key: keyContent,  // Use the loaded key content
+    key: keyContent,
     keyId: process.env.APNS_KEY_ID as string,
     teamId: process.env.APNS_TEAM_ID as string,
   },
-  production: true  // Use true for production
+  production: true
 };
+
+log('🔑 APNs Configuration:' + JSON.stringify({
+  keyId: process.env.APNS_KEY_ID,
+  teamId: process.env.APNS_TEAM_ID,
+  bundleId: process.env.APNS_BUNDLE_ID,
+  keyLength: keyContent.length,
+  production: true
+}));
 
 // Initialize APNs provider
 const apnProvider = new apn.Provider(options);
