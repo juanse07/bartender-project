@@ -85,7 +85,7 @@ mongoose.connection.once("open", () => {
       if (change.operationType === "insert") {
         // New quotation created
         const doc = change.fullDocument;
-        const message = `New quotation received for ${doc.eventType}`;
+        const message = `New estimate request for ${doc.eventType} on ${doc.eventDate} from ${doc.name} at ${doc.address}  }`;
         
         // Send to all registered devices
         for (const device of devices) {
